@@ -20,7 +20,7 @@ class _EventsScreenState extends State<EventsScreen> {
   void initState() {
     super.initState();
     // Enable hybrid composition.
-    if (Platform.isWindows) WebView.platform = SurfaceAndroidWebView();
+    //if (Platform.isWindows) WebView.platform = SurfaceAndroidWebView();
   }
 
   @override

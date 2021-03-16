@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../screens/events/events_screen.dart';
 
 import '../constants.dart';
 import '../size_config.dart';
@@ -38,7 +37,9 @@ class CustomBottonNavBar extends StatelessWidget {
               NavItem(
                 icon: "assets/icons/friendship.svg",
                 title: "Câu hỏi",
-                press: () {},
+                press: () {
+                  Navigator.of(context).pushNamed('/quiz-screen');
+                },
               ),
             ],
           ),
