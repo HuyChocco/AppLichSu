@@ -1,10 +1,7 @@
 import 'dart:async';
-import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:hisapp/components/app_bar.dart';
-import 'package:hisapp/components/custom_bottom_nav_bar.dart';
+//import 'package:hisapp/components/custom_bottom_nav_bar.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-import 'components/body.dart';
 import 'package:hisapp/constants.dart';
 
 class EventsScreen extends StatefulWidget {
@@ -25,12 +22,11 @@ class _EventsScreenState extends State<EventsScreen> {
 
   @override
   void didChangeDependencies() {
-    // TODO: implement didChangeDependencies
-    super.didChangeDependencies();
     if (ModalRoute.of(context).settings.arguments == null) return;
     final routeArgs =
         ModalRoute.of(context).settings.arguments as Map<String, String>;
     _link = routeArgs['link'];
+    super.didChangeDependencies();
   }
 
   final Completer<WebViewController> _controller =
@@ -134,7 +130,7 @@ class _EventsScreenState extends State<EventsScreen> {
               )
             : Stack(),
       ]),
-      bottomNavigationBar: CustomBottonNavBar(),
+      //bottomNavigationBar: CustomBottonNavBar(),
       floatingActionButton: FutureBuilder<WebViewController>(
         future: _controller.future,
         builder: (ctx, snapshot) {
@@ -142,11 +138,12 @@ class _EventsScreenState extends State<EventsScreen> {
             return FloatingActionButton(
               onPressed: () {
                 ScaffoldMessenger.of(ctx).showSnackBar(
-                  SnackBar(content: Text('Favorited')),
+                  SnackBar(content: Text('Làm bài kiểm tra nhé')),
                 );
+                Navigator.of(context).pushNamed('/quiz-screen');
               },
               child: Icon(
-                Icons.favorite,
+                Icons.check,
               ),
             );
           else
