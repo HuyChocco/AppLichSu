@@ -4,10 +4,12 @@ import 'package:provider/provider.dart';
 //import 'package:google_fonts/google_fonts.dart';
 import './screens/home/home_screen.dart';
 import './screens/events/events_screen.dart';
-import 'package:hisapp/providers/HisEventProvider.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
+
 import 'screens/quiz/quiz_screen.dart';
 import 'screens/details/details_screen.dart';
 import 'package:hisapp/providers/ContentProvider.dart';
+import 'package:hisapp/screens/welcome/welcome_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -30,7 +32,7 @@ class MyApp extends StatelessWidget {
           create: (ctx) => ContentProvider(),
         ),
       ],
-      child: MaterialApp(
+      child: GetMaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Em yêu lịch sử',
           theme: ThemeData(
@@ -40,7 +42,7 @@ class MyApp extends StatelessWidget {
                 GoogleFonts.poppinsTextTheme().apply(displayColor: Colors.red),
             visualDensity: VisualDensity.adaptivePlatformDensity, */
               ),
-          home: HomeScreen(),
+          home: WelcomeScreen(),
           //     Scaffold(
           //   appBar: AppBar(title: Text("Model Viewer")),
           //   body: ModelViewer(
@@ -52,6 +54,7 @@ class MyApp extends StatelessWidget {
           //   ),
           // ),
           routes: {
+            '/home-screen': (ctx) => HomeScreen(),
             '/event-screen': (ctx) => EventsScreen(),
             '/quiz-screen': (ctx) => QuizScreen(),
             '/details-screen': (ctx) => DetailsScreen(),

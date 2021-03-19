@@ -188,59 +188,59 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       ),
                     ),
                     Positioned(
-                      right: 0,
-                      left: 0,
-                      bottom: 0,
-                      child: Container(
-                        padding: EdgeInsets.all(20),
-                        height: 100,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(40),
-                          boxShadow: [
-                            BoxShadow(
-                              offset: Offset(0, 4),
-                              blurRadius: 50,
-                              color: kTextColor.withOpacity(.1),
-                            ),
-                          ],
-                        ),
-                        child: Row(
-                          children: <Widget>[
-                            /* Container(
-                              padding: EdgeInsets.all(14),
-                              height: 56,
-                              width: 80,
-                              decoration: BoxDecoration(
-                                color: Color(0xFFFFEDEE),
-                                borderRadius: BorderRadius.circular(40),
+                        right: 0,
+                        left: 0,
+                        bottom: 0,
+                        child: Container(
+                          padding: EdgeInsets.all(20),
+                          height: 100,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(40),
+                            boxShadow: [
+                              BoxShadow(
+                                offset: Offset(0, 4),
+                                blurRadius: 50,
+                                color: kTextColor.withOpacity(.1),
                               ),
-                              child: SvgPicture.asset(
-                                  "assets/icons/shopping-bag.svg"),
-                            ), */
-                            //SizedBox(width: 20),
-                            Expanded(
-                              child: Container(
-                                alignment: Alignment.center,
-                                height: 56,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(40),
-                                  color: kBlueColor,
+                            ],
+                          ),
+                          child: Container(
+                            // alignment: Alignment.center,
+                            height: 56,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(40),
+                              color: kBlueColor,
+                            ),
+                            child: Stack(children: [
+                              LayoutBuilder(
+                                builder: (context, constraints) => Container(
+                                  // from 0 to 1 it takes 60s
+                                  width: constraints.maxWidth * 0.1,
+                                  decoration: BoxDecoration(
+                                    gradient: kPrimaryGradient,
+                                    borderRadius: BorderRadius.circular(40),
+                                  ),
                                 ),
+                              ),
+                              Container(
+                                alignment: Alignment.center,
                                 child: Text(
-                                  "Quá trình",
+                                  "Quá trình 50%",
                                   style: kSubtitleTextSyule.copyWith(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),
-                            )
-                          ],
+                            ]),
+                          ),
+                        )
+                        //],
+                        //),
+                        //  ),
                         ),
-                      ),
-                    ),
                   ],
                 ),
               ),
