@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hisapp/constants.dart';
+import 'package:hisapp/providers/CategoryProvider.dart';
 import 'package:hisapp/screens/home/home_screen.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 class WelcomeScreen extends StatelessWidget {
+  final _textFieldController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,6 +32,7 @@ class WelcomeScreen extends StatelessWidget {
                   ),
                   Spacer(), // 1/6
                   TextField(
+                    controller: _textFieldController,
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: Color(0xFF1C2341),
@@ -40,7 +44,13 @@ class WelcomeScreen extends StatelessWidget {
                   ),
                   Spacer(), // 1/6
                   InkWell(
-                    onTap: () => Get.to(() => HomeScreen()),
+                    onTap: () async {
+                      if (_textFieldController.text.isEmpty) return;
+                      await Provider.of<CategoryProvider>(context,
+                              listen: false)
+                          .feedData();
+                      Get.to(() => HomeScreen());
+                    },
                     child: Container(
                       width: double.infinity,
                       alignment: Alignment.center,

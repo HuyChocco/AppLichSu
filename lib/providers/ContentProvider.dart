@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import "package:hisapp/models/HisEvent.dart";
-import "package:hisapp/models/Character.dart";
-import 'package:hisapp/constants.dart';
 import 'package:hisapp/providers/HisEventProvider.dart';
-import 'package:hisapp/providers/character_provider.dart';
+import 'package:hisapp/providers/CharacterProvider.dart';
 
 class Content {
   final String title, link;
@@ -23,36 +20,38 @@ class ContentProvider extends ChangeNotifier {
     return _list_content;
   }
 
-  Future<void> setContentByCateId(Categories id) {
+  Future<void> setContentByCateId(String id) {
     switch (id) {
-      case Categories.HistoryEvent:
+      case '1':
         {
           _title = "Sự kiện lịch sử";
-          final List<Content> loadedContents = [];
+          /*  final List<Content> loadedContents = [];
           HisEventProvider().Events.forEach((element) {
             loadedContents.add(Content(title: element.name, link: element.url));
           });
-          _list_content = loadedContents;
+          _list_content = loadedContents; */
+          _list_content = [];
         }
         break;
-      case Categories.Hero:
+      case '2':
         {
-          _title = "Anh hùng dân tộc";
+          /*  _title = "Anh hùng dân tộc";
           final List<Content> loadedContents = [];
           CharacterProvider().Characters.forEach((element) {
             loadedContents
                 .add(Content(title: element.name, link: element.link));
           });
-          _list_content = loadedContents;
+          _list_content = loadedContents; */
+          _list_content = [];
         }
         break;
-      case Categories.War:
+      case '3':
         {
           _title = "Các trận chiến";
           _list_content = [];
         }
         break;
-      case Categories.CountryName:
+      case '4':
         {
           _title = "Quốc hiệu";
           _list_content = [];

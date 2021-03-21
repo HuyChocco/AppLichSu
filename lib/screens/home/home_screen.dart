@@ -2,23 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hisapp/constants.dart';
-//import 'package:hisapp/details_screen.dart';
-import 'package:hisapp/models/Category.dart';
-/* import 'package:hisapp/components/app_bar.dart';
-import 'package:hisapp/components/custom_bottom_nav_bar.dart';
-import './components/body.dart';
- */
-/* class HomeScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: buildAppBar(context, isTransparent: true),
-      body: Body(),
-      bottomNavigationBar: CustomBottonNavBar(),
-    );
-  }
-} */
+import 'package:hisapp/providers/CategoryProvider.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -75,49 +60,63 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
             SizedBox(height: 30),
-            Expanded(
-              child: StaggeredGridView.countBuilder(
-                padding: EdgeInsets.all(0),
-                crossAxisCount: 2,
-                itemCount: categories.length,
-                crossAxisSpacing: 20,
-                mainAxisSpacing: 20,
-                itemBuilder: (context, index) {
-                  return GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).pushNamed('/details-screen',
-                          arguments: {'categoryId': categories[index].id});
-                    },
-                    child: Container(
-                      padding: EdgeInsets.all(20),
-                      height: index.isEven ? 200 : 240,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
-                        image: DecorationImage(
-                          image: AssetImage(categories[index].image),
-                          fit: BoxFit.fill,
+            FutureBuilder(
+              future: Provider.of<CategoryProvider>(context, listen: false)
+                  .getData(),
+              builder: (ctx, snapshot) => snapshot.connectionState ==
+                      ConnectionState.waiting
+                  ? Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  : Consumer<CategoryProvider>(
+                      builder: (ctx, data, ch) => Expanded(
+                        child: StaggeredGridView.countBuilder(
+                          padding: EdgeInsets.all(0),
+                          crossAxisCount: 2,
+                          itemCount: data.Categories.length,
+                          crossAxisSpacing: 20,
+                          mainAxisSpacing: 20,
+                          itemBuilder: (context, index) {
+                            return GestureDetector(
+                              onTap: () {
+                                Navigator.of(context)
+                                    .pushNamed('/details-screen', arguments: {
+                                  'categoryId': data.Categories[index].id
+                                });
+                              },
+                              child: Container(
+                                padding: EdgeInsets.all(20),
+                                height: index.isEven ? 200 : 240,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(16),
+                                  image: DecorationImage(
+                                    image: AssetImage(
+                                        data.Categories[index].imagePath),
+                                    fit: BoxFit.fill,
+                                  ),
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Text(
+                                      data.Categories[index].title,
+                                      style: kTitleTextStyle,
+                                    ),
+                                    /*  Text(
+                                '${categories[index].numOfCourses} Courses',
+                                style: TextStyle(
+                                  color: kTextColor.withOpacity(.5),
+                                ),
+                              ) */
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
+                          staggeredTileBuilder: (index) => StaggeredTile.fit(1),
                         ),
                       ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(
-                            categories[index].name,
-                            style: kTitleTextStyle,
-                          ),
-                          /*  Text(
-                            '${categories[index].numOfCourses} Courses',
-                            style: TextStyle(
-                              color: kTextColor.withOpacity(.5),
-                            ),
-                          ) */
-                        ],
-                      ),
                     ),
-                  );
-                },
-                staggeredTileBuilder: (index) => StaggeredTile.fit(1),
-              ),
             ),
           ],
         ),

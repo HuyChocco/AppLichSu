@@ -109,6 +109,15 @@ class _EventsScreenState extends State<EventsScreen> {
             setState(() {
               _isLoading = true;
             });
+            _controller.future.then((value) => value.evaluateJavascript(
+                'Toaster.postMessage("User Agent: " + navigator.userAgent);'));
+          },
+          javascriptChannels: {
+            JavascriptChannel(
+                name: 'Toaster',
+                onMessageReceived: (mess) {
+                  print(mess.message);
+                })
           },
           onPageFinished: (str) {
             setState(() {

@@ -1,14 +1,13 @@
-import 'package:hisapp/constants.dart';
-
 class Category {
-  final String name;
-  final Categories id;
-  final String image;
+  final String title;
+  final String id;
+  final int number;
+  final String imagePath;
 
-  Category(this.name, this.id, this.image);
+  Category({this.title, this.id, this.number, this.imagePath});
 }
 
-List<Category> categories = categoriesData
+/* List<Category> categories = categoriesData
     .map((item) => Category(item['name'], item['id'], item['image']))
     .toList();
 
@@ -32,5 +31,5 @@ var categoriesData = [
     "name": "Quốc hiệu",
     'id': Categories.CountryName,
     'image': "assets/images/business.png"
-  },
-];
+  }, */
+//];

@@ -13,13 +13,13 @@ class DetailsScreen extends StatefulWidget {
 class _DetailsScreenState extends State<DetailsScreen> {
   var _isInit = true;
   ContentProvider contentProvider;
-  Categories cateId;
+  String cateId;
   @override
   void didChangeDependencies() {
     if (_isInit) {
       if (ModalRoute.of(context).settings.arguments == null) return;
       final args =
-          ModalRoute.of(context).settings.arguments as Map<String, Categories>;
+          ModalRoute.of(context).settings.arguments as Map<String, String>;
       cateId = args['categoryId'];
       contentProvider = Provider.of<ContentProvider>(context, listen: false);
       contentProvider.setContentByCateId(cateId);

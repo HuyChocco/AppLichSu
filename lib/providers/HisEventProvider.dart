@@ -1,35 +1,97 @@
 import 'package:hisapp/models/HisEvent.dart';
+import 'package:flutter/material.dart';
 
-class HisEventProvider {
+class HisEventProvider extends ChangeNotifier {
   List<HisEvent> _list_event = [
     HisEvent(
-      name: "Thời kỳ tiền sử",
-      image: "assets/images/Red_Mountains.png",
-      url: "https://vi.wikipedia.org/wiki/Lịch_sử_Việt_Nam#Thời_kỳ_tiền_sử",
+      id: '1',
+      title: "Thời tiền sử",
+      id_category: "1",
+      filePath:
+          "https://vi.wikipedia.org/wiki/Lịch_sử_Việt_Nam#Thời_kỳ_tiền_sử",
+      isDone: 0,
+      index: 1,
     ),
     HisEvent(
-      name: "Thời kỳ cổ đại",
-      image: "assets/images/Magical_World.png",
-      url:
-          "https://vi.wikipedia.org/wiki/Lịch_sử_Việt_Nam#Thời_kỳ_cổ_đại_(2879–111_TCN)",
+      id: '2',
+      title: "Thời Hồng Bàng",
+      id_category: "1",
+      filePath:
+          "https://vi.wikipedia.org/wiki/Lịch_sử_Việt_Nam#Thời_kỳ_tiền_sử",
+      isDone: 0,
+      index: 2,
     ),
     HisEvent(
-      name: "Thời kỳ Bắc thuộc",
-      image: "assets/images/Red_Mountains.png",
-      url:
-          "https://vi.wikipedia.org/wiki/L%E1%BB%8Bch_s%E1%BB%AD_Vi%E1%BB%87t_Nam#Th%E1%BB%9Di_k%E1%BB%B3_B%E1%BA%AFc_thu%E1%BB%99c_(179_TCN%E2%80%93938)",
+      id: '3',
+      title: "Thời Bắc thuộc lần I",
+      id_category: "1",
+      filePath:
+          "https://vi.wikipedia.org/wiki/Lịch_sử_Việt_Nam#Thời_kỳ_tiền_sử",
+      isDone: 0,
+      index: 3,
     ),
     HisEvent(
-      name: "Thời kỳ quân chủ",
-      image: "assets/images/Red_Mountains.png",
-      url:
-          "https://vi.wikipedia.org/wiki/L%E1%BB%8Bch_s%E1%BB%AD_Vi%E1%BB%87t_Nam#Th%E1%BB%9Di_k%E1%BB%B3_qu%C3%A2n_ch%E1%BB%A7_(939%E2%80%931945)",
+      id: '4',
+      title: "Thời kỳ Bắc thuộc lần II",
+      id_category: "1",
+      filePath:
+          "https://vi.wikipedia.org/wiki/Lịch_sử_Việt_Nam#Thời_kỳ_tiền_sử",
+      isDone: 0,
+      index: 4,
     ),
     HisEvent(
-      name: "Thời kỳ hiện đại",
-      image: "assets/images/Red_Mountains.png",
-      url:
-          "https://vi.wikipedia.org/wiki/L%E1%BB%8Bch_s%E1%BB%AD_Vi%E1%BB%87t_Nam#Th%E1%BB%9Di_k%E1%BB%B3_hi%E1%BB%87n_%C4%91%E1%BA%A1i_(1858%E2%80%93nay)",
+      id: '5',
+      title: "Thời kỳ Bắc thuộc lần III",
+      id_category: "1",
+      filePath:
+          "https://vi.wikipedia.org/wiki/Lịch_sử_Việt_Nam#Thời_kỳ_tiền_sử",
+      isDone: 0,
+      index: 5,
+    ),
+    HisEvent(
+      id: '6',
+      title: "Thời kỳ độc lập tự chủ",
+      id_category: "1",
+      filePath:
+          "https://vi.wikipedia.org/wiki/Lịch_sử_Việt_Nam#Thời_kỳ_tiền_sử",
+      isDone: 0,
+      index: 6,
+    ),
+    HisEvent(
+      id: '7',
+      title: "Thời kỳ Bắc Thuộc lần IV",
+      id_category: "1",
+      filePath:
+          "https://vi.wikipedia.org/wiki/Lịch_sử_Việt_Nam#Thời_kỳ_tiền_sử",
+      isDone: 0,
+      index: 7,
+    ),
+    HisEvent(
+      id: '8',
+      title: "Nhà Nguyễn – Thời kỳ độc lập tự chủ",
+      id_category: "1",
+      filePath:
+          "https://vi.wikipedia.org/wiki/Lịch_sử_Việt_Nam#Thời_kỳ_tiền_sử",
+      isDone: 0,
+      index: 8,
+    ),
+    HisEvent(
+      id: '9',
+      title: "Nhà Nguyễn – Thời kỳ Pháp thuộc",
+      id_category: "1",
+      filePath:
+          "https://vi.wikipedia.org/wiki/Lịch_sử_Việt_Nam#Thời_kỳ_tiền_sử",
+      isDone: 0,
+      index: 9,
+    ),
+    HisEvent(
+      id: '10',
+      title: "Thời kỳ đổi mới",
+      id_category: "1",
+      filePath:
+          "https://vi.wikipedia.org/wiki/Lịch_sử_Việt_Nam#Thời_kỳ_tiền_sử",
+      isDone: 0,
+      index: 10,
     ),
   ];
 

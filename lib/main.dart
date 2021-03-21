@@ -1,7 +1,8 @@
-import 'package:hisapp/providers/character_provider.dart';
+import 'package:hisapp/providers/CategoryProvider.dart';
+import 'package:hisapp/providers/HisEventProvider.dart';
+import 'package:hisapp/providers/CharacterProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-//import 'package:google_fonts/google_fonts.dart';
 import './screens/home/home_screen.dart';
 import './screens/events/events_screen.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
@@ -30,6 +31,12 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (ctx) => ContentProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (ctx) => HisEventProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (ctx) => CategoryProvider(),
         ),
       ],
       child: GetMaterialApp(
