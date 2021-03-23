@@ -5,9 +5,35 @@ import 'package:hisapp/providers/CategoryProvider.dart';
 import 'package:hisapp/screens/home/home_screen.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class WelcomeScreen extends StatelessWidget {
+class WelcomeScreen extends StatefulWidget {
+  @override
+  _WelcomeScreenState createState() => _WelcomeScreenState();
+}
+
+class _WelcomeScreenState extends State<WelcomeScreen> {
   final _textFieldController = TextEditingController();
+  final _texFocusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @protected
+  @mustCallSuper
+  void deactivate() {
+    super.deactivate();
+  }
+
+  @override
+  void dispose() {
+    _texFocusNode.dispose();
+    _textFieldController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,6 +58,8 @@ class WelcomeScreen extends StatelessWidget {
                   ),
                   Spacer(), // 1/6
                   TextField(
+                    focusNode: _texFocusNode,
+                    //onSubmitted: (val) {},
                     controller: _textFieldController,
                     decoration: InputDecoration(
                       filled: true,
@@ -43,13 +71,17 @@ class WelcomeScreen extends StatelessWidget {
                     ),
                   ),
                   Spacer(), // 1/6
-                  InkWell(
+                  GestureDetector(
                     onTap: () async {
                       if (_textFieldController.text.isEmpty) return;
+                      SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
+                      await prefs.setString(
+                          'user_name', _textFieldController.text);
                       await Provider.of<CategoryProvider>(context,
                               listen: false)
                           .feedData();
-                      Get.to(() => HomeScreen());
+                      Navigator.of(context).pushNamed('/home-screen');
                     },
                     child: Container(
                       width: double.infinity,

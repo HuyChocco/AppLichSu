@@ -1,8 +1,8 @@
 import 'package:hisapp/providers/CategoryProvider.dart';
-import 'package:hisapp/providers/HisEventProvider.dart';
-import 'package:hisapp/providers/CharacterProvider.dart';
 import 'package:flutter/material.dart';
+import 'package:hisapp/screens/contents/main_content_screen.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import './screens/home/home_screen.dart';
 import './screens/events/events_screen.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
@@ -16,30 +16,36 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  /* final List<Map<String, Object>> _pages = [
-    {'page': HomeScreen(), 'title': 'Màn hình chính'},
-    {'page': QuizScreen(), 'title': 'Câu hỏi'},
-  ]; */
-  // This widget is the root of your application.
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  bool _isLogged = false;
+
+  Future<void> tryAutoLogin() async {
+    print('hi');
+    final prefs = await SharedPreferences.getInstance();
+    if (!prefs.containsKey('user_name')) {
+      _isLogged = false;
+    } else
+      _isLogged = true;
+    print(_isLogged);
+  }
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (ctx) => CharacterProvider(),
+          create: (ctx) => CategoryProvider(),
         ),
         ChangeNotifierProvider(
           create: (ctx) => ContentProvider(),
         ),
-        ChangeNotifierProvider(
-          create: (ctx) => HisEventProvider(),
-        ),
-        ChangeNotifierProvider(
-          create: (ctx) => CategoryProvider(),
-        ),
       ],
-      child: GetMaterialApp(
+      child: MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Em yêu lịch sử',
           theme: ThemeData(
@@ -49,7 +55,10 @@ class MyApp extends StatelessWidget {
                 GoogleFonts.poppinsTextTheme().apply(displayColor: Colors.red),
             visualDensity: VisualDensity.adaptivePlatformDensity, */
               ),
-          home: WelcomeScreen(),
+          home: FutureBuilder(
+              future: tryAutoLogin(),
+              builder: (ctx, snapshot) =>
+                  (_isLogged ? HomeScreen() : WelcomeScreen())),
           //     Scaffold(
           //   appBar: AppBar(title: Text("Model Viewer")),
           //   body: ModelViewer(
@@ -62,9 +71,9 @@ class MyApp extends StatelessWidget {
           // ),
           routes: {
             '/home-screen': (ctx) => HomeScreen(),
-            '/event-screen': (ctx) => EventsScreen(),
             '/quiz-screen': (ctx) => QuizScreen(),
             '/details-screen': (ctx) => DetailsScreen(),
+            '/main-content-screen': (ctx) => MainContentScreen(),
           }),
     );
   }

@@ -1,7 +1,5 @@
 import 'package:hisapp/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:hisapp/models/HisEvent.dart';
 import 'package:provider/provider.dart';
 import 'package:hisapp/providers/ContentProvider.dart';
 
@@ -12,17 +10,15 @@ class DetailsScreen extends StatefulWidget {
 
 class _DetailsScreenState extends State<DetailsScreen> {
   var _isInit = true;
-  ContentProvider contentProvider;
   String cateId;
   @override
-  void didChangeDependencies() {
+  void didChangeDependencies() async {
     if (_isInit) {
       if (ModalRoute.of(context).settings.arguments == null) return;
       final args =
           ModalRoute.of(context).settings.arguments as Map<String, String>;
       cateId = args['categoryId'];
-      contentProvider = Provider.of<ContentProvider>(context, listen: false);
-      contentProvider.setContentByCateId(cateId);
+      print('categoryId: $cateId');
     }
     _isInit = false;
     super.didChangeDependencies();
@@ -54,60 +50,12 @@ class _DetailsScreenState extends State<DetailsScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  /* Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      SvgPicture.asset("assets/icons/arrow-left.svg"),
-                      SvgPicture.asset("assets/icons/more-vertical.svg"),
-                    ],
-                  ), */
                   SizedBox(height: 30),
-                  /* ClipPath(
-                    clipper: BestSellerClipper(),
-                    child: Container(
-                      color: kBestSellerColor,
-                      padding: EdgeInsets.only(
-                          left: 10, top: 5, right: 20, bottom: 5),
-                      child: Text(
-                        "BestSeller".toUpperCase(),
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-                  ), */
-                  //SizedBox(height: 16),
-                  Text(contentProvider.Title, style: kHeadingextStyle),
+                  Consumer<ContentProvider>(
+                    builder: (ctx, val, ch) =>
+                        Text(val.Title, style: kHeadingextStyle),
+                  ),
                   SizedBox(height: 16),
-                  Row(
-                      /* children: <Widget>[
-                      SvgPicture.asset("assets/icons/person.svg"),
-                      SizedBox(width: 5),
-                      Text("18K"),
-                      SizedBox(width: 20),
-                      SvgPicture.asset("assets/icons/star.svg"),
-                      SizedBox(width: 5),
-                      Text("4.8")
-                    ], */
-                      ),
-                  //SizedBox(height: 20),
-                  /* RichText(
-                    text: TextSpan(
-                      children: [
-                        TextSpan(
-                          text: "\$50 ",
-                          style: kHeadingextStyle.copyWith(fontSize: 32),
-                        ),
-                        TextSpan(
-                          text: "\$70",
-                          style: TextStyle(
-                            color: kTextColor.withOpacity(.5),
-                            decoration: TextDecoration.lineThrough,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ), */
                 ],
               ),
             ),
@@ -127,60 +75,51 @@ class _DetailsScreenState extends State<DetailsScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text("Nội dung", style: kTitleTextStyle),
-                          //SizedBox(height: 30),
-                          Expanded(
-                            child: ListView.builder(
-                              itemBuilder: (ctx, index) => Material(
-                                color: Colors.white,
-                                child: InkWell(
-                                  splashColor: Colors.green,
-                                  onTap: () {
-                                    Navigator.of(context)
-                                        .pushNamed('/event-screen', arguments: {
-                                      'link':
-                                          contentProvider.Contents[index].link,
-                                    });
-                                  },
-                                  child: CourseContent(
-                                    number: (index + 1).toString(),
-                                    duration: 5.35,
-                                    title:
-                                        contentProvider.Contents[index].title,
-                                    isDone:
-                                        contentProvider.Contents[index].isDone,
+                          FutureBuilder(
+                            future: Provider.of<ContentProvider>(context,
+                                    listen: false)
+                                .setContentByCateId(cateId),
+                            builder: (ctx, data) => data.connectionState ==
+                                    ConnectionState.waiting
+                                ? Center(
+                                    child: CircularProgressIndicator(),
+                                  )
+                                : Consumer<ContentProvider>(
+                                    builder: (ctx, data, ch) => Expanded(
+                                      child: ListView.builder(
+                                        itemBuilder: (ctx, index) => Material(
+                                          color: Colors.white,
+                                          child: InkWell(
+                                            splashColor: Colors.green,
+                                            onTap: () {
+                                              Navigator.of(context).pushNamed(
+                                                  '/main-content-screen',
+                                                  arguments: {
+                                                    'imagePath': data
+                                                        .Contents[index]
+                                                        .imagePath,
+                                                    'filePath': data
+                                                        .Contents[index]
+                                                        .filePath,
+                                                  });
+                                            },
+                                            child: CourseContent(
+                                              number: (index + 1).toString(),
+                                              duration: 5.35,
+                                              title: data.Contents[index].title,
+                                              isDone:
+                                                  data.Contents[index].isDone ==
+                                                          1
+                                                      ? true
+                                                      : false,
+                                            ),
+                                          ),
+                                        ),
+                                        itemCount: data.Contents.length,
+                                      ),
+                                    ),
                                   ),
-                                ),
-                              ),
-                              itemCount: contentProvider.Contents.length,
-                            ),
                           ),
-                          /* CourseContent(
-                              number: "01",
-                              duration: 5.35,
-                              title: "Thời kỳ tiền sử",
-                              isDone: true,
-                            ),
-                            CourseContent(
-                              number: '02',
-                              duration: 19.04,
-                              title: "Thời kỳ cổ đại",
-                              isDone: true,
-                            ),
-                            CourseContent(
-                              number: '03',
-                              duration: 15.35,
-                              title: "Thời kỳ Bắc thuộc",
-                            ),
-                            CourseContent(
-                              number: '04',
-                              duration: 5.35,
-                              title: "Thời kỳ quân chủ",
-                            ),
-                            CourseContent(
-                              number: '04',
-                              duration: 5.35,
-                              title: "Thời kỳ hiện đại",
-                            ), */
                           SizedBox(
                             height: 100,
                           ),
@@ -279,24 +218,27 @@ class CourseContent extends StatelessWidget {
             ),
           ),
           SizedBox(width: 20),
-          RichText(
-            text: TextSpan(
-              children: [
-                /* TextSpan(
-                  text: "$duration mins\n",
-                  style: TextStyle(
-                    color: kTextColor.withOpacity(.5),
-                    fontSize: 18,
+          Container(
+            constraints: BoxConstraints(maxWidth: 200),
+            child: RichText(
+              text: TextSpan(
+                children: [
+                  /* TextSpan(
+                    text: "$duration mins\n",
+                    style: TextStyle(
+                      color: kTextColor.withOpacity(.5),
+                      fontSize: 18,
+                    ),
+                  ), */
+                  TextSpan(
+                    text: title,
+                    style: kSubtitleTextSyule.copyWith(
+                      fontWeight: FontWeight.w600,
+                      height: 1.5,
+                    ),
                   ),
-                ), */
-                TextSpan(
-                  text: title,
-                  style: kSubtitleTextSyule.copyWith(
-                    fontWeight: FontWeight.w600,
-                    height: 1.5,
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
           Spacer(),

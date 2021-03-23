@@ -10,7 +10,8 @@ class EventsScreen extends StatefulWidget {
 }
 
 class _EventsScreenState extends State<EventsScreen> {
-  String _link = "";
+  String _imagePath = "";
+  String _filePath = "";
   bool _isLoading = false;
 
   @override
@@ -25,7 +26,10 @@ class _EventsScreenState extends State<EventsScreen> {
     if (ModalRoute.of(context).settings.arguments == null) return;
     final routeArgs =
         ModalRoute.of(context).settings.arguments as Map<String, String>;
-    _link = routeArgs['link'];
+    _imagePath = routeArgs['imagePath'];
+    print(_imagePath);
+    _filePath = routeArgs['filePath'];
+    print(_filePath);
     super.didChangeDependencies();
   }
 
@@ -101,7 +105,7 @@ class _EventsScreenState extends State<EventsScreen> {
           ]),
       //body: Body(),
       body: Stack(children: [
-        WebView(
+        /* WebView(
           initialUrl: '$_link',
           javascriptMode: JavascriptMode.unrestricted,
           onWebResourceError: (error) => _showMyDialog(),
@@ -132,7 +136,7 @@ class _EventsScreenState extends State<EventsScreen> {
           onWebViewCreated: (WebViewController webViewController) {
             _controller.complete(webViewController);
           },
-        ),
+        ), */
         _isLoading
             ? Center(
                 child: CircularProgressIndicator(),

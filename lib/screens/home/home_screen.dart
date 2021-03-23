@@ -4,8 +4,30 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hisapp/constants.dart';
 import 'package:hisapp/providers/CategoryProvider.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  var _user_name = "";
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void didChangeDependencies() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _user_name = prefs.getString('user_name');
+    });
+
+    super.didChangeDependencies();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +44,7 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
             SizedBox(height: 30),
-            Text("Chào Huy,", style: kHeadingextStyle),
+            Text("Chào $_user_name,", style: kHeadingextStyle),
             Text("Hãy bắt đầu tìm hiểu lịch sử nào!",
                 style: kSubheadingextStyle),
             SizedBox(height: 60),

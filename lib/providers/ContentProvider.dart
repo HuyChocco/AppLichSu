@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:hisapp/providers/HisEventProvider.dart';
-import 'package:hisapp/providers/CharacterProvider.dart';
+import 'package:hisapp/helpers/db_helper.dart';
 
 class Content {
-  final String title, link;
-  bool isDone;
+  final String title, filePath, imagePath;
+  int isDone;
 
-  Content({@required this.title, @required this.link, this.isDone = false});
+  Content(
+      {@required this.title,
+      @required this.filePath,
+      @required this.imagePath,
+      @required this.isDone});
 }
 
 class ContentProvider extends ChangeNotifier {
@@ -17,31 +20,29 @@ class ContentProvider extends ChangeNotifier {
   }
 
   List<Content> get Contents {
-    return _list_content;
+    return [..._list_content];
   }
 
-  Future<void> setContentByCateId(String id) {
+  Future<void> setContentByCateId(String id) async {
     switch (id) {
       case '1':
         {
           _title = "Sự kiện lịch sử";
-          /*  final List<Content> loadedContents = [];
-          HisEventProvider().Events.forEach((element) {
-            loadedContents.add(Content(title: element.name, link: element.url));
-          });
-          _list_content = loadedContents; */
-          _list_content = [];
+          final dataList = await DBHelper.getData('content');
+
+          _list_content = dataList
+              .map((e) => Content(
+                  title: e['title'],
+                  filePath: e['filePath'],
+                  imagePath: e['imagePath'],
+                  isDone: e['isDone']))
+              .toList();
+          print(_list_content[0].title);
         }
         break;
       case '2':
         {
-          /*  _title = "Anh hùng dân tộc";
-          final List<Content> loadedContents = [];
-          CharacterProvider().Characters.forEach((element) {
-            loadedContents
-                .add(Content(title: element.name, link: element.link));
-          });
-          _list_content = loadedContents; */
+          _title = "Anh hùng dân tộc";
           _list_content = [];
         }
         break;
