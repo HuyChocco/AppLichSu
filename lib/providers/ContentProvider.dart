@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hisapp/helpers/db_helper.dart';
+import 'package:flutter/services.dart' show rootBundle;
 
 class Content {
   final String title, filePath, imagePath;
@@ -15,6 +16,7 @@ class Content {
 class ContentProvider extends ChangeNotifier {
   String _title;
   List<Content> _list_content = [];
+  List<String> _list_main_content = [];
   String get Title {
     return _title;
   }
@@ -23,12 +25,24 @@ class ContentProvider extends ChangeNotifier {
     return [..._list_content];
   }
 
+  List<String> get MainContents {
+    return [..._list_main_content];
+  }
+
+  Future<void> loadTextFromFile(String filePath) async {
+    String _content = "";
+    await rootBundle.loadString(filePath).then((value) => _content = value);
+    if (_content.isNotEmpty) {
+      _list_main_content = _content.split('\n');
+    }
+  }
+
   Future<void> setContentByCateId(String id) async {
     switch (id) {
       case '1':
         {
           _title = "Sự kiện lịch sử";
-          final dataList = await DBHelper.getData('content');
+          final dataList = await DBHelper.getDataById('content', id);
 
           _list_content = dataList
               .map((e) => Content(

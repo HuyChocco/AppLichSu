@@ -40,6 +40,6 @@ class DBHelper {
   static Future<List<Map<String, dynamic>>> getDataById(
       String table, String id) async {
     final db = await DBHelper.database();
-    return db.query(table, where: "id_category = ", whereArgs: [id]);
+    return db.query(table, where: "id_category=?", whereArgs: [id]);
   }
 }
