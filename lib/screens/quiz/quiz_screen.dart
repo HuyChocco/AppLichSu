@@ -4,10 +4,22 @@ import 'package:hisapp/controllers/question_controller.dart';
 
 import 'components/body.dart';
 
-class QuizScreen extends StatelessWidget {
+class QuizScreen extends StatefulWidget {
+  @override
+  _QuizScreenState createState() => _QuizScreenState();
+}
+
+class _QuizScreenState extends State<QuizScreen> {
+  QuestionController _controller;
+  @override
+  void dispose() {
+    Get.reset();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    QuestionController _controller = Get.put(QuestionController());
+    _controller = Get.put(QuestionController());
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(

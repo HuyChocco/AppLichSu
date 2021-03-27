@@ -68,19 +68,10 @@ class QuestionController extends GetxController
   // // called just before the Controller is deleted from memory
   @override
   void onClose() {
-    _isAnswered = false;
-    _animationController.reset();
-    _pageController = PageController();
+    print('vo day');
     _animationController.dispose();
     _pageController.dispose();
     super.onClose();
-  }
-
-  @override
-  void dispose() {
-    //_animationController.dispose();
-    //_pageController.dispose();
-    super.dispose();
   }
 
   void checkAns(Question question, int selectedIndex) {
