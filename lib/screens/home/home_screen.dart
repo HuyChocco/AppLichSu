@@ -103,7 +103,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               onTap: () {
                                 Navigator.of(context)
                                     .pushNamed('/details-screen', arguments: {
-                                  'categoryId': data.Categories[index].id
+                                  'categoryId': data.Categories[index].id,
+                                  'title': data.Categories[index].title
                                 });
                               },
                               child: Container(

@@ -11,6 +11,7 @@ class DetailsScreen extends StatefulWidget {
 class _DetailsScreenState extends State<DetailsScreen> {
   var _isInit = true;
   String cateId;
+  String title;
   @override
   void didChangeDependencies() async {
     if (_isInit) {
@@ -18,7 +19,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
       final args =
           ModalRoute.of(context).settings.arguments as Map<String, String>;
       cateId = args['categoryId'];
+      title = args['title'];
       print('categoryId: $cateId');
+      print('title: $title');
     }
     _isInit = false;
     super.didChangeDependencies();
@@ -51,10 +54,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   SizedBox(height: 30),
-                  Consumer<ContentProvider>(
-                    builder: (ctx, val, ch) =>
-                        Text(val.Title, style: kHeadingextStyle),
-                  ),
+                  Text(title, style: kHeadingextStyle),
                   SizedBox(height: 16),
                 ],
               ),
@@ -95,9 +95,14 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                               Navigator.of(context).pushNamed(
                                                   '/main-content-screen',
                                                   arguments: {
+                                                    'id':
+                                                        data.Contents[index].id,
                                                     'imagePath': data
                                                         .Contents[index]
                                                         .imagePath,
+                                                    'videoPath': data
+                                                        .Contents[index]
+                                                        .videoPath,
                                                     'filePath': data
                                                         .Contents[index]
                                                         .filePath,
@@ -167,7 +172,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                 alignment: Alignment.center,
                                 child: Text(
                                   "Quá trình 50%",
-                                  style: kSubtitleTextSyule.copyWith(
+                                  style: kSubtitleTextStyle.copyWith(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -232,7 +237,7 @@ class CourseContent extends StatelessWidget {
                   ), */
                   TextSpan(
                     text: title,
-                    style: kSubtitleTextSyule.copyWith(
+                    style: kSubtitleTextStyle.copyWith(
                       fontWeight: FontWeight.w600,
                       height: 1.5,
                     ),

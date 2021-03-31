@@ -66,7 +66,8 @@ class Body extends StatelessWidget {
                   onPageChanged: _questionController.updateTheQnNum,
                   itemCount: _questionController.questions.length,
                   itemBuilder: (context, index) => QuestionCard(
-                      question: _questionController.questions[index]),
+                      question: _questionController.questions[index],
+                      answers: _questionController.answers),
                 ),
               ),
             ],

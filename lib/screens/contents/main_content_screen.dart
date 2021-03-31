@@ -14,9 +14,12 @@ class _MainContentScreenState extends State<MainContentScreen> {
 
   String _filePath;
 
+  String _videoPath;
+
   bool _isInit = true;
 
   String _content = "";
+  String _id;
 
   int _length_list = 0;
 
@@ -52,7 +55,8 @@ class _MainContentScreenState extends State<MainContentScreen> {
                     children: [
                       ElevatedButton(
                           onPressed: () {
-                            Navigator.of(context).pushNamed('/quiz-screen');
+                            Navigator.of(context).pushNamed('/quiz-screen',
+                                arguments: {'idContent': _id});
                           },
                           child: Text('Làm bài kiểm tra')),
                       TextButton(
@@ -73,19 +77,23 @@ class _MainContentScreenState extends State<MainContentScreen> {
       if (ModalRoute.of(context).settings.arguments == null) return;
       final routeArgs =
           ModalRoute.of(context).settings.arguments as Map<String, String>;
+      _id = routeArgs['id'];
+      print(_id);
       _imagePath = routeArgs['imagePath'];
       print(_imagePath);
+      _videoPath = routeArgs['videoPath'];
+      print(_videoPath);
       _filePath = routeArgs['filePath'];
       print(_filePath);
       final ContentProvider provide_content =
           Provider.of<ContentProvider>(context, listen: false);
       await provide_content.loadTextFromFile(_filePath);
       _length_list = provide_content.MainContents.length;
-      if (_length_list > 0) _number_item_list = 1;
+      if (_length_list > 0)
+        setState(() {
+          _number_item_list = 1;
+        });
       print(_number_item_list);
-      setState(() {
-        _number_item_list = 1;
-      });
     }
     _isInit = false;
     super.didChangeDependencies();
@@ -131,7 +139,7 @@ class _MainContentScreenState extends State<MainContentScreen> {
                                 itemBuilder: (ctx, index) {
                                   return Column(children: [
                                     Text(data.MainContents[index],
-                                        style: TextStyle(fontSize: 14)),
+                                        style: kSubtitleTextStyle),
                                     SizedBox(
                                       height: 10,
                                     ),

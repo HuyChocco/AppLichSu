@@ -1,7 +1,10 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
+import 'package:hisapp/models/Answer.dart';
 import 'package:hisapp/models/Questions.dart';
+import 'package:hisapp/providers/AnswerProvider.dart';
+import 'package:hisapp/providers/QuestionProvider.dart';
 //import 'package:hisapp/screens/score/score_screen.dart';
 
 // We use get package for our state management
@@ -9,6 +12,7 @@ import 'package:hisapp/models/Questions.dart';
 class QuestionController extends GetxController
     with SingleGetTickerProviderMixin {
   // Lets animated our progress bar
+  //QuestionController({this._questions});
 
   AnimationController _animationController;
   Animation _animation;
@@ -18,16 +22,14 @@ class QuestionController extends GetxController
   PageController _pageController;
   PageController get pageController => this._pageController;
 
-  List<Question> _questions = sample_data
-      .map(
-        (question) => Question(
-            id: question['id'],
-            question: question['question'],
-            options: question['options'],
-            answer: question['answer_index']),
-      )
-      .toList();
+  List<Question> _questions;
   List<Question> get questions => this._questions;
+  void set questions(ques) {
+    this._questions = ques;
+  }
+
+  List<Answer> _answers;
+  List<Answer> get answers => this._answers;
 
   bool _isAnswered = false;
   bool get isAnswered => this._isAnswered;
@@ -44,7 +46,6 @@ class QuestionController extends GetxController
 
   int _numOfCorrectAns = 0;
   int get numOfCorrectAns => this._numOfCorrectAns;
-
   // called immediately after the widget is allocated memory
   @override
   void onInit() {
@@ -68,7 +69,6 @@ class QuestionController extends GetxController
   // // called just before the Controller is deleted from memory
   @override
   void onClose() {
-    print('vo day');
     _animationController.dispose();
     _pageController.dispose();
     super.onClose();
@@ -77,7 +77,7 @@ class QuestionController extends GetxController
   void checkAns(Question question, int selectedIndex) {
     // because once user press any option then it will run
     _isAnswered = true;
-    _correctAns = question.answer;
+    _correctAns = question.answerIndex;
     _selectedAns = selectedIndex;
 
     if (_correctAns == _selectedAns) _numOfCorrectAns++;

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hisapp/controllers/question_controller.dart';
+import 'package:hisapp/models/Answer.dart';
 import 'package:hisapp/models/Questions.dart';
 
 import '../../../constants.dart';
@@ -11,9 +12,11 @@ class QuestionCard extends StatelessWidget {
     Key key,
     // it means we have to pass this
     @required this.question,
+    @required this.answers,
   }) : super(key: key);
 
   final Question question;
+  final List<Answer> answers;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +32,7 @@ class QuestionCard extends StatelessWidget {
         child: Column(
           children: [
             Text(
-              question.question,
+              question.sentence,
               style: Theme.of(context)
                   .textTheme
                   .headline6

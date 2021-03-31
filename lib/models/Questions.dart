@@ -1,12 +1,21 @@
 class Question {
-  final int id, answer;
-  final String question;
-  final List<String> options;
+  final String id;
+  final String sentence;
+  final String idContent;
+  final int number;
+  List<String> options;
+  final int answerIndex;
 
-  Question({this.id, this.question, this.answer, this.options});
+  Question(
+      {this.id,
+      this.sentence,
+      this.idContent,
+      this.number,
+      this.options,
+      this.answerIndex});
 }
 
-const List sample_data = [
+/* const List sample_data = [
   {
     "id": 1,
     "question": "Ngô Quyền lên ngôi vua, đóng đô ở đâu?",
@@ -47,4 +56,4 @@ const List sample_data = [
     ],
     "answer_index": 2,
   },
-];
+]; */

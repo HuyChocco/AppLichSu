@@ -3,13 +3,15 @@ import 'package:hisapp/helpers/db_helper.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
 class Content {
-  final String title, filePath, imagePath;
+  final String id, title, filePath, imagePath, videoPath;
   int isDone;
 
   Content(
-      {@required this.title,
+      {@required this.id,
+      @required this.title,
       @required this.filePath,
       @required this.imagePath,
+      @required this.videoPath,
       @required this.isDone});
 }
 
@@ -41,34 +43,35 @@ class ContentProvider extends ChangeNotifier {
     switch (id) {
       case '1':
         {
-          _title = "Sự kiện lịch sử";
-          final dataList = await DBHelper.getDataById('content', id);
+          final dataList =
+              await DBHelper.getDataById('content', id, 'id_category');
 
           _list_content = dataList
               .map((e) => Content(
+                  id: e['id'],
                   title: e['title'],
-                  filePath: e['filePath'],
-                  imagePath: e['imagePath'],
+                  filePath: e['file_path'],
+                  imagePath: e['image_path'],
+                  videoPath: e['video_path'],
                   isDone: e['isDone']))
               .toList();
-          print(_list_content[0].title);
         }
         break;
       case '2':
         {
-          _title = "Anh hùng dân tộc";
+          //_title = "Anh hùng dân tộc";
           _list_content = [];
         }
         break;
       case '3':
         {
-          _title = "Các trận chiến";
+          //_title = "Các trận chiến";
           _list_content = [];
         }
         break;
       case '4':
         {
-          _title = "Quốc hiệu";
+          //_title = "Quốc hiệu";
           _list_content = [];
         }
         break;

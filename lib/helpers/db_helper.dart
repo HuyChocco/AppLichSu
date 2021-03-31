@@ -17,9 +17,13 @@ class DBHelper {
     return sql.openDatabase(path.join(dbPath, 'history_db.db'),
         onCreate: (db, version) async {
       await db.execute(
-          'CREATE TABLE content_category(id TEXT PRIMARY KEY, title TEXT,number INTEGER,imagePath TEXT)');
+          'CREATE TABLE content_category(id TEXT PRIMARY KEY, title TEXT,number INTEGER,image_path TEXT)');
       await db.execute(
-          'CREATE TABLE content(id TEXT PRIMARY KEY,id_category TEXT, title TEXT,filePath TEXT,imagePath TEXT, number INTEGER,isDone BIT)');
+          'CREATE TABLE question(id TEXT PRIMARY KEY, sentence TEXT,id_content TEXT,number INTEGER, answer_index INTEGER)');
+      await db.execute(
+          'CREATE TABLE answer(id TEXT PRIMARY KEY, id_question TEXT,id_content TEXT,sentence TEXT,number INTEGER)');
+      await db.execute(
+          'CREATE TABLE content(id TEXT PRIMARY KEY,id_category TEXT, title TEXT,file_path TEXT,image_path TEXT, video_path TEXT, number INTEGER,is_done BIT)');
     }, version: 1);
   }
 
@@ -38,8 +42,8 @@ class DBHelper {
   }
 
   static Future<List<Map<String, dynamic>>> getDataById(
-      String table, String id) async {
+      String table, String id, String argument) async {
     final db = await DBHelper.database();
-    return db.query(table, where: "id_category=?", whereArgs: [id]);
+    return db.query(table, where: "$argument=?", whereArgs: [id]);
   }
 }

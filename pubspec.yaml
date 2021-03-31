@@ -39,6 +39,8 @@ dependencies:
   sqflite: ^2.0.0+3
   http: ^0.13.1
   shared_preferences:
+  youtube_player_flutter: ^8.0.0
+
 
 
 
@@ -65,7 +67,7 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/3d_images/
-    - assets/contents/su_kien_lich_su/
+    - assets/contents/thoi_ky_lich_su/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

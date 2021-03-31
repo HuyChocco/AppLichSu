@@ -1,5 +1,6 @@
 import 'package:hisapp/providers/CategoryProvider.dart';
 import 'package:flutter/material.dart';
+import 'package:hisapp/providers/QuestionProvider.dart';
 import 'package:hisapp/screens/contents/main_content_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -43,6 +44,9 @@ class _MyAppState extends State<MyApp> {
         ),
         ChangeNotifierProvider(
           create: (ctx) => ContentProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (ctx) => QuestionProvider(),
         ),
       ],
       child: MaterialApp(
