@@ -21,6 +21,7 @@ class _MainContentScreenState extends State<MainContentScreen> {
 
   String _content = "";
   String _id;
+  String _idCate;
 
   int _length_list = 0;
 
@@ -78,17 +79,20 @@ class _MainContentScreenState extends State<MainContentScreen> {
                               backgroundColor:
                                   MaterialStateProperty.all(Colors.red)),
                           onPressed: () {
-                            Navigator.of(context).pop();
                             _pageController.nextPage(
                                 duration: Duration(milliseconds: 250),
                                 curve: Curves.ease);
+                            Navigator.of(context).pop();
                           },
                           child: Text('Xem video')),
                       ElevatedButton(
                           onPressed: () {
                             _controller.pause();
                             Navigator.of(context).pushNamed('/quiz-screen',
-                                arguments: {'idContent': _id});
+                                arguments: {
+                                  'idContent': _id,
+                                  'idCate': _idCate
+                                });
                           },
                           child: Text('Làm bài kiểm tra')),
                       TextButton(
@@ -110,6 +114,8 @@ class _MainContentScreenState extends State<MainContentScreen> {
       final routeArgs =
           ModalRoute.of(context).settings.arguments as Map<String, String>;
       _id = routeArgs['id'];
+      print(_id);
+      _idCate = routeArgs['idCate'];
       print(_id);
       _imagePath = routeArgs['imagePath'];
       print(_imagePath);

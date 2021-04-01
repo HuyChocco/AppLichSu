@@ -80,7 +80,8 @@ class QuestionController extends GetxController
     super.onClose();
   }
 
-  void checkAns(Question question, int selectedIndex, BuildContext ctx) {
+  void checkAns(
+      Question question, int selectedIndex, String idCate, BuildContext ctx) {
     // because once user press any option then it will run
     _isAnswered = true;
     _correctAns = question.answerIndex;
@@ -96,10 +97,10 @@ class QuestionController extends GetxController
     double _propotionOfRightAns = _numOfCorrectAns / questions.length;
 
     if (_propotionOfRightAns >= 0.8) {
-      DBHelper.updateData('content', {'is_done': 1}, _idContent, 'id');
+      Provider.of<ContentProvider>(ctx, listen: false).updateData(_idContent);
     }
     Provider.of<ContentProvider>(ctx, listen: false)
-        .getProportionOfDoneLecturesById(_idContent);
+        .getProportionOfDoneLecturesById(idCate);
     // Once user select an ans after 1s it will go to the next qn
     Future.delayed(Duration(seconds: 1), () {
       nextQuestion();

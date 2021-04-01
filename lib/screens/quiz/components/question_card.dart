@@ -12,11 +12,11 @@ class QuestionCard extends StatelessWidget {
     Key key,
     // it means we have to pass this
     @required this.question,
-    @required this.answers,
+    @required this.idCate,
   }) : super(key: key);
 
   final Question question;
-  final List<Answer> answers;
+  final String idCate;
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +44,8 @@ class QuestionCard extends StatelessWidget {
               (index) => Option(
                 index: index,
                 text: question.options[index],
-                press: () => _controller.checkAns(question, index, context),
+                press: () =>
+                    _controller.checkAns(question, index, idCate, context),
               ),
             ),
           ],

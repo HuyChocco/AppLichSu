@@ -4,11 +4,12 @@ import 'package:hisapp/helpers/db_helper.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
 class Content {
-  final String id, title, filePath, imagePath, videoPath;
+  final String id, title, idCate, filePath, imagePath, videoPath;
   int isDone;
 
   Content(
       {@required this.id,
+      @required this.idCate,
       @required this.title,
       @required this.filePath,
       @required this.imagePath,
@@ -50,6 +51,7 @@ class ContentProvider extends ChangeNotifier {
           _list_content = dataList
               .map((e) => Content(
                   id: e['id'],
+                  idCate: e['id_category'],
                   title: e['title'],
                   filePath: e['file_path'],
                   imagePath: e['image_path'],
@@ -78,11 +80,25 @@ class ContentProvider extends ChangeNotifier {
         break;
       default:
     }
+    getProportionOfDoneLecturesById(id);
   }
 
   double _rate = 0;
   double get rate {
     return _rate;
+  }
+
+  Future<void> updateData(String idContent) async {
+    try {
+      await DBHelper.updateData('content', {'is_done': 1}, idContent, 'id');
+      Content content =
+          _list_content.firstWhere((element) => element.id == idContent);
+      int index = _list_content.indexOf(content);
+      _list_content[index].isDone = 1;
+      notifyListeners();
+    } catch (ex) {
+      print(ex.toString());
+    }
   }
 
   void getProportionOfDoneLecturesById(String _idCate) async {
@@ -91,6 +107,7 @@ class ContentProvider extends ChangeNotifier {
     final contentlist = dataList
         .map((e) => Content(
             id: e['id'],
+            idCate: e['id_category'],
             title: e['title'],
             filePath: e['file_path'],
             imagePath: e['image_path'],
@@ -99,7 +116,6 @@ class ContentProvider extends ChangeNotifier {
         .toList();
     final doneContentList = contentlist.where((element) => element.isDone == 1);
     _rate = doneContentList.length / contentlist.length;
-    //_rate = 0.3;
     notifyListeners();
   }
 }

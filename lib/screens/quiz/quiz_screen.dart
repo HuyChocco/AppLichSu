@@ -18,6 +18,7 @@ class _QuizScreenState extends State<QuizScreen> {
   QuestionController _controller;
   List<Question> _questions;
   String idContent;
+  String idCate;
   bool init = false;
 
   @override
@@ -39,6 +40,8 @@ class _QuizScreenState extends State<QuizScreen> {
           ModalRoute.of(context).settings.arguments as Map<String, String>;
       idContent = routeArgs['idContent'];
       print('idContent $idContent');
+      idCate = routeArgs['idCate'];
+      print('idCate $idCate');
     }
     init = true;
     super.didChangeDependencies();
@@ -63,7 +66,9 @@ class _QuizScreenState extends State<QuizScreen> {
           builder: (ctx, snapshot) {
             if (snapshot.connectionState == ConnectionState.done) {
               _controller.questions = snapshot.data;
-              return Body();
+              return Body(
+                idCate: idCate,
+              );
             } else
               return Center(
                 child: CircularProgressIndicator(),

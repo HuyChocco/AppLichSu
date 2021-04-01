@@ -10,7 +10,9 @@ import 'progress_bar.dart';
 import 'question_card.dart';
 
 class Body extends StatelessWidget {
+  final String idCate;
   const Body({
+    this.idCate,
     Key key,
   }) : super(key: key);
 
@@ -66,8 +68,9 @@ class Body extends StatelessWidget {
                   onPageChanged: _questionController.updateTheQnNum,
                   itemCount: _questionController.questions.length,
                   itemBuilder: (context, index) => QuestionCard(
-                      question: _questionController.questions[index],
-                      answers: _questionController.answers),
+                    question: _questionController.questions[index],
+                    idCate: idCate,
+                  ),
                 ),
               ),
             ],
