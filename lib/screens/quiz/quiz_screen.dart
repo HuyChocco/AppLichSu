@@ -60,7 +60,7 @@ class _QuizScreenState extends State<QuizScreen> {
       body: FutureBuilder(
           future: Provider.of<QuestionProvider>(context, listen: false)
               .getData(idContent),
-          builder: (context, snapshot) {
+          builder: (ctx, snapshot) {
             if (snapshot.connectionState == ConnectionState.done) {
               _controller.questions = snapshot.data;
               return Body();

@@ -46,4 +46,14 @@ class DBHelper {
     final db = await DBHelper.database();
     return db.query(table, where: "$argument=?", whereArgs: [id]);
   }
+
+  static Future<void> updateData(String table, Map<String, Object> values,
+      String id, String argument) async {
+    print('update');
+    print(id);
+    print(argument);
+    final db = await DBHelper.database();
+
+    await db.update(table, values, where: "$argument=?", whereArgs: [id]);
+  }
 }

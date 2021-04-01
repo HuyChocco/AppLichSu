@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hisapp/providers/ContentProvider.dart';
 import 'package:provider/provider.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import '../../constants.dart';
 
@@ -24,10 +25,29 @@ class _MainContentScreenState extends State<MainContentScreen> {
   int _length_list = 0;
 
   int _number_item_list = 0;
+  PageController _pageController;
 
+  PlayerState _playerState;
+  YoutubeMetaData _videoMetaData;
+  String videoId;
+  YoutubePlayerController _controller;
+  bool _isPlayerReady = false;
   @override
   void initState() {
+    _videoMetaData = const YoutubeMetaData();
+    _playerState = PlayerState.unknown;
+
+    _pageController = PageController();
     super.initState();
+  }
+
+  void listener() {
+    if (_isPlayerReady && mounted && !_controller.value.isFullScreen) {
+      setState(() {
+        _playerState = _controller.value.playerState;
+        _videoMetaData = _controller.metadata;
+      });
+    }
   }
 
   void _increaseListLength() {
@@ -54,7 +74,19 @@ class _MainContentScreenState extends State<MainContentScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       ElevatedButton(
+                          style: ButtonStyle(
+                              backgroundColor:
+                                  MaterialStateProperty.all(Colors.red)),
                           onPressed: () {
+                            Navigator.of(context).pop();
+                            _pageController.nextPage(
+                                duration: Duration(milliseconds: 250),
+                                curve: Curves.ease);
+                          },
+                          child: Text('Xem video')),
+                      ElevatedButton(
+                          onPressed: () {
+                            _controller.pause();
                             Navigator.of(context).pushNamed('/quiz-screen',
                                 arguments: {'idContent': _id});
                           },
@@ -83,6 +115,14 @@ class _MainContentScreenState extends State<MainContentScreen> {
       print(_imagePath);
       _videoPath = routeArgs['videoPath'];
       print(_videoPath);
+      videoId = YoutubePlayer.convertUrlToId(_videoPath);
+      _controller = YoutubePlayerController(
+        initialVideoId: videoId,
+        flags: YoutubePlayerFlags(
+          autoPlay: true,
+          mute: false,
+        ),
+      )..addListener(listener);
       _filePath = routeArgs['filePath'];
       print(_filePath);
       final ContentProvider provide_content =
@@ -97,6 +137,20 @@ class _MainContentScreenState extends State<MainContentScreen> {
     }
     _isInit = false;
     super.didChangeDependencies();
+  }
+
+  @override
+  void deactivate() {
+    // Pauses video while navigating to next page.
+    _controller.pause();
+    super.deactivate();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    _pageController.dispose();
+    super.dispose();
   }
 
   @override
@@ -119,7 +173,26 @@ class _MainContentScreenState extends State<MainContentScreen> {
         body: SafeArea(
           child: Column(
             children: [
-              Image.asset(_imagePath),
+              Container(
+                height: 250,
+                child: PageView.builder(
+                  physics: NeverScrollableScrollPhysics(),
+                  controller: _pageController,
+                  itemCount: 2,
+                  itemBuilder: (ctx, index) => index == 0
+                      ? Image.asset(_imagePath)
+                      : YoutubePlayer(
+                          controller: _controller,
+                          showVideoProgressIndicator: true,
+                          progressIndicatorColor: Colors.amber,
+                          onReady: () {
+                            _isPlayerReady = true;
+                          },
+                        ),
+                ),
+              ),
+
+              //Image.asset(_imagePath),
               Expanded(
                 child: Stack(children: [
                   //FutureBuilder(
@@ -155,8 +228,9 @@ class _MainContentScreenState extends State<MainContentScreen> {
                         onPressed: () {
                           if (_number_item_list != _length_list)
                             _increaseListLength();
-                          else
+                          else {
                             _showBottomSheetDialog();
+                          }
                         },
                         style: ButtonStyle(
                             foregroundColor:

@@ -53,7 +53,7 @@ class CategoryProvider extends ChangeNotifier {
       'id_category': '1',
       'file_path': 'assets/contents/thoi_ky_lich_su/tien_su.txt',
       'image_path': 'assets/images/thoi_tien_su.jpg',
-      'video_path': 'video_path',
+      'video_path': 'https://www.youtube.com/watch?v=rk0pQDRMNA0&t=164s',
       'is_done': 0,
       'number': 1,
     });

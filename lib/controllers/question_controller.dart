@@ -1,10 +1,13 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
+import 'package:hisapp/helpers/db_helper.dart';
 import 'package:hisapp/models/Answer.dart';
 import 'package:hisapp/models/Questions.dart';
 import 'package:hisapp/providers/AnswerProvider.dart';
+import 'package:hisapp/providers/ContentProvider.dart';
 import 'package:hisapp/providers/QuestionProvider.dart';
+import 'package:provider/provider.dart';
 //import 'package:hisapp/screens/score/score_screen.dart';
 
 // We use get package for our state management
@@ -46,6 +49,9 @@ class QuestionController extends GetxController
 
   int _numOfCorrectAns = 0;
   int get numOfCorrectAns => this._numOfCorrectAns;
+
+  String _idContent;
+
   // called immediately after the widget is allocated memory
   @override
   void onInit() {
@@ -74,7 +80,7 @@ class QuestionController extends GetxController
     super.onClose();
   }
 
-  void checkAns(Question question, int selectedIndex) {
+  void checkAns(Question question, int selectedIndex, BuildContext ctx) {
     // because once user press any option then it will run
     _isAnswered = true;
     _correctAns = question.answerIndex;
@@ -85,9 +91,17 @@ class QuestionController extends GetxController
     // It will stop the counter
     _animationController.stop();
     update();
+    _idContent = _questions[0].idContent;
 
-    // Once user select an ans after 3s it will go to the next qn
-    Future.delayed(Duration(seconds: 3), () {
+    double _propotionOfRightAns = _numOfCorrectAns / questions.length;
+
+    if (_propotionOfRightAns >= 0.8) {
+      DBHelper.updateData('content', {'is_done': 1}, _idContent, 'id');
+    }
+    Provider.of<ContentProvider>(ctx, listen: false)
+        .getProportionOfDoneLecturesById(_idContent);
+    // Once user select an ans after 1s it will go to the next qn
+    Future.delayed(Duration(seconds: 1), () {
       nextQuestion();
     });
   }
@@ -107,6 +121,7 @@ class QuestionController extends GetxController
     } else {
       // Get package provide us simple way to naviigate another page
       //Get.to(ScoreScreen());
+
     }
   }
 

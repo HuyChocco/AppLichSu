@@ -157,28 +157,29 @@ class _DetailsScreenState extends State<DetailsScreen> {
                               borderRadius: BorderRadius.circular(40),
                               color: kBlueColor,
                             ),
-                            child: Stack(children: [
-                              LayoutBuilder(
-                                builder: (context, constraints) => Container(
-                                  // from 0 to 1 it takes 60s
-                                  width: constraints.maxWidth * 0.1,
-                                  decoration: BoxDecoration(
-                                    gradient: kPrimaryGradient,
-                                    borderRadius: BorderRadius.circular(40),
+                            child: Consumer<ContentProvider>(
+                              builder: (ctx, data, ch) => Stack(children: [
+                                LayoutBuilder(
+                                  builder: (context, constraints) => Container(
+                                    width: constraints.maxWidth * data.rate,
+                                    decoration: BoxDecoration(
+                                      gradient: kPrimaryGradient,
+                                      borderRadius: BorderRadius.circular(40),
+                                    ),
                                   ),
                                 ),
-                              ),
-                              Container(
-                                alignment: Alignment.center,
-                                child: Text(
-                                  "Quá trình 50%",
-                                  style: kSubtitleTextStyle.copyWith(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
+                                Container(
+                                  alignment: Alignment.center,
+                                  child: Text(
+                                    "Quá trình ${(data.rate * 100).round()}%",
+                                    style: kSubtitleTextStyle.copyWith(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ]),
+                              ]),
+                            ),
                           ),
                         )
                         //],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_instance/get_instance.dart';
 import 'package:hisapp/helpers/db_helper.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
@@ -53,7 +54,7 @@ class ContentProvider extends ChangeNotifier {
                   filePath: e['file_path'],
                   imagePath: e['image_path'],
                   videoPath: e['video_path'],
-                  isDone: e['isDone']))
+                  isDone: e['is_done']))
               .toList();
         }
         break;
@@ -77,5 +78,28 @@ class ContentProvider extends ChangeNotifier {
         break;
       default:
     }
+  }
+
+  double _rate = 0;
+  double get rate {
+    return _rate;
+  }
+
+  void getProportionOfDoneLecturesById(String _idCate) async {
+    final dataList =
+        await DBHelper.getDataById('content', _idCate, 'id_category');
+    final contentlist = dataList
+        .map((e) => Content(
+            id: e['id'],
+            title: e['title'],
+            filePath: e['file_path'],
+            imagePath: e['image_path'],
+            videoPath: e['video_path'],
+            isDone: e['is_done']))
+        .toList();
+    final doneContentList = contentlist.where((element) => element.isDone == 1);
+    _rate = doneContentList.length / contentlist.length;
+    //_rate = 0.3;
+    notifyListeners();
   }
 }
