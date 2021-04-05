@@ -218,7 +218,7 @@ class _MainContentScreenState extends State<MainContentScreen> {
                                 itemBuilder: (ctx, index) {
                                   return Column(children: [
                                     Text(data.MainContents[index],
-                                        style: kSubtitleTextStyle),
+                                        style: TextStyle(fontSize: 16)),
                                     SizedBox(
                                       height: 10,
                                     ),

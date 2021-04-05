@@ -12,6 +12,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
   var _isInit = true;
   String cateId;
   String title;
+
   @override
   void didChangeDependencies() async {
     if (_isInit) {

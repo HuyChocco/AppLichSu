@@ -49,7 +49,7 @@ class _MyAppState extends State<MyApp> {
           create: (ctx) => QuestionProvider(),
         ),
       ],
-      child: MaterialApp(
+      child: GetMaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Em yêu lịch sử',
           theme: ThemeData(

@@ -7,6 +7,7 @@ import 'package:hisapp/models/Questions.dart';
 import 'package:hisapp/providers/AnswerProvider.dart';
 import 'package:hisapp/providers/ContentProvider.dart';
 import 'package:hisapp/providers/QuestionProvider.dart';
+import 'package:hisapp/screens/quiz/score/score_screen.dart';
 import 'package:provider/provider.dart';
 //import 'package:hisapp/screens/score/score_screen.dart';
 
@@ -121,8 +122,7 @@ class QuestionController extends GetxController
       _animationController.forward().whenComplete(nextQuestion);
     } else {
       // Get package provide us simple way to naviigate another page
-      //Get.to(ScoreScreen());
-
+      Get.to(() => ScoreScreen(_numOfCorrectAns));
     }
   }
 
