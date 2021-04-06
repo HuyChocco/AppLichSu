@@ -26,6 +26,7 @@ class _MainContentScreenState extends State<MainContentScreen> {
   int _length_list = 0;
 
   int _number_item_list = 0;
+  ScrollController _scrollController = ScrollController();
   PageController _pageController;
 
   PlayerState _playerState;
@@ -145,6 +146,10 @@ class _MainContentScreenState extends State<MainContentScreen> {
     super.didChangeDependencies();
   }
 
+  _scrollToBottom() {
+    _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
+  }
+
   @override
   void deactivate() {
     // Pauses video while navigating to next page.
@@ -161,6 +166,7 @@ class _MainContentScreenState extends State<MainContentScreen> {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) => _scrollToBottom());
     return Scaffold(
         appBar: AppBar(
           leading: IconButton(
@@ -214,6 +220,7 @@ class _MainContentScreenState extends State<MainContentScreen> {
                       builder: (ctx, data, ch) => Container(
                             margin: EdgeInsets.only(bottom: 60),
                             child: ListView.builder(
+                                controller: _scrollController,
                                 itemCount: _number_item_list,
                                 itemBuilder: (ctx, index) {
                                   return Column(children: [
