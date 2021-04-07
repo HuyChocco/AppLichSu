@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hisapp/widgets/login/login_screen.dart';
+import 'package:hisapp/widgets/signup/signup_screen.dart';
 
 class DiscussionScreen extends StatefulWidget {
   @override
@@ -8,12 +9,21 @@ class DiscussionScreen extends StatefulWidget {
 
 class _DiscussionScreenState extends State<DiscussionScreen> {
   bool _isLogin = false;
+
+  var _pageViewController = PageController();
   void _showBottomSheetDialog() {
     if (!_isLogin)
       showModalBottomSheet(
           isDismissible: true,
           context: context,
-          builder: (ctx) => LoginScreen());
+          builder: (ctx) => PageView.builder(
+                physics: NeverScrollableScrollPhysics(),
+                itemBuilder: (_, index) => index == 0
+                    ? LoginScreen(_pageViewController)
+                    : SignUpScreen(_pageViewController),
+                itemCount: 2,
+                controller: _pageViewController,
+              ));
   }
 
   @override

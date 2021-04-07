@@ -11,6 +11,8 @@ import 'package:hisapp/widgets/signup/components/social_icon.dart';
 import 'background.dart';
 
 class Body extends StatelessWidget {
+  PageController _pageController;
+  Body(this._pageController);
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -43,14 +45,8 @@ class Body extends StatelessWidget {
             AlreadyHaveAnAccountCheck(
               login: false,
               press: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return LoginScreen();
-                    },
-                  ),
-                );
+                _pageController.previousPage(
+                    duration: Duration(milliseconds: 250), curve: Curves.ease);
               },
             ),
             OrDivider(),

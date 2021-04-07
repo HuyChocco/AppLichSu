@@ -8,10 +8,8 @@ import 'package:hisapp/widgets/login/components/background.dart';
 import 'package:hisapp/widgets/signup/signup_screen.dart';
 
 class Body extends StatelessWidget {
-  const Body({
-    Key key,
-  }) : super(key: key);
-
+  PageController _pageController;
+  Body(this._pageController);
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -44,14 +42,8 @@ class Body extends StatelessWidget {
             SizedBox(height: size.height * 0.03),
             AlreadyHaveAnAccountCheck(
               press: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return SignUpScreen();
-                    },
-                  ),
-                );
+                _pageController.nextPage(
+                    duration: Duration(milliseconds: 250), curve: Curves.ease);
               },
             ),
           ],
