@@ -81,7 +81,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       await Provider.of<CategoryProvider>(context,
                               listen: false)
                           .feedData();
-                      Navigator.of(context).pushNamed('/home-screen');
+                      Navigator.of(context)
+                          .pushReplacementNamed('/home-screen');
                     },
                     child: Container(
                       width: double.infinity,

@@ -191,6 +191,13 @@ class CategoryProvider extends ChangeNotifier {
       'number': 2,
       'answer_index': 1,
     });
+    await DBHelper.insert('question', {
+      'id': '3',
+      'sentence': 'Vì sao Ngô Quyền không duy trì chính quyền của họ Khúc?',
+      'id_content': '2',
+      'number': 1,
+      'answer_index': 1,
+    });
     await DBHelper.insert('answer', {
       'id': '1',
       'sentence': 'Cổ Loa',
@@ -246,6 +253,35 @@ class CategoryProvider extends ChangeNotifier {
       'sentence': 'xxx',
       'id_question': '2',
       'id_content': '1',
+      'number': 3,
+    });
+    await DBHelper.insert('answer', {
+      'id': '9',
+      'sentence': 'Chính quyền họ Khúc về danh nghĩa vẫn thuộc nhà Đường',
+      'id_question': '3',
+      'id_content': '2',
+      'number': 0,
+    });
+    await DBHelper.insert('answer', {
+      'id': '10',
+      'sentence':
+          'Ngô Quyền muốn phát triển đất nước thành một Quốc gia độc lập, thiết lập một chính quyền hoàn toàn của người Việt',
+      'id_question': '3',
+      'id_content': '2',
+      'number': 1,
+    });
+    await DBHelper.insert('answer', {
+      'id': '11',
+      'sentence': 'xxx',
+      'id_question': '3',
+      'id_content': '2',
+      'number': 2,
+    });
+    await DBHelper.insert('answer', {
+      'id': '12',
+      'sentence': 'xxx',
+      'id_question': '3',
+      'id_content': '2',
       'number': 3,
     });
   }

@@ -34,7 +34,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              SvgPicture.asset("assets/icons/menu.svg"),
+              //SvgPicture.asset("assets/icons/menu.svg"),
               //Image.asset("assets/images/user.png"),
             ],
           ),
