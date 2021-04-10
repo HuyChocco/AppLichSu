@@ -37,9 +37,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: Stack(
         children: [
-          SvgPicture.asset("assets/icons/bg.svg", fit: BoxFit.fill),
+          //SvgPicture.asset("assets/icons/bg.svg", fit: BoxFit.cover),
           SafeArea(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),

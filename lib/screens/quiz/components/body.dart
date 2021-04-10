@@ -21,6 +21,7 @@ class Body extends StatelessWidget {
     // So that we have acccess our controller
     QuestionController _questionController = Get.put(QuestionController());
     return Stack(
+      fit: StackFit.expand,
       children: [
         SvgPicture.asset("assets/icons/bg.svg", fit: BoxFit.fill),
         SafeArea(

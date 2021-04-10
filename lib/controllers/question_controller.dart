@@ -122,7 +122,7 @@ class QuestionController extends GetxController
       _animationController.forward().whenComplete(nextQuestion);
     } else {
       // Get package provide us simple way to naviigate another page
-      Get.to(() => ScoreScreen(_numOfCorrectAns));
+      Get.off(() => ScoreScreen(_numOfCorrectAns));
     }
   }
 
