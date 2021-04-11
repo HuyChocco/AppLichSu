@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -21,9 +22,85 @@ class _DiscussionScreenState extends State<DiscussionScreen> {
     await _auth.signOut();
   }
 
+  final _controller = new TextEditingController();
+  //var _enteredMessage = '';
+
+  void _sendMessage() async {
+    FocusScope.of(context).unfocus();
+
+    final user = FirebaseAuth.instance.currentUser;
+
+    final userData = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(user.uid)
+        .get();
+
+    FirebaseFirestore.instance.collection('discussion').add({
+      'text': _controller.text,
+      'createdAt': Timestamp.now(),
+      'userId': user.uid,
+      'username': userData.data()['username'],
+      'userImage': userData.data()['image_url']
+    });
+
+    _controller.clear();
+    Navigator.of(context).pop();
+  }
+
   void _showBottomForm() async {
     showModalBottomSheet(
-        isDismissible: true, context: context, builder: (ctx) => Container());
+        isDismissible: true,
+        context: context,
+        builder: (ctx) => Container(
+              decoration: BoxDecoration(
+                  //gradient: kPrimaryGradient,
+                  ),
+              padding: EdgeInsets.all(8),
+              child: Column(
+                children: [
+                  Container(
+                    alignment: Alignment.center,
+                    width: double.infinity,
+                    child: Text(
+                      "CÂU HỎI",
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline6
+                          .copyWith(color: Theme.of(context).accentColor),
+                    ),
+                  ),
+                  Divider(),
+                  SizedBox(height: 20),
+                  Row(
+                    children: <Widget>[
+                      Expanded(
+                        child: TextField(
+                          controller: _controller,
+                          decoration: InputDecoration(
+                            labelText: 'Nhập câu hỏi ...',
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                                borderSide: BorderSide(color: Colors.red)),
+                          ),
+                          autocorrect: true,
+                          enableSuggestions: true,
+                          textCapitalization: TextCapitalization.sentences,
+                        ),
+                      ),
+                      IconButton(
+                        color: Theme.of(context).primaryColor,
+                        icon: Icon(
+                          Icons.send,
+                        ),
+                        onPressed: _controller.text.trim().isEmpty
+                            ? null
+                            : _sendMessage,
+                      )
+                    ],
+                  ),
+                ],
+              ),
+            ));
   }
 
   void _showBottomSheetDialog() {
@@ -82,6 +159,10 @@ class _DiscussionScreenState extends State<DiscussionScreen> {
                                             fontWeight: FontWeight.bold),
                                   ),
                                   ElevatedButton(
+                                    style: ButtonStyle(
+                                        backgroundColor:
+                                            MaterialStateProperty.all(
+                                                Colors.red)),
                                     onPressed: _logOut,
                                     child: Text("Đăng xuất"),
                                   ),
@@ -105,49 +186,97 @@ class _DiscussionScreenState extends State<DiscussionScreen> {
                                             height: 80,
                                           ),
                                           Expanded(
-                                            child: ListView.builder(
-                                                itemCount: 10,
-                                                itemBuilder: (_, index) => Card(
-                                                      child: Column(
-                                                        children: [
-                                                          ListTile(
-                                                            /* shape: RoundedRectangleBorder(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            10)), */
-                                                            leading:
-                                                                CircleAvatar(
-                                                              backgroundImage:
-                                                                  NetworkImage(
-                                                                      "https://firebasestorage.googleapis.com/v0/b/history-app-9a233.appspot.com/o/user_image%2FeIDR0cM73AVc9eJOElBNpAPdrZl1.jpg?alt=media&token=f9b7d600-ad1b-4004-b0c1-8bd4009337db"),
-                                                            ),
-                                                            title:
-                                                                Text("Hello!"),
-                                                            subtitle: Text(
-                                                                "08-04-2021 16:10"),
-                                                          ),
-                                                          Text(
-                                                              "Lê Lợi quê quán ở đâu?"),
-                                                          Row(
+                                            child: StreamBuilder(
+                                                stream: FirebaseFirestore
+                                                    .instance
+                                                    .collection('discussion')
+                                                    .orderBy(
+                                                      'createdAt',
+                                                      descending: true,
+                                                    )
+                                                    .snapshots(),
+                                                builder: (context, snapshot) {
+                                                  if (snapshot
+                                                          .connectionState ==
+                                                      ConnectionState.waiting) {
+                                                    return Center(
+                                                      child:
+                                                          CircularProgressIndicator(),
+                                                    );
+                                                  }
+                                                  final discusDocs =
+                                                      snapshot.data.docs;
+                                                  return ListView.builder(
+                                                      itemCount:
+                                                          discusDocs.length,
+                                                      itemBuilder: (_, index) {
+                                                        final Timestamp t =
+                                                            discusDocs[index]
+                                                                    .data()[
+                                                                'createdAt'];
+                                                        DateTime d = DateTime
+                                                            .fromMillisecondsSinceEpoch(
+                                                                t.seconds *
+                                                                    1000);
+
+                                                        return Card(
+                                                          key: ValueKey(
+                                                              discusDocs[index]
+                                                                  .id),
+                                                          child: Column(
                                                             children: [
-                                                              IconButton(
-                                                                  onPressed:
-                                                                      () {},
-                                                                  icon: Icon(Icons
-                                                                      .favorite_border)),
-                                                              Text('0'),
-                                                              IconButton(
-                                                                  onPressed:
-                                                                      () {},
-                                                                  icon: Icon(Icons
-                                                                      .chat_outlined)),
-                                                              Text('0'),
+                                                              ListTile(
+                                                                /* shape: RoundedRectangleBorder(
+                                                                    borderRadius:
+                                                                        BorderRadius
+                                                                            .circular(
+                                                                                10)), */
+                                                                leading:
+                                                                    CircleAvatar(
+                                                                  backgroundImage:
+                                                                      NetworkImage(
+                                                                          discusDocs[index]
+                                                                              .data()['userImage']),
+                                                                ),
+                                                                title: Text(
+                                                                  discusDocs[index]
+                                                                          .data()[
+                                                                      'username'],
+                                                                ),
+                                                                subtitle: Text(d
+                                                                    .toString()),
+                                                              ),
+                                                              Text(
+                                                                discusDocs[index]
+                                                                        .data()[
+                                                                    'text'],
+                                                              ),
+                                                              Row(
+                                                                children: [
+                                                                  IconButton(
+                                                                      onPressed:
+                                                                          () {},
+                                                                      icon: Icon(
+                                                                          Icons
+                                                                              .favorite_border)),
+                                                                  Text('0'),
+                                                                  IconButton(
+                                                                      onPressed:
+                                                                          () {
+                                                                        Navigator.of(context)
+                                                                            .pushNamed('/post-detail');
+                                                                      },
+                                                                      icon: Icon(
+                                                                          Icons
+                                                                              .chat_outlined)),
+                                                                  Text('0'),
+                                                                ],
+                                                              ),
                                                             ],
                                                           ),
-                                                        ],
-                                                      ),
-                                                    )),
+                                                        );
+                                                      });
+                                                }),
                                           ),
                                         ])),
                                   )

@@ -2,6 +2,7 @@ import 'package:hisapp/providers/CategoryProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:hisapp/providers/QuestionProvider.dart';
 import 'package:hisapp/screens/contents/main_content_screen.dart';
+import 'package:hisapp/screens/discussion/post_detail.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import './screens/home/home_screen.dart';
@@ -78,6 +79,7 @@ class _MyAppState extends State<MyApp> {
             '/quiz-screen': (ctx) => QuizScreen(),
             '/details-screen': (ctx) => DetailsScreen(),
             '/main-content-screen': (ctx) => MainContentScreen(),
+            '/post-detail': (ctx) => PostDetail(),
           }),
     );
   }
