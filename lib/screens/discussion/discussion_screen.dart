@@ -40,11 +40,48 @@ class _DiscussionScreenState extends State<DiscussionScreen> {
       'createdAt': Timestamp.now(),
       'userId': user.uid,
       'username': userData.data()['username'],
-      'userImage': userData.data()['image_url']
+      'userImage': userData.data()['image_url'],
+      'likes': 0,
     });
-
     _controller.clear();
     Navigator.of(context).pop();
+  }
+
+  int likes = 0;
+  void _doUpdatePostStatus(String id, IconData icon) async {
+    final user = FirebaseAuth.instance.currentUser;
+    bool _isLike = false;
+    if (icon == Icons.favorite_border_outlined)
+      _isLike = true;
+    else
+      _isLike = false;
+    if (_isLike) {
+      await FirebaseFirestore.instance
+          .collection('userFavorites')
+          .doc(user.uid)
+          .set({id: _isLike}, SetOptions(merge: true));
+      final post = await FirebaseFirestore.instance
+          .collection('discussion')
+          .doc(id)
+          .get();
+      likes = post['likes'];
+      if (_isLike) likes++;
+    } else {
+      await FirebaseFirestore.instance
+          .collection('userFavorites')
+          .doc(user.uid)
+          .set({id: _isLike}, SetOptions(merge: true));
+      final post = await FirebaseFirestore.instance
+          .collection('discussion')
+          .doc(id)
+          .get();
+      likes = post['likes'];
+      if (likes > 0) likes--;
+    }
+    await FirebaseFirestore.instance
+        .collection('discussion')
+        .doc(id)
+        .update({'likes': likes});
   }
 
   void _showBottomForm() async {
@@ -138,6 +175,7 @@ class _DiscussionScreenState extends State<DiscussionScreen> {
                       stream: FirebaseAuth.instance.authStateChanges(),
                       builder: (context, snapshot) {
                         if (snapshot.hasData) {
+                          final user = FirebaseAuth.instance.currentUser;
                           return Container(
                               decoration: BoxDecoration(
                                 gradient: kPrimaryGradient,
@@ -218,7 +256,6 @@ class _DiscussionScreenState extends State<DiscussionScreen> {
                                                             .fromMillisecondsSinceEpoch(
                                                                 t.seconds *
                                                                     1000);
-
                                                         return Card(
                                                           key: ValueKey(
                                                               discusDocs[index]
@@ -253,23 +290,104 @@ class _DiscussionScreenState extends State<DiscussionScreen> {
                                                               ),
                                                               Row(
                                                                 children: [
-                                                                  IconButton(
-                                                                      onPressed:
-                                                                          () {},
-                                                                      icon: Icon(
-                                                                          Icons
-                                                                              .favorite_border)),
-                                                                  Text('0'),
+                                                                  StreamBuilder(
+                                                                      stream: FirebaseFirestore
+                                                                          .instance
+                                                                          .collection(
+                                                                              'userFavorites')
+                                                                          .doc(user
+                                                                              .uid)
+                                                                          .snapshots(),
+                                                                      builder:
+                                                                          (context,
+                                                                              snaps) {
+                                                                        if (snaps.connectionState ==
+                                                                            ConnectionState.waiting) {
+                                                                          return Center(
+                                                                            child:
+                                                                                CircularProgressIndicator(),
+                                                                          );
+                                                                        }
+                                                                        var data;
+                                                                        if (snaps
+                                                                            .hasData) {
+                                                                          data =
+                                                                              snaps.data;
+                                                                        }
+
+                                                                        IconData
+                                                                            icon =
+                                                                            Icons.favorite_border_outlined;
+                                                                        if (data ==
+                                                                            null)
+                                                                          icon =
+                                                                              Icons.favorite_border_outlined;
+                                                                        else {
+                                                                          if (data.data() !=
+                                                                              null) {
+                                                                            if (data.data()[discusDocs[index].id] ==
+                                                                                true)
+                                                                              icon = Icons.favorite;
+                                                                            else
+                                                                              icon = Icons.favorite_border_outlined;
+                                                                          }
+                                                                        }
+                                                                        return IconButton(
+                                                                          onPressed:
+                                                                              () {
+                                                                            _doUpdatePostStatus(discusDocs[index].id,
+                                                                                icon);
+                                                                          },
+                                                                          icon:
+                                                                              Icon(
+                                                                            icon,
+                                                                            color:
+                                                                                Colors.red,
+                                                                          ),
+                                                                        );
+                                                                      }),
+                                                                  Text(discusDocs[
+                                                                          index]
+                                                                      .data()[
+                                                                          'likes']
+                                                                      .toString()),
                                                                   IconButton(
                                                                       onPressed:
                                                                           () {
-                                                                        Navigator.of(context)
-                                                                            .pushNamed('/post-detail');
+                                                                        Navigator.of(context).pushNamed(
+                                                                            '/post-detail',
+                                                                            arguments: {
+                                                                              'idPost': discusDocs[index].id.toString(),
+                                                                            });
                                                                       },
                                                                       icon: Icon(
                                                                           Icons
                                                                               .chat_outlined)),
-                                                                  Text('0'),
+                                                                  StreamBuilder(
+                                                                      stream: FirebaseFirestore
+                                                                          .instance
+                                                                          .collection(
+                                                                              'comments')
+                                                                          .doc(discusDocs[index]
+                                                                              .id)
+                                                                          .collection(
+                                                                              'comment')
+                                                                          .snapshots(),
+                                                                      builder: (ctx,
+                                                                          data) {
+                                                                        if (data.connectionState ==
+                                                                            ConnectionState.waiting) {
+                                                                          return Center(
+                                                                            child:
+                                                                                CircularProgressIndicator(),
+                                                                          );
+                                                                        }
+                                                                        return Text(data
+                                                                            .data
+                                                                            .docs
+                                                                            .length
+                                                                            .toString());
+                                                                      }),
                                                                 ],
                                                               ),
                                                             ],
