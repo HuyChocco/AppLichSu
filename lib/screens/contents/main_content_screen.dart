@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hisapp/providers/ContentProvider.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import '../../constants.dart';
@@ -110,18 +111,26 @@ class _MainContentScreenState extends State<MainContentScreen> {
 
   @override
   void didChangeDependencies() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
     if (_isInit) {
       if (ModalRoute.of(context).settings.arguments == null) return;
       final routeArgs =
           ModalRoute.of(context).settings.arguments as Map<String, String>;
       _id = routeArgs['id'];
+      if (!prefs.containsKey('id')) prefs.setString('id', _id);
       print(_id);
       _idCate = routeArgs['idCate'];
-      print(_id);
+      if (!prefs.containsKey('id_cate')) prefs.setString('id_cate', _idCate);
+      //print(_id);
       _imagePath = routeArgs['imagePath'];
-      print(_imagePath);
+      if (!prefs.containsKey('image_path'))
+        prefs.setString('image_path', _imagePath);
+      //print(_imagePath);
       _videoPath = routeArgs['videoPath'];
-      print(_videoPath);
+      if (!prefs.containsKey('video_path'))
+        prefs.setString('videoPath', _videoPath);
+      if (!prefs.containsKey('is_loaded')) prefs.setString('is_loaded', 'ok');
+      //print(_videoPath);
       videoId = YoutubePlayer.convertUrlToId(_videoPath);
       _controller = YoutubePlayerController(
         initialVideoId: videoId,

@@ -14,13 +14,23 @@ class DashboardScreen extends StatefulWidget {
 
 class _DashboardScreenState extends State<DashboardScreen> {
   var _user_name = "";
+  bool has_lecture = false;
+
   @override
   void didChangeDependencies() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       _user_name = prefs.getString('user_name');
     });
-
+    if (prefs.containsKey('is_loaded'))
+      setState(() {
+        has_lecture = true;
+      });
+    else {
+      setState(() {
+        has_lecture = false;
+      });
+    }
     super.didChangeDependencies();
   }
 
@@ -185,7 +195,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           ],
         ),
       ),
-      CurrentLecture()
+      if (has_lecture) CurrentLecture()
     ]);
   }
 }
