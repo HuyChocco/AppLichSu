@@ -21,6 +21,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   String _file_path = "";
   String _image_path = "";
   String _title = "";
+
   @override
   void didChangeDependencies() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -191,6 +192,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                     .pushNamed('/details-screen', arguments: {
                                   'categoryId': data.Categories[index].id,
                                   'title': data.Categories[index].title
+                                }).then((value) {
+                                  didChangeDependencies();
+                                  //setState(() {});
                                 });
                               },
                               child: Container(

@@ -307,8 +307,12 @@ class _AlarmPageState extends State<AlarmPage> {
         android: androidPlatformChannelSpecifics,
         iOS: iOSPlatformChannelSpecifics);
 
-    await flutterLocalNotificationsPlugin.show(0, 'Ứng dụng em yêu Lịch sử',
-        alarmInfo.title, platformChannelSpecifics);
+    await flutterLocalNotificationsPlugin.schedule(
+        0,
+        'Ứng dụng em yêu Lịch sử',
+        alarmInfo.title,
+        scheduledNotificationDateTime,
+        platformChannelSpecifics);
   }
 
   void onSaveAlarm() {
