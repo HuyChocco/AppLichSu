@@ -109,6 +109,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                                         .filePath,
                                                     'idCate': data
                                                         .Contents[index].idCate,
+                                                    'title': data
+                                                        .Contents[index].title,
                                                   });
                                             },
                                             child: CourseContent(

@@ -82,9 +82,15 @@ class _MyAppState extends State<MyApp> {
             visualDensity: VisualDensity.adaptivePlatformDensity, */
               ),
           home: FutureBuilder(
-              future: tryAutoLogin(),
-              builder: (ctx, snapshot) =>
-                  (_isLogged ? HomeScreen() : WelcomeScreen())),
+            future: tryAutoLogin(),
+            builder: (ctx, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting)
+                return CircularProgressIndicator();
+              else {
+                return _isLogged ? HomeScreen() : WelcomeScreen();
+              }
+            },
+          ),
           //     Scaffold(
           //   appBar: AppBar(title: Text("Model Viewer")),
           //   body: ModelViewer(

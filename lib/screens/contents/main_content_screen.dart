@@ -18,6 +18,7 @@ class _MainContentScreenState extends State<MainContentScreen> {
 
   String _videoPath;
 
+  String _title;
   bool _isInit = true;
 
   String _content = "";
@@ -117,20 +118,20 @@ class _MainContentScreenState extends State<MainContentScreen> {
       final routeArgs =
           ModalRoute.of(context).settings.arguments as Map<String, String>;
       _id = routeArgs['id'];
-      if (!prefs.containsKey('id')) prefs.setString('id', _id);
+      prefs.setString('id', _id);
       print(_id);
       _idCate = routeArgs['idCate'];
-      if (!prefs.containsKey('id_cate')) prefs.setString('id_cate', _idCate);
-      //print(_id);
+      prefs.setString('id_cate', _idCate);
+      print(_idCate);
       _imagePath = routeArgs['imagePath'];
-      if (!prefs.containsKey('image_path'))
-        prefs.setString('image_path', _imagePath);
-      //print(_imagePath);
+      prefs.setString('image_path', _imagePath);
+      print(_imagePath);
       _videoPath = routeArgs['videoPath'];
-      if (!prefs.containsKey('video_path'))
-        prefs.setString('videoPath', _videoPath);
-      if (!prefs.containsKey('is_loaded')) prefs.setString('is_loaded', 'ok');
-      //print(_videoPath);
+      prefs.setString('videoPath', _videoPath);
+      prefs.setString('is_loaded', 'ok');
+      print(_videoPath);
+      _title = routeArgs['title'];
+      prefs.setString('title', _title);
       videoId = YoutubePlayer.convertUrlToId(_videoPath);
       _controller = YoutubePlayerController(
         initialVideoId: videoId,
@@ -140,6 +141,7 @@ class _MainContentScreenState extends State<MainContentScreen> {
         ),
       )..addListener(listener);
       _filePath = routeArgs['filePath'];
+      prefs.setString('file_path', _filePath);
       print(_filePath);
       final ContentProvider provide_content =
           Provider.of<ContentProvider>(context, listen: false);
@@ -201,7 +203,10 @@ class _MainContentScreenState extends State<MainContentScreen> {
                   controller: _pageController,
                   itemCount: 2,
                   itemBuilder: (ctx, index) => index == 0
-                      ? Image.asset(_imagePath)
+                      ? Image(
+                          width: 150,
+                          height: 150,
+                          image: AssetImage(_imagePath))
                       : YoutubePlayer(
                           controller: _controller,
                           showVideoProgressIndicator: true,

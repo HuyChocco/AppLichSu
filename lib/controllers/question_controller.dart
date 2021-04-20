@@ -9,6 +9,7 @@ import 'package:hisapp/providers/ContentProvider.dart';
 import 'package:hisapp/providers/QuestionProvider.dart';
 import 'package:hisapp/screens/quiz/score/score_screen.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 //import 'package:hisapp/screens/score/score_screen.dart';
 
 // We use get package for our state management
@@ -81,8 +82,8 @@ class QuestionController extends GetxController
     super.onClose();
   }
 
-  void checkAns(
-      Question question, int selectedIndex, String idCate, BuildContext ctx) {
+  void checkAns(Question question, int selectedIndex, String idCate,
+      BuildContext ctx) async {
     // because once user press any option then it will run
     _isAnswered = true;
     _correctAns = question.answerIndex;
@@ -98,6 +99,8 @@ class QuestionController extends GetxController
     double _propotionOfRightAns = _numOfCorrectAns / questions.length;
 
     if (_propotionOfRightAns >= 0.8) {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      if (prefs.containsKey('is_loaded')) prefs.remove('is_loaded');
       Provider.of<ContentProvider>(ctx, listen: false).updateData(_idContent);
     }
     Provider.of<ContentProvider>(ctx, listen: false)

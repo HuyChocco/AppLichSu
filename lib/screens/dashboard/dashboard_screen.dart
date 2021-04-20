@@ -15,18 +15,53 @@ class DashboardScreen extends StatefulWidget {
 class _DashboardScreenState extends State<DashboardScreen> {
   var _user_name = "";
   bool has_lecture = false;
-
+  String _id = "";
+  String _id_cate = "";
+  String _video_path = "";
+  String _file_path = "";
+  String _image_path = "";
+  String _title = "";
   @override
   void didChangeDependencies() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       _user_name = prefs.getString('user_name');
     });
-    if (prefs.containsKey('is_loaded'))
+    if (prefs.containsKey('is_loaded')) {
+      if (prefs.containsKey('id')) {
+        setState(() {
+          _id = prefs.getString('id');
+        });
+      }
+      if (prefs.containsKey('title')) {
+        setState(() {
+          _title = prefs.getString('title');
+        });
+      }
+      if (prefs.containsKey('id_cate')) {
+        setState(() {
+          _id_cate = prefs.getString('id_cate');
+        });
+      }
+      if (prefs.containsKey('image_path')) {
+        setState(() {
+          _image_path = prefs.getString('image_path');
+        });
+      }
+      if (prefs.containsKey('video_path')) {
+        setState(() {
+          _video_path = prefs.getString('video_path');
+        });
+      }
+      if (prefs.containsKey('file_path')) {
+        setState(() {
+          _file_path = prefs.getString('file_path');
+        });
+      }
       setState(() {
         has_lecture = true;
       });
-    else {
+    } else {
       setState(() {
         has_lecture = false;
       });
@@ -195,13 +230,32 @@ class _DashboardScreenState extends State<DashboardScreen> {
           ],
         ),
       ),
-      if (has_lecture) CurrentLecture()
+      if (has_lecture)
+        CurrentLecture(
+            title: _title,
+            id: _id,
+            idCate: _id_cate,
+            imagePath: _image_path,
+            videoPath: _video_path,
+            filePath: _file_path)
     ]);
   }
 }
 
 class CurrentLecture extends StatelessWidget {
-  const CurrentLecture({
+  String imagePath;
+  String videoPath;
+  String filePath;
+  String id;
+  String idCate;
+  String title;
+  CurrentLecture({
+    this.title,
+    this.id,
+    this.idCate,
+    this.imagePath,
+    this.videoPath,
+    this.filePath,
     Key key,
   }) : super(key: key);
 
@@ -211,7 +265,14 @@ class CurrentLecture extends StatelessWidget {
       //child: Card(
       child: GestureDetector(
         onTap: () {
-          print('tap');
+          Navigator.of(context).pushNamed('/main-content-screen', arguments: {
+            'id': id,
+            'imagePath': imagePath,
+            'videoPath': videoPath,
+            'filePath': filePath,
+            'idCate': idCate,
+            'title': title,
+          });
         },
         child: Container(
           //margin: EdgeInsets.symmetric(vertical: 30),
@@ -225,14 +286,14 @@ class CurrentLecture extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Image.asset("assets/images/bac_thuoc_lan_1.jpg"),
+              Image.asset(imagePath),
               SizedBox(width: 16),
               Column(
                 children: [
                   FittedBox(
                     //fit: BoxFit.fill,
                     child: Text(
-                      "Thời kỳ Bắc thuộc lần 1",
+                      title,
                       style: TextStyle(
                         fontSize: 12,
                         //color: Color(0xFFA0A5BD),
