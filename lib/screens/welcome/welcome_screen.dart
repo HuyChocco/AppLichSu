@@ -59,6 +59,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   ),
                   Spacer(), // 1/6
                   TextField(
+                    style: TextStyle(color: Colors.white),
                     focusNode: _texFocusNode,
                     //onSubmitted: (val) {},
                     controller: _textFieldController,

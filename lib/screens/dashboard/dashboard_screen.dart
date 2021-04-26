@@ -72,6 +72,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   @override
   Widget build(BuildContext context) {
+    if (mounted) {
+      //didChangeDependencies();
+    }
     return Stack(fit: StackFit.expand, children: [
       Padding(
         padding: EdgeInsets.only(left: 20, top: 50, right: 20),
