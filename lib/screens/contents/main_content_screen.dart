@@ -127,7 +127,7 @@ class _MainContentScreenState extends State<MainContentScreen> {
       prefs.setString('image_path', _imagePath);
       print(_imagePath);
       _videoPath = routeArgs['videoPath'];
-      prefs.setString('videoPath', _videoPath);
+      prefs.setString('video_path', _videoPath);
       prefs.setString('is_loaded', 'ok');
       print(_videoPath);
       _title = routeArgs['title'];
