@@ -73,6 +73,7 @@ flutter:
     - assets/icons/
     - assets/3d_images/
     - assets/contents/thoi_ky_lich_su/
+    - assets/contents/tran_danh/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

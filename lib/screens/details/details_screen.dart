@@ -86,7 +86,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                     child: CircularProgressIndicator(),
                                   )
                                 : Consumer<ContentProvider>(
-                                    builder: (ctx, data, ch) => Expanded(
+                                    builder: (ctx, data, ch) {
+                                    // print(data.Contents[0].imagePath);
+                                    return Expanded(
                                       child: ListView.builder(
                                         itemBuilder: (ctx, index) => Material(
                                           color: Colors.white,
@@ -127,8 +129,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                         ),
                                         itemCount: data.Contents.length,
                                       ),
-                                    ),
-                                  ),
+                                    );
+                                  }),
                           ),
                           SizedBox(
                             height: 100,

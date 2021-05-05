@@ -216,7 +216,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                   children: <Widget>[
                                     Text(
                                       data.Categories[index].title,
-                                      style: kTitleTextStyle,
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                     /*  Text(
                                   '${categories[index].numOfCourses} Courses',

@@ -102,6 +102,7 @@ class _MyAppState extends State<MyApp> {
           //   ),
           // ),
           routes: {
+            '/welcome-screen': (ctx) => WelcomeScreen(),
             '/home-screen': (ctx) => HomeScreen(),
             '/quiz-screen': (ctx) => QuizScreen(),
             '/details-screen': (ctx) => DetailsScreen(),

@@ -69,7 +69,19 @@ class ContentProvider extends ChangeNotifier {
       case '3':
         {
           //_title = "Các trận chiến";
-          _list_content = [];
+          final dataList =
+              await DBHelper.getDataById('content', id, 'id_category');
+
+          _list_content = dataList
+              .map((e) => Content(
+                  id: e['id'],
+                  idCate: e['id_category'],
+                  title: e['title'],
+                  filePath: e['file_path'],
+                  imagePath: e['image_path'],
+                  videoPath: e['video_path'],
+                  isDone: e['is_done']))
+              .toList();
         }
         break;
       case '4':

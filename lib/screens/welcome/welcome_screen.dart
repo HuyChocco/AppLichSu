@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hisapp/constants.dart';
+import 'package:hisapp/helpers/seed_data.dart';
 import 'package:hisapp/providers/CategoryProvider.dart';
 import 'package:hisapp/screens/home/home_screen.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -75,14 +76,19 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   Spacer(), // 1/6
                   GestureDetector(
                     onTap: () async {
-                      if (_textFieldController.text.isEmpty) return;
+                      if (_textFieldController.text.trim().isEmpty) return;
                       SharedPreferences prefs =
                           await SharedPreferences.getInstance();
                       await prefs.setString(
-                          'user_name', _textFieldController.text);
-                      await Provider.of<CategoryProvider>(context,
+                          'user_name', _textFieldController.text.trim());
+                      /*  await Provider.of<CategoryProvider>(context,
                               listen: false)
-                          .feedData();
+                          .feedData(); */
+                      await SeedData.insertContentCategory();
+                      await SeedData.insertContentTKLS();
+                      await SeedData.insertContentTD();
+                      await SeedData.insertQuestion();
+                      await SeedData.insertAnswer();
                       Navigator.of(context)
                           .pushReplacementNamed('/home-screen');
                     },
