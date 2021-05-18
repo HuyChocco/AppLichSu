@@ -98,11 +98,15 @@ class _MainContentScreenState extends State<MainContentScreen> {
                                 });
                           },
                           child: Text('Làm bài kiểm tra')),
-                      TextButton(
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                          child: Text('Đọc lại lần nữa')),
+                      Expanded(
+                        child: FittedBox(
+                          child: TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: Text('Đọc lại lần nữa')),
+                        ),
+                      ),
                     ],
                   )
                 ],

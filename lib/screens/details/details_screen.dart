@@ -232,7 +232,7 @@ class CourseContent extends StatelessWidget {
           ),
           SizedBox(width: 20),
           Container(
-            constraints: BoxConstraints(maxWidth: 200),
+            constraints: BoxConstraints(maxWidth: 150),
             child: RichText(
               text: TextSpan(
                 children: [

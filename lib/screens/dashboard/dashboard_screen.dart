@@ -214,12 +214,19 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
-                                    Text(
-                                      data.Categories[index].title,
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold,
+                                    Container(
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(16),
+                                          color: Colors.white.withOpacity(0.4)),
+                                      padding: EdgeInsets.all(6),
+                                      child: Text(
+                                        data.Categories[index].title,
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
                                     ),
                                     /*  Text(
@@ -306,13 +313,13 @@ class CurrentLecture extends StatelessWidget {
                     child: Text(
                       title,
                       style: TextStyle(
-                        fontSize: 12,
+                        fontSize: 10,
                         //color: Color(0xFFA0A5BD),
                       ),
                     ),
                   ),
                   SizedBox(
-                    height: 2,
+                    height: 1,
                   ),
                   FittedBox(
                     fit: BoxFit.cover,
