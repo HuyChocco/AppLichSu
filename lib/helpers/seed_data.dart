@@ -183,58 +183,151 @@ class SeedData {
   static Future<void> insertContentQH() async {}
 
   static Future<void> insertQuestion() async {
+    //Thời tiền sử
     await DBHelper.insert('question', {
       'id': '1',
-      'sentence': 'Ngô Quyền lên ngôi vua, đóng đô ở đâu?',
+      'sentence':
+          'Nền văn hóa Đông Sơn thuộc thời đại tiền sử Việt Nam giai đoạn nào?',
       'id_content': '1',
       'number': 1,
-      'answer_index': 0,
+      'answer_index': 3,
     });
+    //Thời Hồng Bàn
     await DBHelper.insert('question', {
       'id': '2',
-      'sentence': 'Vì sao Ngô Quyền không duy trì chính quyền của họ Khúc?',
-      'id_content': '1',
+      'sentence': 'Nhà nước nào sau đây không thục thời Hồng Bàn?',
+      'id_content': '2',
       'number': 2,
       'answer_index': 1,
     });
+    //Bắc thuộc lần 1
     await DBHelper.insert('question', {
       'id': '3',
-      'sentence': 'Vì sao Ngô Quyền không duy trì chính quyền của họ Khúc?',
-      'id_content': '2',
-      'number': 1,
+      'sentence':
+          'Nhà Hán đã chia nước Nam Việt thành mấy quận sau khi nước Nam Việt bị sáp nhập vào lãnh thổ nhà Hán?',
+      'id_content': '3',
+      'number': 3,
+      'answer_index': 2,
+    });
+    //Bắc thuộc lần 2
+    await DBHelper.insert('question', {
+      'id': '4',
+      'sentence':
+          'Cuộc khởi nghĩa của bà Triệu chống lại nhà nước Đông Ngô diễn ra nào năm bao nhiêu?',
+      'id_content': '4',
+      'number': 4,
+      'answer_index': 1,
+    });
+    //Độc lập tự chủ
+    await DBHelper.insert('question', {
+      'id': '5',
+      'sentence': 'Cuộc chiến chống quân Mông Nguyên diễn ra vào nhà nào?',
+      'id_content': '5',
+      'number': 5,
+      'answer_index': 3,
+    });
+    //Bắc thuộc lần 4
+    await DBHelper.insert('question', {
+      'id': '6',
+      'sentence': 'Nhà Trần thất bại dưới tay quân nhà Minh vào năm bao nhiêu?',
+      'id_content': '6',
+      'number': 6,
+      'answer_index': 0,
+    });
+    //Nhà hậu lê-lê sơ
+    await DBHelper.insert('question', {
+      'id': '7',
+      'sentence':
+          'Năm 1427, Lê lợi đã lãnh đạo quân đội đánh tan 15 vạn quân Minh và chém chết Liễu Thăng. Năm 1428 ông lên ngôi hoàng đế, lấy hiệu gì?',
+      'id_content': '7',
+      'number': 7,
+      'answer_index': 0,
+    });
+    //lê trung hưng/nam-bắc triều
+    await DBHelper.insert('question', {
+      'id': '8',
+      'sentence':
+          'Năm 1527 Mạc Đăng Dung cướp ngôi nhà Lê, thành lập nhà Mạc (Bắc triều). Sau sự kiện đó, ai là người không phục nhà Mạc nên đã bỏ vào Thanh Hoá, đón Lê Duy Ninh về lập làm hoàng đế, tức Lê Trang Tông (Nam Triều)?',
+      'id_content': '8',
+      'number': 8,
+      'answer_index': 1,
+    });
+    //Đàng ngoài-Đàng trong
+    await DBHelper.insert('question', {
+      'id': '9',
+      'sentence':
+          'Ai là người 2 lần đánh bại cuộc tiến công của chúa Trịnh ở Đàng Ngoài. Ông cũng được dân gian gọi là chúa Sãi (Sãi vương), hay chúa Bụt (Phật vương)?',
+      'id_content': '9',
+      'number': 9,
+      'answer_index': 3,
+    });
+    //Tây Sơn
+    await DBHelper.insert('question', {
+      'id': '10',
+      'sentence': 'Triều đại Tây Sơn kết thúc vào năm bao nhiêu?',
+      'id_content': '10',
+      'number': 10,
+      'answer_index': 1,
+    });
+    //Nhà Nguyễn
+    await DBHelper.insert('question', {
+      'id': '11',
+      'sentence': 'Năm bao nhiêu Pháp đem quân đánh Đà Nẵng?',
+      'id_content': '11',
+      'number': 11,
+      'answer_index': 1,
+    });
+    //Pháp thuộc
+    await DBHelper.insert('question', {
+      'id': '12',
+      'sentence':
+          'Ai là vị hoàng đế cuối cùng của triều đại phong kiến trong lịch sử Việt Nam?',
+      'id_content': '12',
+      'number': 12,
+      'answer_index': 2,
+    });
+    //Đổi mới
+    await DBHelper.insert('question', {
+      'id': '13',
+      'sentence':
+          'Chủ tịch Hồ Chí Minh đã đọc bản tuyên ngôn độc lập tại quãng trường Ba Đình, khai sinh ra nước Việt Nam Dân Chủ Cộng Hòa với thủ đô là Hà Nội vào thời gian nào?',
+      'id_content': '13',
+      'number': 13,
       'answer_index': 1,
     });
   }
 
   static Future<void> insertAnswer() async {
+    //Câu hỏi 1 - Thời tiền sử
     await DBHelper.insert('answer', {
       'id': '1',
-      'sentence': 'Cổ Loa',
+      'sentence': 'Đồ đá cũ',
       'id_question': '1',
       'id_content': '1',
       'number': 0,
     });
     await DBHelper.insert('answer', {
       'id': '2',
-      'sentence': 'Hoa Lư',
+      'sentence': 'Đồ đá mới',
       'id_question': '1',
       'id_content': '1',
       'number': 1,
     });
     await DBHelper.insert('answer', {
       'id': '3',
-      'sentence': 'Bạch Hạc',
+      'sentence': 'Đồ đồng',
       'id_question': '1',
       'id_content': '1',
       'number': 2,
     });
     await DBHelper.insert('answer', {
       'id': '4',
-      'sentence': 'Phong Châu',
+      'sentence': 'Đồ sắt',
       'id_question': '1',
       'id_content': '1',
       'number': 3,
     });
+    // Câu hỏi 2
     await DBHelper.insert('answer', {
       'id': '5',
       'sentence': 'Chính quyền họ Khúc về danh nghĩa vẫn thuộc nhà Đường',
@@ -264,6 +357,7 @@ class SeedData {
       'id_content': '1',
       'number': 3,
     });
+    //Câu hỏi 3
     await DBHelper.insert('answer', {
       'id': '9',
       'sentence': 'Chính quyền họ Khúc về danh nghĩa vẫn thuộc nhà Đường',
@@ -293,5 +387,15 @@ class SeedData {
       'id_content': '2',
       'number': 3,
     });
+    //Câu hỏi 4
+    //Câu hỏi 5
+    //Câu hỏi 6
+    //Câu hỏi 7
+    //Câu hỏi 8
+    //Câu hỏi 9
+    //Câu hỏi 10
+    //Câu hỏi 11
+    //Câu hỏi 12
+    //Câu hỏi 13
   }
 }
