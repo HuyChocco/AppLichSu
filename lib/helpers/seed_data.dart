@@ -195,7 +195,7 @@ class SeedData {
     //Thời Hồng Bàn
     await DBHelper.insert('question', {
       'id': '2',
-      'sentence': 'Nhà nước nào sau đây không thục thời Hồng Bàn?',
+      'sentence': 'Nhà nước nào sau đây không thuộc thời Hồng Bàn?',
       'id_content': '2',
       'number': 2,
       'answer_index': 1,
@@ -330,72 +330,350 @@ class SeedData {
     // Câu hỏi 2
     await DBHelper.insert('answer', {
       'id': '5',
-      'sentence': 'Chính quyền họ Khúc về danh nghĩa vẫn thuộc nhà Đường',
+      'sentence': 'Xích Quỷ',
       'id_question': '2',
-      'id_content': '1',
+      'id_content': '2',
       'number': 0,
     });
     await DBHelper.insert('answer', {
       'id': '6',
-      'sentence':
-          'Ngô Quyền muốn phát triển đất nước thành một Quốc gia độc lập, thiết lập một chính quyền hoàn toàn của người Việt',
+      'sentence': 'Nhà Hồ',
       'id_question': '2',
-      'id_content': '1',
+      'id_content': '2',
       'number': 1,
     });
     await DBHelper.insert('answer', {
       'id': '7',
-      'sentence': 'xxx',
+      'sentence': 'Nhà Thục',
       'id_question': '2',
-      'id_content': '1',
+      'id_content': '2',
       'number': 2,
     });
     await DBHelper.insert('answer', {
       'id': '8',
-      'sentence': 'xxx',
+      'sentence': 'Văn Lang',
       'id_question': '2',
-      'id_content': '1',
+      'id_content': '2',
       'number': 3,
     });
     //Câu hỏi 3
     await DBHelper.insert('answer', {
       'id': '9',
-      'sentence': 'Chính quyền họ Khúc về danh nghĩa vẫn thuộc nhà Đường',
+      'sentence': '7 quận',
       'id_question': '3',
-      'id_content': '2',
+      'id_content': '3',
       'number': 0,
     });
     await DBHelper.insert('answer', {
       'id': '10',
-      'sentence':
-          'Ngô Quyền muốn phát triển đất nước thành một Quốc gia độc lập, thiết lập một chính quyền hoàn toàn của người Việt',
+      'sentence': '8 quận',
       'id_question': '3',
-      'id_content': '2',
+      'id_content': '3',
       'number': 1,
     });
     await DBHelper.insert('answer', {
       'id': '11',
-      'sentence': 'xxx',
+      'sentence': '9 quận',
       'id_question': '3',
-      'id_content': '2',
+      'id_content': '3',
       'number': 2,
     });
     await DBHelper.insert('answer', {
       'id': '12',
-      'sentence': 'xxx',
+      'sentence': '10 quận',
       'id_question': '3',
-      'id_content': '2',
+      'id_content': '3',
       'number': 3,
     });
     //Câu hỏi 4
+    await DBHelper.insert('answer', {
+      'id': '13',
+      'sentence': 'Năm 544',
+      'id_question': '4',
+      'id_content': '4',
+      'number': 0,
+    });
+    await DBHelper.insert('answer', {
+      'id': '14',
+      'sentence': 'Năm 248',
+      'id_question': '4',
+      'id_content': '4',
+      'number': 1,
+    });
+    await DBHelper.insert('answer', {
+      'id': '15',
+      'sentence': 'Năm 542',
+      'id_question': '4',
+      'id_content': '4',
+      'number': 2,
+    });
+    await DBHelper.insert('answer', {
+      'id': '16',
+      'sentence': 'Năm 546',
+      'id_question': '4',
+      'id_content': '4',
+      'number': 3,
+    });
     //Câu hỏi 5
+    await DBHelper.insert('answer', {
+      'id': '17',
+      'sentence': 'Nhà Đinh',
+      'id_question': '5',
+      'id_content': '5',
+      'number': 0,
+    });
+    await DBHelper.insert('answer', {
+      'id': '18',
+      'sentence': 'Nhà Tiền Lê',
+      'id_question': '5',
+      'id_content': '5',
+      'number': 1,
+    });
+    await DBHelper.insert('answer', {
+      'id': '19',
+      'sentence': 'Nhà Lý',
+      'id_question': '5',
+      'id_content': '5',
+      'number': 2,
+    });
+    await DBHelper.insert('answer', {
+      'id': '20',
+      'sentence': 'Nhà Trần',
+      'id_question': '5',
+      'id_content': '5',
+      'number': 3,
+    });
     //Câu hỏi 6
+    await DBHelper.insert('answer', {
+      'id': '21',
+      'sentence': 'Năm 1413',
+      'id_question': '6',
+      'id_content': '6',
+      'number': 0,
+    });
+    await DBHelper.insert('answer', {
+      'id': '22',
+      'sentence': 'Năm 1414',
+      'id_question': '6',
+      'id_content': '6',
+      'number': 1,
+    });
+    await DBHelper.insert('answer', {
+      'id': '23',
+      'sentence': 'Năm 1415',
+      'id_question': '6',
+      'id_content': '6',
+      'number': 2,
+    });
+    await DBHelper.insert('answer', {
+      'id': '24',
+      'sentence': 'Năm 1416',
+      'id_question': '6',
+      'id_content': '6',
+      'number': 3,
+    });
     //Câu hỏi 7
+    await DBHelper.insert('answer', {
+      'id': '25',
+      'sentence': 'Lê Thái Tổ',
+      'id_question': '7',
+      'id_content': '7',
+      'number': 0,
+    });
+    await DBHelper.insert('answer', {
+      'id': '26',
+      'sentence': 'Lê Thái Tông',
+      'id_question': '7',
+      'id_content': '7',
+      'number': 1,
+    });
+    await DBHelper.insert('answer', {
+      'id': '27',
+      'sentence': 'Lê Nhân Tông',
+      'id_question': '7',
+      'id_content': '7',
+      'number': 2,
+    });
+    await DBHelper.insert('answer', {
+      'id': '28',
+      'sentence': 'Lê Thánh Tông',
+      'id_question': '7',
+      'id_content': '7',
+      'number': 3,
+    });
     //Câu hỏi 8
+    await DBHelper.insert('answer', {
+      'id': '29',
+      'sentence': 'Lê Duy Huyên',
+      'id_question': '8',
+      'id_content': '8',
+      'number': 0,
+    });
+    await DBHelper.insert('answer', {
+      'id': '30',
+      'sentence': 'Nguyễn Kim',
+      'id_question': '8',
+      'id_content': '8',
+      'number': 1,
+    });
+    await DBHelper.insert('answer', {
+      'id': '31',
+      'sentence': 'Mạc Đăng Doanh',
+      'id_question': '8',
+      'id_content': '8',
+      'number': 2,
+    });
+    await DBHelper.insert('answer', {
+      'id': '32',
+      'sentence': 'Mạc Đăng Dung',
+      'id_question': '8',
+      'id_content': '8',
+      'number': 3,
+    });
     //Câu hỏi 9
+    await DBHelper.insert('answer', {
+      'id': '33',
+      'sentence': 'Nguyễn Phúc Thái(Nghĩa vương)',
+      'id_question': '9',
+      'id_content': '9',
+      'number': 0,
+    });
+    await DBHelper.insert('answer', {
+      'id': '34',
+      'sentence': 'Nguyễn Phúc Tần(Hiền vương)',
+      'id_question': '9',
+      'id_content': '9',
+      'number': 1,
+    });
+    await DBHelper.insert('answer', {
+      'id': '35',
+      'sentence': 'Nguyễn Phúc Lan(Thượng vương)',
+      'id_question': '9',
+      'id_content': '9',
+      'number': 2,
+    });
+    await DBHelper.insert('answer', {
+      'id': '36',
+      'sentence': 'Nguyễn Phúc Nguyên(Sãi vương)',
+      'id_question': '9',
+      'id_content': '9',
+      'number': 3,
+    });
     //Câu hỏi 10
+    await DBHelper.insert('answer', {
+      'id': '37',
+      'sentence': 'Năm 1792',
+      'id_question': '10',
+      'id_content': '10',
+      'number': 0,
+    });
+    await DBHelper.insert('answer', {
+      'id': '38',
+      'sentence': 'Năm 1802',
+      'id_question': '10',
+      'id_content': '10',
+      'number': 1,
+    });
+    await DBHelper.insert('answer', {
+      'id': '39',
+      'sentence': 'Năm 1803',
+      'id_question': '10',
+      'id_content': '10',
+      'number': 2,
+    });
+    await DBHelper.insert('answer', {
+      'id': '40',
+      'sentence': 'Năm 1804',
+      'id_question': '10',
+      'id_content': '10',
+      'number': 3,
+    });
     //Câu hỏi 11
+    await DBHelper.insert('answer', {
+      'id': '41',
+      'sentence': 'Năm 1850',
+      'id_question': '11',
+      'id_content': '11',
+      'number': 0,
+    });
+    await DBHelper.insert('answer', {
+      'id': '42',
+      'sentence': 'Năm 1858',
+      'id_question': '11',
+      'id_content': '11',
+      'number': 1,
+    });
+    await DBHelper.insert('answer', {
+      'id': '43',
+      'sentence': 'Năm 1862',
+      'id_question': '11',
+      'id_content': '11',
+      'number': 2,
+    });
+    await DBHelper.insert('answer', {
+      'id': '44',
+      'sentence': 'Năm 1867',
+      'id_question': '11',
+      'id_content': '11',
+      'number': 3,
+    });
     //Câu hỏi 12
+    await DBHelper.insert('answer', {
+      'id': '45',
+      'sentence': 'Hàm Nghi',
+      'id_question': '12',
+      'id_content': '12',
+      'number': 0,
+    });
+    await DBHelper.insert('answer', {
+      'id': '46',
+      'sentence': 'Khải Định',
+      'id_question': '12',
+      'id_content': '12',
+      'number': 1,
+    });
+    await DBHelper.insert('answer', {
+      'id': '47',
+      'sentence': 'Bảo Đại',
+      'id_question': '12',
+      'id_content': '12',
+      'number': 2,
+    });
+    await DBHelper.insert('answer', {
+      'id': '48',
+      'sentence': 'Thành Thái',
+      'id_question': '12',
+      'id_content': '12',
+      'number': 3,
+    });
     //Câu hỏi 13
+    await DBHelper.insert('answer', {
+      'id': '49',
+      'sentence': '30/04/1975',
+      'id_question': '13',
+      'id_content': '13',
+      'number': 0,
+    });
+    await DBHelper.insert('answer', {
+      'id': '50',
+      'sentence': '02/09/1945',
+      'id_question': '13',
+      'id_content': '13',
+      'number': 1,
+    });
+    await DBHelper.insert('answer', {
+      'id': '51',
+      'sentence': '20/07/1954',
+      'id_question': '13',
+      'id_content': '13',
+      'number': 2,
+    });
+    await DBHelper.insert('answer', {
+      'id': '52',
+      'sentence': '07/05/1954',
+      'id_question': '13',
+      'id_content': '13',
+      'number': 3,
+    });
   }
 }
