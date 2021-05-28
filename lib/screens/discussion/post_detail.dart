@@ -148,7 +148,7 @@ class _PostDetailState extends State<PostDetail> {
               bottom: 0,
               left: 0,
               child: ConstrainedBox(
-                constraints: BoxConstraints(maxWidth: 400, maxHeight: 100),
+                constraints: BoxConstraints(maxWidth: 350, maxHeight: 100),
                 child: Row(
                   children: <Widget>[
                     Expanded(
