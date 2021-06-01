@@ -2,6 +2,8 @@ import 'package:hisapp/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:hisapp/providers/ContentProvider.dart';
+import 'package:timeline_list/timeline.dart';
+import 'package:timeline_list/timeline_model.dart';
 
 class DetailsScreen extends StatefulWidget {
   @override
@@ -70,73 +72,62 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 ),
                 child: Stack(
                   children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.all(30),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text("Nội dung", style: kTitleTextStyle),
-                          FutureBuilder(
-                            future: Provider.of<ContentProvider>(context,
-                                    listen: false)
-                                .setContentByCateId(cateId),
-                            builder: (ctx, data) => data.connectionState ==
-                                    ConnectionState.waiting
-                                ? Center(
-                                    child: CircularProgressIndicator(),
-                                  )
-                                : Consumer<ContentProvider>(
-                                    builder: (ctx, data, ch) {
-                                    // print(data.Contents[0].imagePath);
-                                    return Expanded(
-                                      child: ListView.builder(
-                                        itemBuilder: (ctx, index) => Material(
-                                          color: Colors.white,
-                                          child: InkWell(
-                                            splashColor: Colors.green,
-                                            onTap: () {
-                                              Navigator.of(context).pushNamed(
-                                                  '/main-content-screen',
-                                                  arguments: {
-                                                    'id':
-                                                        data.Contents[index].id,
-                                                    'imagePath': data
-                                                        .Contents[index]
-                                                        .imagePath,
-                                                    'videoPath': data
-                                                        .Contents[index]
-                                                        .videoPath,
-                                                    'filePath': data
-                                                        .Contents[index]
-                                                        .filePath,
-                                                    'idCate': data
-                                                        .Contents[index].idCate,
-                                                    'title': data
-                                                        .Contents[index].title,
-                                                  });
-                                            },
-                                            child: CourseContent(
-                                              number: (index + 1).toString(),
-                                              duration: 5.35,
-                                              title: data.Contents[index].title,
-                                              isDone:
-                                                  data.Contents[index].isDone ==
-                                                          1
-                                                      ? true
-                                                      : false,
-                                            ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        FutureBuilder(
+                          future: Provider.of<ContentProvider>(context,
+                                  listen: false)
+                              .setContentByCateId(cateId),
+                          builder: (ctx, data) => data.connectionState ==
+                                  ConnectionState.waiting
+                              ? Center(
+                                  child: CircularProgressIndicator(),
+                                )
+                              : Consumer<ContentProvider>(
+                                  builder: (ctx, data, ch) {
+                                  List<TimelineModel> items = [];
+                                  data.Contents.forEach((element) {
+                                    TimelineModel item = TimelineModel(
+                                        InkWell(
+                                          onTap: () {
+                                            Navigator.of(context).pushNamed(
+                                                '/main-content-screen',
+                                                arguments: {
+                                                  'id': element.id,
+                                                  'imagePath':
+                                                      element.imagePath,
+                                                  'videoPath':
+                                                      element.videoPath,
+                                                  'filePath': element.filePath,
+                                                  'idCate': element.idCate,
+                                                  'title': element.title,
+                                                });
+                                          },
+                                          child: CourseContent(
+                                            title: element.title,
+                                            imagePath: element.imagePath,
+                                            time: element.time,
                                           ),
                                         ),
-                                        itemCount: data.Contents.length,
-                                      ),
-                                    );
-                                  }),
-                          ),
-                          SizedBox(
-                            height: 100,
-                          ),
-                        ],
-                      ),
+                                        //position: TimelineItemPosition.random,
+                                        iconBackground: Colors.white,
+                                        icon: Icon(Icons.circle,
+                                            color: Colors.green.withOpacity(
+                                                element.isDone == 1 ? 1 : .2)));
+                                    items.add(item);
+                                  });
+
+                                  return Expanded(
+                                      child: Timeline(
+                                          children: items,
+                                          position: TimelinePosition.Left));
+                                }),
+                        ),
+                        SizedBox(
+                          height: 100,
+                        ),
+                      ],
                     ),
                     Positioned(
                         right: 0,
@@ -205,48 +196,45 @@ class _DetailsScreenState extends State<DetailsScreen> {
 }
 
 class CourseContent extends StatelessWidget {
-  final String number;
-  final double duration;
   final String title;
-  final bool isDone;
+  final String imagePath;
+  final String time;
+
   const CourseContent({
     Key key,
-    this.number,
-    this.duration,
     this.title,
-    this.isDone = false,
+    this.imagePath,
+    this.time,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 20),
-      child: Row(
+      child: Column(
         children: <Widget>[
-          Text(
-            number,
-            style: kHeadingextStyle.copyWith(
-              color: kTextColor.withOpacity(.15),
-              fontSize: 32,
+          if (imagePath.length > 0)
+            Image(image: AssetImage(imagePath), width: 160, height: 160)
+          else
+            Container(),
+          if (time != '')
+            Text(
+              time,
+              style: TextStyle(
+                fontSize: 12,
+              ),
             ),
-          ),
-          SizedBox(width: 20),
           Container(
+            alignment: Alignment.center,
             constraints: BoxConstraints(maxWidth: 150),
             child: RichText(
               text: TextSpan(
                 children: [
-                  /* TextSpan(
-                    text: "$duration mins\n",
-                    style: TextStyle(
-                      color: kTextColor.withOpacity(.5),
-                      fontSize: 18,
-                    ),
-                  ), */
                   TextSpan(
                     text: title,
                     style: kSubtitleTextStyle.copyWith(
                       fontWeight: FontWeight.w600,
+                      fontSize: 16,
                       height: 1.5,
                     ),
                   ),
@@ -254,20 +242,6 @@ class CourseContent extends StatelessWidget {
               ),
             ),
           ),
-          Spacer(),
-          // Expanded(
-          //child:
-          Container(
-            //margin: EdgeInsets.only(left: 0),
-            height: 40,
-            width: 40,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: kGreenColor.withOpacity(isDone ? 1 : .5),
-            ),
-            child: Icon(Icons.done, color: Colors.white),
-          ),
-          //)
         ],
       ),
     );

@@ -38,7 +38,7 @@ class _AlarmPageState extends State<AlarmPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: CustomColors.pageBackgroundColor,
+      //backgroundColor: CustomColors.pageBackgroundColor,
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 32, vertical: 64),
         child: Column(
@@ -47,10 +47,10 @@ class _AlarmPageState extends State<AlarmPage> {
             Text(
               'Nhắc nhở',
               style: TextStyle(
-                  fontFamily: 'Nunito',
+                  //fontFamily: 'Nunito',
                   fontWeight: FontWeight.w700,
-                  color: CustomColors.primaryTextColor,
-                  fontSize: 24),
+                  //color: CustomColors.primaryTextColor,
+                  fontSize: 16),
             ),
             Expanded(
               child: FutureBuilder<List<AlarmInfo>>(
@@ -102,8 +102,9 @@ class _AlarmPageState extends State<AlarmPage> {
                                       Text(
                                         alarm.title,
                                         style: TextStyle(
-                                            color: Colors.white,
-                                            fontFamily: 'Nunito'),
+                                          color: Colors.white,
+                                          //fontFamily: 'Nunito',
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -117,7 +118,9 @@ class _AlarmPageState extends State<AlarmPage> {
                               Text(
                                 'Mon-Fri',
                                 style: TextStyle(
-                                    color: Colors.white, fontFamily: 'Nunito'),
+                                  color: Colors.white,
+                                  //fontFamily: 'Nunito',
+                                ),
                               ),
                               Row(
                                 mainAxisAlignment:
@@ -127,7 +130,7 @@ class _AlarmPageState extends State<AlarmPage> {
                                     alarmTime,
                                     style: TextStyle(
                                         color: Colors.white,
-                                        fontFamily: 'Nunito',
+                                        //fontFamily: 'Nunito',
                                         fontSize: 24,
                                         fontWeight: FontWeight.w700),
                                   ),
@@ -153,7 +156,8 @@ class _AlarmPageState extends State<AlarmPage> {
                             child: Container(
                               width: double.infinity,
                               decoration: BoxDecoration(
-                                color: CustomColors.clockBG,
+                                // color: CustomColors.clockBG,
+                                color: Colors.lightBlue,
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(24)),
                               ),
@@ -253,10 +257,11 @@ class _AlarmPageState extends State<AlarmPage> {
                                     ),
                                     SizedBox(height: 8),
                                     Text(
-                                      'Add Alarm',
+                                      'Thêm nhắc nhở',
                                       style: TextStyle(
-                                          color: Colors.white,
-                                          fontFamily: 'Nunito'),
+                                        color: Colors.white,
+                                        // fontFamily: 'Nunito',
+                                      ),
                                     ),
                                   ],
                                 ),

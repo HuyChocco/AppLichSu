@@ -4,13 +4,14 @@ import 'package:hisapp/helpers/db_helper.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
 class Content {
-  final String id, title, idCate, filePath, imagePath, videoPath;
+  final String id, title, idCate, time, filePath, imagePath, videoPath;
   int isDone;
 
   Content(
       {@required this.id,
       @required this.idCate,
       @required this.title,
+      @required this.time,
       @required this.filePath,
       @required this.imagePath,
       @required this.videoPath,
@@ -52,6 +53,7 @@ class ContentProvider extends ChangeNotifier {
               .map((e) => Content(
                   id: e['id'],
                   idCate: e['id_category'],
+                  time: e['time'],
                   title: e['title'],
                   filePath: e['file_path'],
                   imagePath: e['image_path'],
@@ -77,6 +79,7 @@ class ContentProvider extends ChangeNotifier {
                   id: e['id'],
                   idCate: e['id_category'],
                   title: e['title'],
+                  time: e['time'],
                   filePath: e['file_path'],
                   imagePath: e['image_path'],
                   videoPath: e['video_path'],
@@ -121,6 +124,7 @@ class ContentProvider extends ChangeNotifier {
             id: e['id'],
             idCate: e['id_category'],
             title: e['title'],
+            time: e['time'],
             filePath: e['file_path'],
             imagePath: e['image_path'],
             videoPath: e['video_path'],

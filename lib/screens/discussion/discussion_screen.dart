@@ -178,8 +178,8 @@ class _DiscussionScreenState extends State<DiscussionScreen> {
                           final user = FirebaseAuth.instance.currentUser;
                           return Container(
                               decoration: BoxDecoration(
-                                gradient: kPrimaryGradient,
-                              ),
+                                  // gradient: kPrimaryGradient,
+                                  ),
                               width: double.infinity,
                               child: Column(
                                 //mainAxisAlignment: MainAxisAlignment.center,
@@ -187,14 +187,12 @@ class _DiscussionScreenState extends State<DiscussionScreen> {
                                 children: [
                                   SizedBox(height: 10),
                                   Text(
-                                    "Nhận đáp án miễn phí cho câu hỏi của bạn",
+                                    "Diễn đàn thảo luận lịch sử",
                                     textAlign: TextAlign.center,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headline5
-                                        .copyWith(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold),
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold),
                                   ),
                                   ElevatedButton(
                                     style: ButtonStyle(

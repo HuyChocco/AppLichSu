@@ -23,7 +23,7 @@ class DBHelper {
       await db.execute(
           'CREATE TABLE answer(id TEXT PRIMARY KEY, id_question TEXT,id_content TEXT,sentence TEXT,number INTEGER)');
       await db.execute(
-          'CREATE TABLE content(id TEXT PRIMARY KEY,id_category TEXT, title TEXT,file_path TEXT,image_path TEXT, video_path TEXT, number INTEGER,is_done BIT)');
+          'CREATE TABLE content(id TEXT PRIMARY KEY,id_category TEXT, title TEXT,time TEXT,file_path TEXT,image_path TEXT, video_path TEXT, number INTEGER,is_done BIT)');
     }, version: 1);
   }
 

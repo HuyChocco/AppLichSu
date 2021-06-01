@@ -221,19 +221,8 @@ class _MainContentScreenState extends State<MainContentScreen> {
                         ),
                 ),
               ),
-
-              //Image.asset(_imagePath),
               Expanded(
                 child: Stack(children: [
-                  //FutureBuilder(
-                  /* future: Provider.of<ContentProvider>(context, listen: false)
-                          .loadTextFromFile(_filePath),
-                      builder: (ctx, snapshot) =>
-                          snapshot.connectionState == ConnectionState.waiting
-                              ? Center(
-                                  child: CircularProgressIndicator(),
-                                )
-                              :  */
                   Consumer<ContentProvider>(
                       builder: (ctx, data, ch) => Container(
                             margin: EdgeInsets.only(bottom: 60),
