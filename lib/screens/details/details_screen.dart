@@ -210,11 +210,15 @@ class CourseContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 20),
+      padding: const EdgeInsets.only(bottom: 10),
       child: Column(
         children: <Widget>[
           if (imagePath.length > 0)
-            Image(image: AssetImage(imagePath), width: 160, height: 160)
+            Container(
+              alignment: Alignment.center,
+              child:
+                  Image(image: AssetImage(imagePath), width: 160, height: 160),
+            )
           else
             Container(),
           if (time != '')
@@ -228,6 +232,7 @@ class CourseContent extends StatelessWidget {
             alignment: Alignment.center,
             constraints: BoxConstraints(maxWidth: 150),
             child: RichText(
+              textAlign: TextAlign.center,
               text: TextSpan(
                 children: [
                   TextSpan(

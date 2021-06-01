@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hisapp/providers/ContentProvider.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:timeline_list/timeline.dart';
+import 'package:timeline_list/timeline_model.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import '../../constants.dart';
@@ -42,6 +44,7 @@ class _MainContentScreenState extends State<MainContentScreen> {
     _playerState = PlayerState.unknown;
 
     _pageController = PageController();
+
     super.initState();
   }
 
@@ -54,14 +57,14 @@ class _MainContentScreenState extends State<MainContentScreen> {
     }
   }
 
-  void _increaseListLength() {
-    print(_length_list);
+  /* void _increaseListLength() {
+    //print(_length_list);
     setState(() {
       if (_number_item_list < _length_list) _number_item_list++;
     });
-  }
+  } */
 
-  void _showBottomSheetDialog() {
+  /*  void _showBottomSheetDialog() {
     showModalBottomSheet(
         isDismissible: false,
         context: context,
@@ -112,7 +115,7 @@ class _MainContentScreenState extends State<MainContentScreen> {
                 ],
               ),
             ));
-  }
+  } */
 
   @override
   void didChangeDependencies() async {
@@ -140,7 +143,7 @@ class _MainContentScreenState extends State<MainContentScreen> {
       _controller = YoutubePlayerController(
         initialVideoId: videoId,
         flags: YoutubePlayerFlags(
-          autoPlay: true,
+          autoPlay: false,
           mute: false,
         ),
       )..addListener(listener);
@@ -150,20 +153,20 @@ class _MainContentScreenState extends State<MainContentScreen> {
       final ContentProvider provide_content =
           Provider.of<ContentProvider>(context, listen: false);
       await provide_content.loadTextFromFile(_filePath);
+      //Sau khi load nội dung từ file txt
       _length_list = provide_content.MainContents.length;
       if (_length_list > 0)
         setState(() {
           _number_item_list = 1;
         });
-      print(_number_item_list);
     }
     _isInit = false;
     super.didChangeDependencies();
   }
 
-  _scrollToBottom() {
+  /* _scrollToBottom() {
     _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
-  }
+  } */
 
   @override
   void deactivate() {
@@ -181,92 +184,69 @@ class _MainContentScreenState extends State<MainContentScreen> {
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback((_) => _scrollToBottom());
+    //WidgetsBinding.instance.addPostFrameCallback((_) => _scrollToBottom());
     return Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-            icon: Icon(
-              Icons.close,
-            ),
-            color: kIconColor,
-            onPressed: () => Navigator.of(context).pop(),
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(
+            Icons.close,
           ),
-          /* title: Text(
-            "Nội dung chính",
-          ), */
-          backgroundColor: Colors.transparent,
-          elevation: 0,
+          color: kIconColor,
+          onPressed: () => Navigator.of(context).pop(),
         ),
-        body: SafeArea(
-          child: Column(
-            children: [
-              Container(
-                height: 250,
-                child: PageView.builder(
-                  physics: NeverScrollableScrollPhysics(),
-                  controller: _pageController,
-                  itemCount: 2,
-                  itemBuilder: (ctx, index) => index == 0
-                      ? Image(
-                          width: 150,
-                          height: 150,
-                          image: AssetImage(_imagePath))
-                      : YoutubePlayer(
-                          controller: _controller,
-                          showVideoProgressIndicator: true,
-                          progressIndicatorColor: Colors.amber,
-                          onReady: () {
-                            _isPlayerReady = true;
-                          },
-                        ),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
+      body: SafeArea(
+        child: Consumer<ContentProvider>(builder: (ctx, data, ch) {
+          List<TimelineModel> items = [];
+          data.MainContents.forEach((element) {
+            TimelineModel item = TimelineModel(
+              Column(children: [
+                Text(element, style: TextStyle(fontSize: 14)),
+                SizedBox(
+                  height: 20,
                 ),
-              ),
-              Expanded(
-                child: Stack(children: [
-                  Consumer<ContentProvider>(
-                      builder: (ctx, data, ch) => Container(
-                            margin: EdgeInsets.only(bottom: 60),
-                            child: ListView.builder(
-                                controller: _scrollController,
-                                itemCount: _number_item_list,
-                                itemBuilder: (ctx, index) {
-                                  return Column(children: [
-                                    Text(data.MainContents[index],
-                                        style: TextStyle(fontSize: 16)),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                  ]);
-                                }),
-                          )),
-                  // ),
-                  Positioned(
-                      left: 0,
-                      bottom: 0,
-                      right: 0,
-                      child: TextButton(
-                        onPressed: () {
-                          if (_number_item_list != _length_list)
-                            _increaseListLength();
-                          else {
-                            _showBottomSheetDialog();
-                          }
-                        },
-                        style: ButtonStyle(
-                            foregroundColor:
-                                MaterialStateProperty.all(Colors.white),
-                            backgroundColor: MaterialStateProperty.all(
-                                _number_item_list == _length_list
-                                    ? Colors.green[400]
-                                    : Colors.grey)),
-                        child: Text(_number_item_list == _length_list
-                            ? "Đọc xong"
-                            : "Nhấp để đọc tiếp"),
-                      )),
-                ]),
-              ),
-            ],
-          ),
-        ));
+              ]),
+              iconBackground: Colors.white,
+              icon: Icon(Icons.circle, color: Colors.blue),
+            );
+            items.add(item);
+          });
+          TimelineModel item = TimelineModel(
+            YoutubePlayer(
+              controller: _controller,
+              showVideoProgressIndicator: true,
+              progressIndicatorColor: Colors.amber,
+              onReady: () {
+                _isPlayerReady = true;
+              },
+            ),
+            iconBackground: Colors.white,
+            icon: Icon(Icons.circle, color: Colors.blue),
+          );
+          items.add(item);
+          item = TimelineModel(
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              ElevatedButton(
+                  onPressed: () {
+                    _controller.pause();
+                    Navigator.of(context).pushNamed('/quiz-screen',
+                        arguments: {'idContent': _id, 'idCate': _idCate});
+                  },
+                  child: Text('Làm bài kiểm tra')),
+            ]),
+            iconBackground: Colors.white,
+            icon: Icon(Icons.circle, color: Colors.blue),
+          );
+          items.add(item);
+          return Column(children: [
+            Expanded(
+                child:
+                    Timeline(children: items, position: TimelinePosition.Left)),
+          ]);
+        }),
+      ),
+    );
   }
 }

@@ -111,18 +111,23 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 color: Color(0xFFF5F5F7),
                 borderRadius: BorderRadius.circular(40),
               ),
-              child: Row(
-                children: <Widget>[
-                  SvgPicture.asset("assets/icons/search.svg"),
-                  SizedBox(width: 16),
-                  Text(
-                    "Tìm kiếm ở đây",
-                    style: TextStyle(
-                      fontSize: 10,
-                      color: Color(0xFFA0A5BD),
-                    ),
-                  )
-                ],
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.of(context).pushNamed('/search-screen');
+                },
+                child: Row(
+                  children: <Widget>[
+                    SvgPicture.asset("assets/icons/search.svg"),
+                    SizedBox(width: 16),
+                    Text(
+                      "Tìm kiếm ở đây",
+                      style: TextStyle(
+                        fontSize: 10,
+                        color: Color(0xFFA0A5BD),
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
             Row(
