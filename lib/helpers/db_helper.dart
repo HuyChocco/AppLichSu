@@ -17,13 +17,13 @@ class DBHelper {
     return sql.openDatabase(path.join(dbPath, 'history_db.db'),
         onCreate: (db, version) async {
       await db.execute(
-          'CREATE TABLE content_category(id TEXT PRIMARY KEY, title TEXT,number INTEGER,image_path TEXT)');
+          'CREATE TABLE content_category(id TEXT PRIMARY KEY, title TEXT,number INTEGER,image_path TEXT,description TEXT)');
       await db.execute(
           'CREATE TABLE question(id TEXT PRIMARY KEY, sentence TEXT,id_content TEXT,number INTEGER, answer_index INTEGER)');
       await db.execute(
           'CREATE TABLE answer(id TEXT PRIMARY KEY, id_question TEXT,id_content TEXT,sentence TEXT,number INTEGER)');
       await db.execute(
-          'CREATE TABLE content(id TEXT PRIMARY KEY,id_category TEXT, title TEXT,time TEXT,file_path TEXT,image_path TEXT, video_path TEXT, number INTEGER,is_done BIT)');
+          'CREATE TABLE content(id TEXT PRIMARY KEY,id_category TEXT, title TEXT,time TEXT,file_path TEXT,image_path TEXT, video_path TEXT, number INTEGER,is_done BIT, key_word TEXT)');
     }, version: 1);
   }
 

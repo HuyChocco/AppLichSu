@@ -22,6 +22,50 @@ class _DashboardScreenState extends State<DashboardScreen> {
   String _image_path = "";
   String _title = "";
   bool _isInit = false;
+
+  Future<void> updateStateReading() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    if (prefs.containsKey('is_loaded')) {
+      if (prefs.containsKey('id')) {
+        //setState(() {
+        _id = prefs.getString('id');
+        //});
+      }
+      if (prefs.containsKey('title')) {
+        //setState(() {
+        _title = prefs.getString('title');
+        //});
+      }
+      if (prefs.containsKey('id_cate')) {
+        //setState(() {
+        _id_cate = prefs.getString('id_cate');
+        // });
+      }
+      if (prefs.containsKey('image_path')) {
+        //setState(() {
+        _image_path = prefs.getString('image_path');
+        // });
+      }
+      if (prefs.containsKey('video_path')) {
+        //setState(() {
+        _video_path = prefs.getString('video_path');
+        // });
+      }
+      if (prefs.containsKey('file_path')) {
+        // setState(() {
+        _file_path = prefs.getString('file_path');
+        //});
+      }
+      setState(() {
+        has_lecture = true;
+      });
+    } else {
+      setState(() {
+        has_lecture = false;
+      });
+    }
+  }
+
   @override
   void didChangeDependencies() async {
     if (!_isInit) {
@@ -31,45 +75,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           _user_name = prefs.getString('user_name');
         }
       });
-      if (prefs.containsKey('is_loaded')) {
-        if (prefs.containsKey('id')) {
-          setState(() {
-            _id = prefs.getString('id');
-          });
-        }
-        if (prefs.containsKey('title')) {
-          setState(() {
-            _title = prefs.getString('title');
-          });
-        }
-        if (prefs.containsKey('id_cate')) {
-          setState(() {
-            _id_cate = prefs.getString('id_cate');
-          });
-        }
-        if (prefs.containsKey('image_path')) {
-          setState(() {
-            _image_path = prefs.getString('image_path');
-          });
-        }
-        if (prefs.containsKey('video_path')) {
-          setState(() {
-            _video_path = prefs.getString('video_path');
-          });
-        }
-        if (prefs.containsKey('file_path')) {
-          setState(() {
-            _file_path = prefs.getString('file_path');
-          });
-        }
-        setState(() {
-          has_lecture = true;
-        });
-      } else {
-        setState(() {
-          has_lecture = false;
-        });
-      }
+      await updateStateReading();
       _isInit = true;
     }
     super.didChangeDependencies();
@@ -102,19 +108,19 @@ class _DashboardScreenState extends State<DashboardScreen> {
               "Hãy bắt đầu tìm hiểu lịch sử nào!",
               style: TextStyle(fontSize: 12),
             ),
-            Container(
-              margin: EdgeInsets.symmetric(vertical: 30),
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-              height: 50,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: Color(0xFFF5F5F7),
-                borderRadius: BorderRadius.circular(40),
-              ),
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.of(context).pushNamed('/search-screen');
-                },
+            GestureDetector(
+              onTap: () {
+                Navigator.of(context).pushNamed('/search-screen');
+              },
+              child: Container(
+                margin: EdgeInsets.symmetric(vertical: 30),
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                height: 50,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Color(0xFFF5F5F7),
+                  borderRadius: BorderRadius.circular(40),
+                ),
                 child: Row(
                   children: <Widget>[
                     SvgPicture.asset("assets/icons/search.svg"),
@@ -171,7 +177,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                     'categoryId': data.Categories[index].id,
                                     'title': data.Categories[index].title
                                   }).then((value) {
-                                didChangeDependencies();
+                                updateStateReading();
                               });
                             },
                             child: Container(
@@ -179,24 +185,40 @@ class _DashboardScreenState extends State<DashboardScreen> {
                               height: 100,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(16),
-                                image: DecorationImage(
+                                color: Colors.blue,
+                                /* image: DecorationImage(
                                   image: AssetImage(
                                       data.Categories[index].imagePath),
                                   fit: BoxFit.fill,
-                                ),
+                                ), */
                               ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
                                   Container(
-                                    decoration: BoxDecoration(
+                                    /* decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(16),
-                                        color: Colors.white.withOpacity(0.4)),
+                                        color: Colors.white.withOpacity(0.4)), */
                                     padding: EdgeInsets.all(6),
                                     child: Text(
                                       data.Categories[index].title,
                                       style: TextStyle(
                                         fontSize: 16,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                  Spacer(),
+                                  Container(
+                                    /*  decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(16),
+                                        color: Colors.white.withOpacity(0.4)), */
+                                    padding: EdgeInsets.all(6),
+                                    child: Text(
+                                      data.Categories[index].description,
+                                      style: TextStyle(
+                                        fontSize: 8,
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold,
                                       ),

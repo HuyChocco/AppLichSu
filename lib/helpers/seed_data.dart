@@ -7,24 +7,30 @@ class SeedData {
       'title': 'Thời kỳ lịch sử',
       'number': 1,
       'image_path': 'assets/images/trongdong.png',
+      'description':
+          'Tóm tắt các sự kiện chính qua các thời kỳ lịch sử nước ta',
     });
     await DBHelper.insert('content_category', {
       'id': '2',
       'title': 'Anh hùng dân tộc',
       'number': 2,
       'image_path': 'assets/images/trongdong_real.jpg',
+      'description':
+          'Những nhân vật có ảnh hưởng lớn đến sự hình thành và phát triển của Việt Nam',
     });
     await DBHelper.insert('content_category', {
       'id': '3',
       'title': 'Các trận đánh hay',
       'number': 3,
       'image_path': 'assets/images/home_bg.png',
+      'description': 'Tóm tắt các trận đánh hay trong lịch sử Việt Nam',
     });
     await DBHelper.insert('content_category', {
       'id': '4',
-      'title': 'Quốc hiệu',
+      'title': 'Quốc hiệu, Triều đại',
       'number': 4,
       'image_path': 'assets/images/vietnam_banner.jpg',
+      'description': 'Tên nước ta qua các thời kỳ',
     });
   }
 
@@ -39,6 +45,7 @@ class SeedData {
       'video_path': 'https://www.youtube.com/watch?v=RQS9GOIBOtE',
       'is_done': 0,
       'number': 1,
+      'key_word': 'Tiền sử',
     });
     await DBHelper.insert('content', {
       'id': '2',
@@ -50,6 +57,7 @@ class SeedData {
       'video_path': 'https://www.youtube.com/watch?v=6cUAw9K3Ymg',
       'is_done': 0,
       'number': 2,
+      'key_word': 'Hồng Bàn',
     });
     await DBHelper.insert('content', {
       'id': '3',
@@ -61,6 +69,7 @@ class SeedData {
       'video_path': 'https://www.youtube.com/watch?v=skHSViefhjw',
       'is_done': 0,
       'number': 3,
+      'key_word': 'Bắc thuộc lần I',
     });
     await DBHelper.insert('content', {
       'id': '4',
@@ -72,6 +81,7 @@ class SeedData {
       'video_path': 'https://www.youtube.com/watch?v=aDuuPAEE7MM',
       'is_done': 0,
       'number': 4,
+      'key_word': 'Bắc thuộc lần II',
     });
     await DBHelper.insert('content', {
       'id': '5',
@@ -83,6 +93,7 @@ class SeedData {
       'video_path': 'https://www.youtube.com/watch?v=BLcc4LTjfVo',
       'is_done': 0,
       'number': 5,
+      'key_word': 'Thời kỳ độc lập tự chủ',
     });
     await DBHelper.insert('content', {
       'id': '6',
@@ -94,6 +105,7 @@ class SeedData {
       'video_path': 'https://www.youtube.com/watch?v=j29UOT2oS2M',
       'is_done': 0,
       'number': 6,
+      'key_word': 'Bắc Thuộc lần IV',
     });
     await DBHelper.insert('content', {
       'id': '7',
@@ -105,6 +117,7 @@ class SeedData {
       'video_path': 'https://www.youtube.com/watch?v=i_6IUT1s2ZM',
       'is_done': 0,
       'number': 7,
+      'key_word': 'Hậu Lê, Lê sơ',
     });
     await DBHelper.insert('content', {
       'id': '8',
@@ -117,6 +130,7 @@ class SeedData {
       'video_path': 'https://www.youtube.com/watch?v=V-1szb5cSsE',
       'is_done': 0,
       'number': 8,
+      'key_word': 'Nam triều, Bắc triều, Hậu Lê, Trung Hưng',
     });
     await DBHelper.insert('content', {
       'id': '9',
@@ -129,6 +143,7 @@ class SeedData {
       'video_path': 'https://www.youtube.com/watch?v=V1LFhyv_p0w',
       'is_done': 0,
       'number': 9,
+      'key_word': 'Đàng ngoài, Đàng trong',
     });
     await DBHelper.insert('content', {
       'id': '10',
@@ -140,6 +155,7 @@ class SeedData {
       'video_path': 'https://www.youtube.com/watch?v=xWRR43g5VWQ',
       'is_done': 0,
       'number': 10,
+      'key_word': 'Tây Sơn',
     });
     await DBHelper.insert('content', {
       'id': '11',
@@ -152,6 +168,7 @@ class SeedData {
       'video_path': 'https://www.youtube.com/watch?v=FnVakQpNHyU',
       'is_done': 0,
       'number': 11,
+      'key_word': 'Nhà Nguyễn, độc lập tự chủ',
     });
     await DBHelper.insert('content', {
       'id': '12',
@@ -164,6 +181,7 @@ class SeedData {
       'video_path': 'https://www.youtube.com/watch?v=qoiUdGhAvRM',
       'is_done': 0,
       'number': 12,
+      'key_word': 'Nhà Nguyễn, Pháp thuộc',
     });
     await DBHelper.insert('content', {
       'id': '13',
@@ -175,15 +193,42 @@ class SeedData {
       'video_path': 'https://www.youtube.com/watch?v=IJRA-wizk4w',
       'is_done': 0,
       'number': 13,
+      'key_word': 'Đổi mới',
     });
   }
 
-  static Future<void> insertContentAHDT() async {}
+  static Future<void> insertContentAHDT() async {
+    await DBHelper.insert('content', {
+      'id': '100',
+      'title': 'Hùng Vương',
+      'id_category': '2',
+      'time': '2524 TCN-258 TCN',
+      'file_path': 'assets/contents/tran_danh/song_bach_dang.txt',
+      'image_path': 'assets/images/bach_dang.jpg',
+      'video_path': 'https://www.youtube.com/watch?v=SIO3T0Yli3g',
+      'is_done': 0,
+      'number': 1,
+      'key_word': 'Hùng Vương',
+    });
+
+    await DBHelper.insert('content', {
+      'id': '101',
+      'title': 'Lữ Gia',
+      'id_category': '2',
+      'time': '2528 TCN',
+      'file_path': 'assets/contents/tran_danh/song_bach_dang.txt',
+      'image_path': 'assets/images/bach_dang.jpg',
+      'video_path': 'https://www.youtube.com/watch?v=SIO3T0Yli3g',
+      'is_done': 0,
+      'number': 2,
+      'key_word': 'Lữ Gia',
+    });
+  }
 
   static Future<void> insertContentTD() async {
     await DBHelper.insert('content', {
-      'id': '14',
-      'title': 'Trận chiến trên sông Bạch Đằng (938)',
+      'id': '200',
+      'title': 'Trận chiến trên sông Bạch Đằng',
       'id_category': '3',
       'time': '938',
       'file_path': 'assets/contents/tran_danh/song_bach_dang.txt',
@@ -191,10 +236,36 @@ class SeedData {
       'video_path': 'https://www.youtube.com/watch?v=SIO3T0Yli3g',
       'is_done': 0,
       'number': 1,
+      'key_word': 'Trận chiến trên sông Bạch Đằng, 938',
     });
   }
 
-  static Future<void> insertContentQH() async {}
+  static Future<void> insertContentQH() async {
+    await DBHelper.insert('content', {
+      'id': '300',
+      'title': 'Họ Hồng Bàn',
+      'id_category': '4',
+      'time': '2879 TCN',
+      'file_path': 'assets/contents/tran_danh/song_bach_dang.txt',
+      'image_path': 'assets/images/bach_dang.jpg',
+      'video_path': 'https://www.youtube.com/watch?v=SIO3T0Yli3g',
+      'is_done': 0,
+      'number': 1,
+      'key_word': 'Họ Hồng Bàn',
+    });
+    await DBHelper.insert('content', {
+      'id': '301',
+      'title': 'Nhà Thục',
+      'id_category': '4',
+      'time': '257 TCN',
+      'file_path': 'assets/contents/tran_danh/song_bach_dang.txt',
+      'image_path': 'assets/images/bach_dang.jpg',
+      'video_path': 'https://www.youtube.com/watch?v=SIO3T0Yli3g',
+      'is_done': 0,
+      'number': 2,
+      'key_word': 'Nhà Thục',
+    });
+  }
 
   static Future<void> insertQuestion() async {
     //Thời tiền sử

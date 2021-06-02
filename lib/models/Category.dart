@@ -3,8 +3,10 @@ class Category {
   final String id;
   final int number;
   final String imagePath;
+  final String description;
 
-  Category({this.title, this.id, this.number, this.imagePath});
+  Category(
+      {this.title, this.id, this.number, this.imagePath, this.description});
 }
 
 /* List<Category> categories = categoriesData

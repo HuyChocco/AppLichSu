@@ -86,7 +86,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           .feedData(); */
                       await SeedData.insertContentCategory();
                       await SeedData.insertContentTKLS();
+                      await SeedData.insertContentAHDT();
                       await SeedData.insertContentTD();
+                      await SeedData.insertContentQH();
                       await SeedData.insertQuestion();
                       await SeedData.insertAnswer();
                       Navigator.of(context)

@@ -4,7 +4,7 @@ import 'package:hisapp/helpers/db_helper.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
 class Content {
-  final String id, title, idCate, time, filePath, imagePath, videoPath;
+  final String id, title, idCate, time, filePath, imagePath, videoPath, keyWord;
   int isDone;
 
   Content(
@@ -15,30 +15,32 @@ class Content {
       @required this.filePath,
       @required this.imagePath,
       @required this.videoPath,
-      @required this.isDone});
+      @required this.isDone,
+      @required this.keyWord});
 }
 
 class ContentProvider extends ChangeNotifier {
   String _title;
-  List<Content> _list_content = [];
-  List<String> _list_main_content = [];
+  List<Content> _listContent = [];
+  List<String> _listMainContent = [];
+
   String get Title {
     return _title;
   }
 
   List<Content> get Contents {
-    return [..._list_content];
+    return [..._listContent];
   }
 
   List<String> get MainContents {
-    return [..._list_main_content];
+    return [..._listMainContent];
   }
 
   Future<void> loadTextFromFile(String filePath) async {
     String _content = "";
     await rootBundle.loadString(filePath).then((value) => _content = value);
     if (_content.isNotEmpty) {
-      _list_main_content = _content.split('\n');
+      _listMainContent = _content.split('\n');
     }
   }
 
@@ -49,7 +51,7 @@ class ContentProvider extends ChangeNotifier {
           final dataList =
               await DBHelper.getDataById('content', id, 'id_category');
 
-          _list_content = dataList
+          _listContent = dataList
               .map((e) => Content(
                   id: e['id'],
                   idCate: e['id_category'],
@@ -58,23 +60,17 @@ class ContentProvider extends ChangeNotifier {
                   filePath: e['file_path'],
                   imagePath: e['image_path'],
                   videoPath: e['video_path'],
-                  isDone: e['is_done']))
+                  isDone: e['is_done'],
+                  keyWord: e['key_word']))
               .toList();
         }
         break;
       case '2':
         {
-          //_title = "Anh hùng dân tộc";
-          _list_content = [];
-        }
-        break;
-      case '3':
-        {
-          //_title = "Các trận chiến";
           final dataList =
               await DBHelper.getDataById('content', id, 'id_category');
 
-          _list_content = dataList
+          _listContent = dataList
               .map((e) => Content(
                   id: e['id'],
                   idCate: e['id_category'],
@@ -83,14 +79,47 @@ class ContentProvider extends ChangeNotifier {
                   filePath: e['file_path'],
                   imagePath: e['image_path'],
                   videoPath: e['video_path'],
-                  isDone: e['is_done']))
+                  isDone: e['is_done'],
+                  keyWord: e['key_word']))
+              .toList();
+        }
+        break;
+      case '3':
+        {
+          final dataList =
+              await DBHelper.getDataById('content', id, 'id_category');
+
+          _listContent = dataList
+              .map((e) => Content(
+                  id: e['id'],
+                  idCate: e['id_category'],
+                  title: e['title'],
+                  time: e['time'],
+                  filePath: e['file_path'],
+                  imagePath: e['image_path'],
+                  videoPath: e['video_path'],
+                  isDone: e['is_done'],
+                  keyWord: e['key_word']))
               .toList();
         }
         break;
       case '4':
         {
-          //_title = "Quốc hiệu";
-          _list_content = [];
+          final dataList =
+              await DBHelper.getDataById('content', id, 'id_category');
+
+          _listContent = dataList
+              .map((e) => Content(
+                  id: e['id'],
+                  idCate: e['id_category'],
+                  title: e['title'],
+                  time: e['time'],
+                  filePath: e['file_path'],
+                  imagePath: e['image_path'],
+                  videoPath: e['video_path'],
+                  isDone: e['is_done'],
+                  keyWord: e['key_word']))
+              .toList();
         }
         break;
       default:
@@ -107,16 +136,16 @@ class ContentProvider extends ChangeNotifier {
     try {
       await DBHelper.updateData('content', {'is_done': 1}, idContent, 'id');
       Content content =
-          _list_content.firstWhere((element) => element.id == idContent);
-      int index = _list_content.indexOf(content);
-      _list_content[index].isDone = 1;
+          _listContent.firstWhere((element) => element.id == idContent);
+      int index = _listContent.indexOf(content);
+      _listContent[index].isDone = 1;
       notifyListeners();
     } catch (ex) {
       print(ex.toString());
     }
   }
 
-  void getProportionOfDoneLecturesById(String _idCate) async {
+  Future<void> getProportionOfDoneLecturesById(String _idCate) async {
     final dataList =
         await DBHelper.getDataById('content', _idCate, 'id_category');
     final contentlist = dataList
@@ -128,10 +157,28 @@ class ContentProvider extends ChangeNotifier {
             filePath: e['file_path'],
             imagePath: e['image_path'],
             videoPath: e['video_path'],
-            isDone: e['is_done']))
+            isDone: e['is_done'],
+            keyWord: e['key_word']))
         .toList();
     final doneContentList = contentlist.where((element) => element.isDone == 1);
     _rate = doneContentList.length / contentlist.length;
     notifyListeners();
+  }
+
+  Future<List<Content>> loadAllContentForSearching() async {
+    final dataList = await DBHelper.getData('content');
+    List<Content> listSearchContent = dataList
+        .map((e) => Content(
+            id: e['id'],
+            idCate: e['id_category'],
+            title: e['title'],
+            time: e['time'],
+            filePath: e['file_path'],
+            imagePath: e['image_path'],
+            videoPath: e['video_path'],
+            isDone: e['is_done'],
+            keyWord: e['key_word']))
+        .toList();
+    return listSearchContent;
   }
 }

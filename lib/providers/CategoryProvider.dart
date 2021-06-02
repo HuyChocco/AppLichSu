@@ -16,7 +16,8 @@ class CategoryProvider extends ChangeNotifier {
             id: e['id'],
             title: e['title'],
             imagePath: e['image_path'],
-            number: e['number']))
+            number: e['number'],
+            description: e['description']))
         .toList();
     notifyListeners();
   }

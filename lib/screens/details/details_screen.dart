@@ -44,10 +44,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
         width: double.infinity,
         decoration: BoxDecoration(
           color: Color(0xFFF5F4EF),
-          image: DecorationImage(
-            image: AssetImage("assets/images/ux_big.png"),
-            alignment: Alignment.topRight,
-          ),
+          // image: DecorationImage(
+          //   image: AssetImage("assets/images/ux_big.png"),
+          //   alignment: Alignment.topRight,
+          // ),
         ),
         child: Column(
           children: <Widget>[
