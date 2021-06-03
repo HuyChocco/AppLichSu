@@ -13,6 +13,8 @@ class _SearchScreenState extends State<SearchScreen> {
   bool _isSearching;
   //String _searchText = "";
   List searchresult = [];
+  final _searchFocusNode = FocusNode();
+  bool _isInit = false;
 
   @override
   void initState() {
@@ -21,7 +23,24 @@ class _SearchScreenState extends State<SearchScreen> {
     });
     _isSearching = false;
     values();
+
     super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    if (!_isInit) {
+      FocusScope.of(context).requestFocus(_searchFocusNode);
+      _isInit = true;
+    }
+
+    super.didChangeDependencies();
+  }
+
+  @override
+  void dispose() {
+    _searchFocusNode.dispose();
+    super.dispose();
   }
 
   void values() async {
@@ -35,7 +54,7 @@ class _SearchScreenState extends State<SearchScreen> {
     searchresult.clear();
     if (_isSearching != null) {
       for (int i = 0; i < _list.length; i++) {
-        String data = _list[i].keyWord;
+        Content data = _list[i];
         if (TiengViet.parse(_list[i].keyWord)
             .toLowerCase()
             .contains(_searchText.toLowerCase())) {
@@ -54,6 +73,7 @@ class _SearchScreenState extends State<SearchScreen> {
         automaticallyImplyLeading: false,
         title: TextField(
           controller: _controller,
+          focusNode: _searchFocusNode,
           style: TextStyle(color: Color(0xFFA0A5BD)),
           decoration: InputDecoration(
             hintText: "Nhập từ khóa ...",
@@ -75,8 +95,24 @@ class _SearchScreenState extends State<SearchScreen> {
                 child: searchresult.length != 0 || _controller.text.isNotEmpty
                     ? ListView.builder(
                         itemBuilder: (ctx, index) {
-                          String listData = searchresult[index];
-                          return ListTile(title: Text(listData));
+                          Content listData = searchresult[index];
+                          return ListTile(
+                            title: Text(listData.keyWord),
+                            onTap: () {
+                              Navigator.of(context).pushNamed(
+                                  '/main-content-screen',
+                                  arguments: {
+                                    'id': listData.id,
+                                    'imagePath': listData.imagePath,
+                                    'videoPath': listData.videoPath,
+                                    'filePath': listData.filePath,
+                                    'idCate': listData.idCate,
+                                    'title': listData.title,
+                                  }).then((value) {
+                                // updateStateReading();
+                              });
+                            },
+                          );
                         },
                         itemCount: searchresult.length,
                       )
