@@ -1,9 +1,12 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hisapp/screens/splash_screen.dart';
 import 'package:hisapp/widgets/login/login_screen.dart';
+import 'package:hisapp/widgets/pickers/multiple_image_picker.dart';
 import 'package:hisapp/widgets/signup/signup_screen.dart';
 
 import '../../constants.dart';
@@ -17,6 +20,13 @@ class _DiscussionScreenState extends State<DiscussionScreen> {
   bool _isLogin = false;
 
   var _pageViewController = PageController();
+
+  File _userImageFile;
+
+  void _pickedImage(File image) {
+    _userImageFile = image;
+  }
+
   void _logOut() async {
     final _auth = FirebaseAuth.instance;
     await _auth.signOut();
@@ -135,6 +145,7 @@ class _DiscussionScreenState extends State<DiscussionScreen> {
                       )
                     ],
                   ),
+                  MultipleImagePicker(_pickedImage),
                 ],
               ),
             ));
