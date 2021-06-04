@@ -3,11 +3,13 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:hisapp/screens/splash_screen.dart';
 import 'package:hisapp/widgets/login/login_screen.dart';
 import 'package:hisapp/widgets/pickers/multiple_image_picker.dart';
 import 'package:hisapp/widgets/signup/signup_screen.dart';
+import 'package:video_player/video_player.dart';
 
 import '../../constants.dart';
 
@@ -22,9 +24,11 @@ class _DiscussionScreenState extends State<DiscussionScreen> {
   var _pageViewController = PageController();
 
   File _userImageFile;
+  File _userVideoFile;
 
-  void _pickedImage(File image) {
+  void _pickedImage(File image, File video) {
     _userImageFile = image;
+    _userVideoFile = video;
   }
 
   void _logOut() async {
@@ -39,12 +43,35 @@ class _DiscussionScreenState extends State<DiscussionScreen> {
     FocusScope.of(context).unfocus();
 
     final user = FirebaseAuth.instance.currentUser;
-
+    String imageUrl = '';
+    String videoUrl = '';
+    final DateTime now = DateTime.now();
+    final int millSeconds = now.millisecondsSinceEpoch;
     final userData = await FirebaseFirestore.instance
         .collection('users')
         .doc(user.uid)
         .get();
+    if (_userVideoFile != null) {
+      final ref = FirebaseStorage.instance
+          .ref()
+          .child('user_data')
+          .child(user.uid + now.toString() + '.mp4');
+      // Create your custom metadata.
+      SettableMetadata metadata = SettableMetadata(
+        contentType: 'video/mp4',
+      );
+      await ref.putFile(_userVideoFile, metadata);
+      videoUrl = await ref.getDownloadURL();
+    }
+    if (_userImageFile != null) {
+      final ref = FirebaseStorage.instance
+          .ref()
+          .child('user_data')
+          .child(user.uid + now.toString() + '.jpg');
 
+      await ref.putFile(_userImageFile);
+      imageUrl = await ref.getDownloadURL();
+    }
     FirebaseFirestore.instance.collection('discussion').add({
       'text': _controller.text,
       'createdAt': Timestamp.now(),
@@ -52,7 +79,11 @@ class _DiscussionScreenState extends State<DiscussionScreen> {
       'username': userData.data()['username'],
       'userImage': userData.data()['image_url'],
       'likes': 0,
+      'imageUpload': imageUrl,
+      'videoUpload': videoUrl,
     });
+    _userImageFile = null;
+    _userVideoFile = null;
     _controller.clear();
     Navigator.of(context).pop();
   }
@@ -265,6 +296,7 @@ class _DiscussionScreenState extends State<DiscussionScreen> {
                                                             .fromMillisecondsSinceEpoch(
                                                                 t.seconds *
                                                                     1000);
+
                                                         return Column(
                                                           children: [
                                                             Card(
@@ -299,6 +331,43 @@ class _DiscussionScreenState extends State<DiscussionScreen> {
                                                                             .data()[
                                                                         'text'],
                                                                   ),
+                                                                  if (discusDocs[index].data()[
+                                                                              'imageUpload'] !=
+                                                                          '' ||
+                                                                      discusDocs[index]
+                                                                              .data()['videoUpload'] !=
+                                                                          '')
+                                                                    Row(
+                                                                      mainAxisAlignment:
+                                                                          MainAxisAlignment
+                                                                              .center,
+                                                                      children: [
+                                                                        if (discusDocs[index].data()['imageUpload'] !=
+                                                                            '')
+                                                                          Container(
+                                                                            width:
+                                                                                200,
+                                                                            height:
+                                                                                250,
+                                                                            decoration: BoxDecoration(
+                                                                                image: DecorationImage(
+                                                                                    image: NetworkImage(
+                                                                              discusDocs[index].data()['imageUpload'],
+                                                                            ))),
+                                                                          ),
+                                                                        if (discusDocs[index].data()['videoUpload'] !=
+                                                                            '')
+                                                                          if (discusDocs[index].data()['imageUpload'] !=
+                                                                              '')
+                                                                            Expanded(
+                                                                              child: VideoPlayerScreen(key: ValueKey(discusDocs[index].id), url: discusDocs[index].data()['videoUpload']),
+                                                                            )
+                                                                          else
+                                                                            VideoPlayerScreen(
+                                                                                // key: ValueKey(discusDocs[index].id),
+                                                                                url: discusDocs[index].data()['videoUpload']),
+                                                                      ],
+                                                                    ),
                                                                   Row(
                                                                     children: [
                                                                       StreamBuilder(
@@ -408,5 +477,107 @@ class _DiscussionScreenState extends State<DiscussionScreen> {
             ),
           );
         });
+  }
+}
+
+class VideoPlayerScreen extends StatefulWidget {
+  final bool play;
+  final String url;
+  final key;
+  VideoPlayerScreen({this.key, this.play, this.url}) : super(key: key);
+
+  @override
+  _VideoPlayerScreenState createState() => _VideoPlayerScreenState();
+}
+
+class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
+  VideoPlayerController _controller;
+  Future<void> _initializeVideoPlayerFuture;
+
+  @override
+  void initState() {
+    // Create an store the VideoPlayerController. The VideoPlayerController
+    // offers several different constructors to play videos from assets, files,
+    // or the internet.
+    _controller = VideoPlayerController.network(
+      widget.url,
+    );
+
+    _initializeVideoPlayerFuture = _controller.initialize();
+    _controller.setLooping(true);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    // Ensure disposing of the VideoPlayerController to free up resources.
+    _controller.dispose();
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+      future: _initializeVideoPlayerFuture,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          // If the VideoPlayerController has finished initialization, use
+          // the data it provides to limit the aspect ratio of the video.
+          return Stack(children: [
+            Container(
+              width: 200,
+              height: 200,
+              // Use the VideoPlayer widget to display the video.
+              child: VideoPlayer(_controller),
+            ),
+            Positioned(
+              right: 5,
+              top: 5,
+              child: IconButton(
+                color: Colors.red,
+                onPressed: () {
+                  setState(() {
+                    // If the video is playing, pause it.
+                    if (_controller.value.isPlaying) {
+                      _controller.pause();
+                    } else {
+                      // If the video is paused, play it.
+                      _controller.play();
+                    }
+                  });
+                },
+                icon: Icon(_controller.value.isPlaying
+                    ? Icons.pause
+                    : Icons.play_arrow),
+              ),
+            ),
+          ]);
+        } else {
+          // If the VideoPlayerController is still initializing, show a
+          // loading spinner.
+          return Center(child: CircularProgressIndicator());
+        }
+      },
+    );
+    /* floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // Wrap the play or pause in a call to `setState`. This ensures the
+          // correct icon is shown.
+          setState(() {
+            // If the video is playing, pause it.
+            if (_controller.value.isPlaying) {
+              _controller.pause();
+            } else {
+              // If the video is paused, play it.
+              _controller.play();
+            }
+          });
+        },
+        // Display the correct icon depending on the state of the player.
+        child: Icon(
+          _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
+        ),
+      ), */
   }
 }

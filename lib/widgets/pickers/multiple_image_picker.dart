@@ -7,7 +7,7 @@ import 'package:video_player/video_player.dart';
 class MultipleImagePicker extends StatefulWidget {
   MultipleImagePicker(this.imagePickFn);
 
-  final void Function(File pickedImage) imagePickFn;
+  final void Function(File pickedImage, File pickedVideo) imagePickFn;
 
   @override
   _MultipleImagePickerState createState() => _MultipleImagePickerState();
@@ -16,6 +16,7 @@ class MultipleImagePicker extends StatefulWidget {
 class _MultipleImagePickerState extends State<MultipleImagePicker> {
   List images = [];
   File _imageFile;
+  File _videoFile;
 
   VideoPlayerController _controller;
   Future<void> _initializeVideoPlayerFuture;
@@ -90,6 +91,12 @@ class _MultipleImagePickerState extends State<MultipleImagePicker> {
                     ),
                     onTap: () {
                       if (_controller != null) _controller.pause();
+
+                      if (uploadModel.type == "image")
+                        _imageFile = null;
+                      else if (uploadModel.type == "video") _videoFile = null;
+
+                      widget.imagePickFn(_imageFile, _videoFile);
                       setState(() {
                         if (uploadModel.type == "image")
                           images.replaceRange(index, index + 1, ['Add Image']);
@@ -138,27 +145,25 @@ class _MultipleImagePickerState extends State<MultipleImagePicker> {
       setState(() {
         _imageFile = File(pickedImageFile.path);
       });
-
       getFileImage(index);
-      widget.imagePickFn(File(pickedImageFile.path));
     } else if (images[index] == "Add Video") {
       final pickedImageFile =
           await ImagePicker().getVideo(source: ImageSource.gallery);
       if (pickedImageFile == null) return;
       setState(() {
-        _imageFile = File(pickedImageFile.path);
+        _videoFile = File(pickedImageFile.path);
       });
-      _controller = VideoPlayerController.file(_imageFile);
+      _controller = VideoPlayerController.file(_videoFile);
       _initializeVideoPlayerFuture = _controller.initialize();
       _controller.setLooping(true);
       _controller.play();
       getFileImage(index);
-      widget.imagePickFn(File(pickedImageFile.path));
     }
+    widget.imagePickFn(_imageFile, _videoFile);
   }
 
   void getFileImage(int index) {
-    if (_imageFile != null) {
+    if (_imageFile != null || _videoFile != null) {
       setState(() {
         ImageUploadModel imageUpload = new ImageUploadModel();
         imageUpload.isUploaded = false;
