@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "710402154780",
-    "project_id": "history-app-9a233",
-    "storage_bucket": "history-app-9a233.appspot.com"
+    "project_number": "436163023981",
+    "project_id": "lichsuapp",
+    "storage_bucket": "lichsuapp.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:710402154780:android:86331845fb3ed7dd099ad9",
+        "mobilesdk_app_id": "1:436163023981:android:03588e3d63fa8484df1b64",
         "android_client_info": {
           "package_name": "com.example.hisapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "710402154780-j4k9r3plrhrbovd9taobn2349aucgpss.apps.googleusercontent.com",
+          "client_id": "436163023981-khninbsnukldegem03f7pr1s0lga2mer.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBDlt77J3RGmqgrIjHgUfz6T-r92Wjv-MM"
+          "current_key": "AIzaSyCy2Z5E30xapwf5hi2_nKnG2_jMNW42ALA"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "710402154780-j4k9r3plrhrbovd9taobn2349aucgpss.apps.googleusercontent.com",
+              "client_id": "436163023981-khninbsnukldegem03f7pr1s0lga2mer.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

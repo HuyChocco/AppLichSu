@@ -139,16 +139,23 @@ class _MultipleImagePickerState extends State<MultipleImagePicker> {
 
   Future<void> _onAddImageClick(int index) async {
     if (images[index] == "Add Image") {
-      final pickedImageFile =
-          await ImagePicker().getImage(source: ImageSource.gallery);
+      final pickedImageFile = await ImagePicker().getImage(
+        source: ImageSource.gallery,
+        imageQuality: 100,
+        maxWidth: 200,
+      );
       if (pickedImageFile == null) return;
       setState(() {
         _imageFile = File(pickedImageFile.path);
       });
       getFileImage(index);
     } else if (images[index] == "Add Video") {
-      final pickedImageFile =
-          await ImagePicker().getVideo(source: ImageSource.gallery);
+      final pickedImageFile = await ImagePicker().getVideo(
+        source: ImageSource.gallery,
+        maxDuration: Duration(
+          seconds: 10,
+        ),
+      );
       if (pickedImageFile == null) return;
       setState(() {
         _videoFile = File(pickedImageFile.path);
