@@ -58,7 +58,13 @@ class _QuizScreenState extends State<QuizScreen> {
         elevation: 0,
         actions: [
           TextButton(
-              onPressed: _controller.nextQuestion, child: Text("Bỏ qua")),
+              onPressed: _controller.nextQuestion,
+              child: Text(
+                "Bỏ qua",
+                style: TextStyle(
+                  fontFamily: 'Nunito',
+                ),
+              )),
         ],
       ),
       body: FutureBuilder(

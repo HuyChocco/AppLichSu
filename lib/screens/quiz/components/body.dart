@@ -42,17 +42,17 @@ class Body extends StatelessWidget {
                     TextSpan(
                       text:
                           "Câu hỏi ${_questionController.questionNumber.value}",
-                      style: Theme.of(context)
-                          .textTheme
-                          .headline4
-                          .copyWith(color: kSecondaryColor),
+                      style: Theme.of(context).textTheme.headline4.copyWith(
+                            color: kSecondaryColor,
+                            fontFamily: 'Nunito',
+                          ),
                       children: [
                         TextSpan(
                           text: "/${_questionController.questions.length}",
-                          style: Theme.of(context)
-                              .textTheme
-                              .headline5
-                              .copyWith(color: kSecondaryColor),
+                          style: Theme.of(context).textTheme.headline5.copyWith(
+                                color: kSecondaryColor,
+                                fontFamily: 'Nunito',
+                              ),
                         ),
                       ],
                     ),

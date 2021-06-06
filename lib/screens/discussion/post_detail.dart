@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:video_player/video_player.dart';
 
 class PostDetail extends StatefulWidget {
   @override
@@ -83,10 +84,54 @@ class _PostDetailState extends State<PostDetail> {
                               leading: CircleAvatar(
                                   backgroundImage:
                                       NetworkImage(post['userImage'])),
-                              title: Text(post['username']),
-                              subtitle: Text(d.toString()),
+                              title: Text(
+                                post['username'],
+                                style: TextStyle(
+                                  fontFamily: 'Nunito',
+                                ),
+                              ),
+                              subtitle: Text(
+                                d.toString(),
+                                style: TextStyle(
+                                  fontFamily: 'Nunito',
+                                ),
+                              ),
                             ),
-                            FittedBox(child: Text(post['text'])),
+                            FittedBox(
+                                child: Text(
+                              post['text'],
+                              style: TextStyle(
+                                fontFamily: 'Nunito',
+                              ),
+                            )),
+                            if (post['imageUpload'] != '' ||
+                                post['videoUpload'] != '')
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  if (post['imageUpload'] != '')
+                                    Container(
+                                      width: 200,
+                                      height: 250,
+                                      decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                              image: NetworkImage(
+                                        post['imageUpload'],
+                                      ))),
+                                    ),
+                                  if (post['videoUpload'] != '')
+                                    if (post['imageUpload'] != '')
+                                      Expanded(
+                                        child: VideoPlayerScreen(
+                                            key: ValueKey(post.id),
+                                            url: post['videoUpload']),
+                                      )
+                                    else
+                                      VideoPlayerScreen(
+                                          // key: ValueKey(discusDocs[index].id),
+                                          url: post['videoUpload']),
+                                ],
+                              ),
                           ],
                         ),
                       );
@@ -128,11 +173,25 @@ class _PostDetailState extends State<PostDetail> {
                                           backgroundImage: NetworkImage(
                                               commentDocs[index]
                                                   .data()['userImage'])),
-                                      title: Text(commentDocs[index]
-                                          .data()['username']),
-                                      subtitle: Text(d.toString()),
+                                      title: Text(
+                                        commentDocs[index].data()['username'],
+                                        style: TextStyle(
+                                          fontFamily: 'Nunito',
+                                        ),
+                                      ),
+                                      subtitle: Text(
+                                        d.toString(),
+                                        style: TextStyle(
+                                          fontFamily: 'Nunito',
+                                        ),
+                                      ),
                                     ),
-                                    Text(commentDocs[index].data()['text']),
+                                    Text(
+                                      commentDocs[index].data()['text'],
+                                      style: TextStyle(
+                                        fontFamily: 'Nunito',
+                                      ),
+                                    ),
                                   ],
                                 ),
                               );
@@ -181,5 +240,107 @@ class _PostDetailState extends State<PostDetail> {
         ),
       ),
     );
+  }
+}
+
+class VideoPlayerScreen extends StatefulWidget {
+  final bool play;
+  final String url;
+  final key;
+  VideoPlayerScreen({this.key, this.play, this.url}) : super(key: key);
+
+  @override
+  _VideoPlayerScreenState createState() => _VideoPlayerScreenState();
+}
+
+class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
+  VideoPlayerController _controller;
+  Future<void> _initializeVideoPlayerFuture;
+
+  @override
+  void initState() {
+    // Create an store the VideoPlayerController. The VideoPlayerController
+    // offers several different constructors to play videos from assets, files,
+    // or the internet.
+    _controller = VideoPlayerController.network(
+      widget.url,
+    );
+
+    _initializeVideoPlayerFuture = _controller.initialize();
+    _controller.setLooping(true);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    // Ensure disposing of the VideoPlayerController to free up resources.
+    _controller.dispose();
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+      future: _initializeVideoPlayerFuture,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          // If the VideoPlayerController has finished initialization, use
+          // the data it provides to limit the aspect ratio of the video.
+          return Stack(children: [
+            Container(
+              width: 200,
+              height: 200,
+              // Use the VideoPlayer widget to display the video.
+              child: VideoPlayer(_controller),
+            ),
+            Positioned(
+              right: 5,
+              top: 5,
+              child: IconButton(
+                color: Colors.red,
+                onPressed: () {
+                  setState(() {
+                    // If the video is playing, pause it.
+                    if (_controller.value.isPlaying) {
+                      _controller.pause();
+                    } else {
+                      // If the video is paused, play it.
+                      _controller.play();
+                    }
+                  });
+                },
+                icon: Icon(_controller.value.isPlaying
+                    ? Icons.pause
+                    : Icons.play_arrow),
+              ),
+            ),
+          ]);
+        } else {
+          // If the VideoPlayerController is still initializing, show a
+          // loading spinner.
+          return Center(child: CircularProgressIndicator());
+        }
+      },
+    );
+    /* floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // Wrap the play or pause in a call to `setState`. This ensures the
+          // correct icon is shown.
+          setState(() {
+            // If the video is playing, pause it.
+            if (_controller.value.isPlaying) {
+              _controller.pause();
+            } else {
+              // If the video is paused, play it.
+              _controller.play();
+            }
+          });
+        },
+        // Display the correct icon depending on the state of the player.
+        child: Icon(
+          _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
+        ),
+      ), */
   }
 }

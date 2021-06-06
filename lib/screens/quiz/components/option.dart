@@ -51,7 +51,11 @@ class Option extends StatelessWidget {
                   Expanded(
                     child: Text(
                       "${index + 1}. $text",
-                      style: TextStyle(color: getTheRightColor(), fontSize: 16),
+                      style: TextStyle(
+                        color: getTheRightColor(),
+                        fontSize: 16,
+                        fontFamily: 'Nunito',
+                      ),
                     ),
                   ),
                   Container(

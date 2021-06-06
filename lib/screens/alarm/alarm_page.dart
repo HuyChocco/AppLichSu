@@ -47,7 +47,7 @@ class _AlarmPageState extends State<AlarmPage> {
             Text(
               'Nhắc nhở',
               style: TextStyle(
-                  //fontFamily: 'Nunito',
+                  fontFamily: 'Nunito',
                   fontWeight: FontWeight.w700,
                   //color: CustomColors.primaryTextColor,
                   fontSize: 16),
@@ -103,7 +103,7 @@ class _AlarmPageState extends State<AlarmPage> {
                                         alarm.title,
                                         style: TextStyle(
                                           color: Colors.white,
-                                          //fontFamily: 'Nunito',
+                                          fontFamily: 'Nunito',
                                         ),
                                       ),
                                     ],
@@ -119,7 +119,7 @@ class _AlarmPageState extends State<AlarmPage> {
                                 'Mon-Fri',
                                 style: TextStyle(
                                   color: Colors.white,
-                                  //fontFamily: 'Nunito',
+                                  fontFamily: 'Nunito',
                                 ),
                               ),
                               Row(
@@ -130,7 +130,7 @@ class _AlarmPageState extends State<AlarmPage> {
                                     alarmTime,
                                     style: TextStyle(
                                         color: Colors.white,
-                                        //fontFamily: 'Nunito',
+                                        fontFamily: 'Nunito',
                                         fontSize: 24,
                                         fontWeight: FontWeight.w700),
                                   ),
@@ -260,7 +260,7 @@ class _AlarmPageState extends State<AlarmPage> {
                                       'Thêm nhắc nhở',
                                       style: TextStyle(
                                         color: Colors.white,
-                                        // fontFamily: 'Nunito',
+                                        fontFamily: 'Nunito',
                                       ),
                                     ),
                                   ],
@@ -280,7 +280,10 @@ class _AlarmPageState extends State<AlarmPage> {
                   return Center(
                     child: Text(
                       'Loading..',
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: 'Nunito',
+                      ),
                     ),
                   );
                 },

@@ -52,11 +52,17 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   Text(
                     "Xin chào bạn,",
                     style: Theme.of(context).textTheme.headline4.copyWith(
-                        color: Colors.white, fontWeight: FontWeight.bold),
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Nunito',
+                        ),
                   ),
                   Text(
                     "Nhập tên bạn dưới đây",
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'Nunito',
+                    ),
                   ),
                   Spacer(), // 1/6
                   TextField(
@@ -104,10 +110,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       ),
                       child: Text(
                         "Bắt đầu ngay nào",
-                        style: Theme.of(context)
-                            .textTheme
-                            .button
-                            .copyWith(color: Colors.black),
+                        style: Theme.of(context).textTheme.button.copyWith(
+                              color: Colors.black,
+                              fontFamily: 'Nunito',
+                            ),
                       ),
                     ),
                   ),

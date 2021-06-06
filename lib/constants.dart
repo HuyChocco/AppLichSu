@@ -34,6 +34,7 @@ const kHeadingextStyle = TextStyle(
   fontSize: 28,
   color: kTextColor,
   fontWeight: FontWeight.bold,
+  fontFamily: 'Nunito',
 );
 const kSubheadingextStyle = TextStyle(
   fontSize: 24,

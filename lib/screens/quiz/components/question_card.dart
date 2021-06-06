@@ -33,10 +33,10 @@ class QuestionCard extends StatelessWidget {
           children: [
             Text(
               question.sentence,
-              style: Theme.of(context)
-                  .textTheme
-                  .headline6
-                  .copyWith(color: kBlackColor),
+              style: Theme.of(context).textTheme.headline6.copyWith(
+                    color: kBlackColor,
+                    fontFamily: 'Nunito',
+                  ),
             ),
             SizedBox(height: kDefaultPadding / 2),
             ...List.generate(

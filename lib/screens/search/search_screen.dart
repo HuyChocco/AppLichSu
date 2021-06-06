@@ -97,7 +97,12 @@ class _SearchScreenState extends State<SearchScreen> {
                         itemBuilder: (ctx, index) {
                           Content listData = searchresult[index];
                           return ListTile(
-                            title: Text(listData.keyWord),
+                            title: Text(
+                              listData.keyWord,
+                              style: TextStyle(
+                                fontFamily: 'Nunito',
+                              ),
+                            ),
                             onTap: () {
                               Navigator.of(context).pushNamed(
                                   '/main-content-screen',
@@ -120,7 +125,12 @@ class _SearchScreenState extends State<SearchScreen> {
                         itemBuilder: (ctx, index) {
                           Content listData = _list[index];
                           return ListTile(
-                            title: Text(listData.keyWord),
+                            title: Text(
+                              listData.keyWord,
+                              style: TextStyle(
+                                fontFamily: 'Nunito',
+                              ),
+                            ),
                             onTap: () {
                               Navigator.of(context).pushNamed(
                                   '/main-content-screen',

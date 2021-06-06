@@ -203,7 +203,11 @@ class _MainContentScreenState extends State<MainContentScreen> {
           data.MainContents.forEach((element) {
             TimelineModel item = TimelineModel(
               Column(children: [
-                Text(element, style: TextStyle(fontSize: 14)),
+                Text(element,
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontFamily: 'Nunito',
+                    )),
                 SizedBox(
                   height: 20,
                 ),
@@ -234,7 +238,12 @@ class _MainContentScreenState extends State<MainContentScreen> {
                     Navigator.of(context).pushNamed('/quiz-screen',
                         arguments: {'idContent': _id, 'idCate': _idCate});
                   },
-                  child: Text('Làm bài kiểm tra')),
+                  child: Text(
+                    'Làm bài kiểm tra',
+                    style: TextStyle(
+                      fontFamily: 'Nunito',
+                    ),
+                  )),
             ]),
             iconBackground: Colors.white,
             icon: Icon(Icons.circle, color: Colors.blue),

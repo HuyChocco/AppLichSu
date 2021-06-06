@@ -141,10 +141,10 @@ class _DiscussionScreenState extends State<DiscussionScreen> {
                     width: double.infinity,
                     child: Text(
                       "CÂU HỎI",
-                      style: Theme.of(context)
-                          .textTheme
-                          .headline6
-                          .copyWith(color: Theme.of(context).accentColor),
+                      style: Theme.of(context).textTheme.headline6.copyWith(
+                            color: Theme.of(context).accentColor,
+                            fontFamily: 'Nunito',
+                          ),
                     ),
                   ),
                   Divider(),
@@ -232,9 +232,11 @@ class _DiscussionScreenState extends State<DiscussionScreen> {
                                     "Diễn đàn thảo luận lịch sử",
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold),
+                                      color: Colors.black,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'Nunito',
+                                    ),
                                   ),
                                   ElevatedButton(
                                     style: ButtonStyle(
@@ -242,27 +244,37 @@ class _DiscussionScreenState extends State<DiscussionScreen> {
                                             MaterialStateProperty.all(
                                                 Colors.red)),
                                     onPressed: _logOut,
-                                    child: Text("Đăng xuất"),
+                                    child: Text(
+                                      "Đăng xuất",
+                                      style: TextStyle(
+                                        fontFamily: 'Nunito',
+                                      ),
+                                    ),
                                   ),
                                   ElevatedButton(
                                     onPressed: _showBottomForm,
-                                    child: Text("Đăng câu hỏi"),
+                                    child: Text(
+                                      "Đăng câu hỏi",
+                                      style: TextStyle(
+                                        fontFamily: 'Nunito',
+                                      ),
+                                    ),
                                   ),
                                   SizedBox(height: 20),
                                   Expanded(
                                     child: Container(
                                         width: double.infinity,
-                                        decoration: BoxDecoration(
-                                          color: Colors.white.withOpacity(0.2),
+                                        /*  decoration: BoxDecoration(
+                                          color: Colors.red.withOpacity(0.2),
                                           borderRadius: BorderRadius.only(
                                             topLeft: Radius.circular(60),
                                             topRight: Radius.circular(60),
                                           ),
-                                        ),
+                                        ), */
                                         child: Column(children: [
-                                          SizedBox(
+                                          /* SizedBox(
                                             height: 80,
-                                          ),
+                                          ), */
                                           Expanded(
                                             child: StreamBuilder(
                                                 stream: FirebaseFirestore
@@ -322,14 +334,31 @@ class _DiscussionScreenState extends State<DiscussionScreen> {
                                                                       discusDocs[index]
                                                                               .data()[
                                                                           'username'],
+                                                                      style:
+                                                                          TextStyle(
+                                                                        fontFamily:
+                                                                            'Nunito',
+                                                                      ),
                                                                     ),
-                                                                    subtitle: Text(
-                                                                        d.toString()),
+                                                                    subtitle:
+                                                                        Text(
+                                                                      d.toString(),
+                                                                      style:
+                                                                          TextStyle(
+                                                                        fontFamily:
+                                                                            'Nunito',
+                                                                      ),
+                                                                    ),
                                                                   ),
                                                                   Text(
                                                                     discusDocs[index]
                                                                             .data()[
                                                                         'text'],
+                                                                    style:
+                                                                        TextStyle(
+                                                                      fontFamily:
+                                                                          'Nunito',
+                                                                    ),
                                                                   ),
                                                                   if (discusDocs[index].data()[
                                                                               'imageUpload'] !=
@@ -412,11 +441,16 @@ class _DiscussionScreenState extends State<DiscussionScreen> {
                                                                               ),
                                                                             );
                                                                           }),
-                                                                      Text(discusDocs[
-                                                                              index]
-                                                                          .data()[
-                                                                              'likes']
-                                                                          .toString()),
+                                                                      Text(
+                                                                        discusDocs[index]
+                                                                            .data()['likes']
+                                                                            .toString(),
+                                                                        style:
+                                                                            TextStyle(
+                                                                          fontFamily:
+                                                                              'Nunito',
+                                                                        ),
+                                                                      ),
                                                                       IconButton(
                                                                           onPressed:
                                                                               () {
@@ -440,7 +474,12 @@ class _DiscussionScreenState extends State<DiscussionScreen> {
                                                                                 child: CircularProgressIndicator(),
                                                                               );
                                                                             }
-                                                                            return Text(data.data.docs.length.toString());
+                                                                            return Text(
+                                                                              data.data.docs.length.toString(),
+                                                                              style: TextStyle(
+                                                                                fontFamily: 'Nunito',
+                                                                              ),
+                                                                            );
                                                                           }),
                                                                     ],
                                                                   ),
@@ -465,10 +504,20 @@ class _DiscussionScreenState extends State<DiscussionScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Text("Bạn chưa đăng nhập"),
+                              Text(
+                                "Bạn chưa đăng nhập",
+                                style: TextStyle(
+                                  fontFamily: 'Nunito',
+                                ),
+                              ),
                               ElevatedButton(
                                 onPressed: _showBottomSheetDialog,
-                                child: Text("Đăng nhập"),
+                                child: Text(
+                                  "Đăng nhập",
+                                  style: TextStyle(
+                                    fontFamily: 'Nunito',
+                                  ),
+                                ),
                               ),
                             ],
                           ),

@@ -58,11 +58,11 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 children: <Widget>[
                   SizedBox(height: 30),
                   Text(title, style: kHeadingextStyle),
-                  SizedBox(height: 16),
+                  //SizedBox(height: 16),
                 ],
               ),
             ),
-            SizedBox(height: 60),
+            SizedBox(height: 20),
             Expanded(
               child: Container(
                 width: double.infinity,
@@ -173,6 +173,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                     style: kSubtitleTextStyle.copyWith(
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold,
+                                      fontFamily: 'Nunito',
                                     ),
                                   ),
                                 ),
@@ -226,6 +227,7 @@ class CourseContent extends StatelessWidget {
               time,
               style: TextStyle(
                 fontSize: 12,
+                fontFamily: 'Nunito',
               ),
             ),
           Container(
@@ -241,6 +243,7 @@ class CourseContent extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                       fontSize: 16,
                       height: 1.5,
+                      fontFamily: 'Nunito',
                     ),
                   ),
                 ],

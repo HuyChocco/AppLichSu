@@ -22,18 +22,18 @@ class ScoreScreen extends StatelessWidget {
               Spacer(flex: 3),
               Text(
                 "Điểm số",
-                style: Theme.of(context)
-                    .textTheme
-                    .headline3
-                    .copyWith(color: kSecondaryColor),
+                style: Theme.of(context).textTheme.headline3.copyWith(
+                      color: kSecondaryColor,
+                      fontFamily: 'Nunito',
+                    ),
               ),
               Spacer(),
               Text(
                 "${_numberOfCorrectAns * 10}/${_qnController.questions.length * 10}",
-                style: Theme.of(context)
-                    .textTheme
-                    .headline4
-                    .copyWith(color: kSecondaryColor),
+                style: Theme.of(context).textTheme.headline4.copyWith(
+                      color: kSecondaryColor,
+                      fontFamily: 'Nunito',
+                    ),
               ),
               Spacer(flex: 3),
             ],

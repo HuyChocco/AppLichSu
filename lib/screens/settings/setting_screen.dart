@@ -37,10 +37,10 @@ class _SettingScreenState extends State<SettingScreen> {
               padding: EdgeInsets.all(kDefaultPadding * 0.75),
               child: Text(
                 "Đăng xuất",
-                style: Theme.of(context)
-                    .textTheme
-                    .button
-                    .copyWith(color: Colors.black),
+                style: Theme.of(context).textTheme.button.copyWith(
+                      color: Colors.black,
+                      fontFamily: 'Nunito',
+                    ),
               ),
             ),
           ),

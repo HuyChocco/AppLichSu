@@ -102,11 +102,17 @@ class _DashboardScreenState extends State<DashboardScreen> {
             SizedBox(height: 30),
             Text(
               "Chào $_user_name,",
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  fontSize: 16,
+                  fontFamily: 'Nunito',
+                  fontWeight: FontWeight.bold),
             ),
             Text(
               "Hãy bắt đầu tìm hiểu lịch sử nào!",
-              style: TextStyle(fontSize: 12),
+              style: TextStyle(
+                fontSize: 12,
+                fontFamily: 'Nunito',
+              ),
             ),
             GestureDetector(
               onTap: () {
@@ -130,6 +136,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       style: TextStyle(
                         fontSize: 10,
                         color: Color(0xFFA0A5BD),
+                        fontFamily: 'Nunito',
                       ),
                     )
                   ],
@@ -144,6 +151,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
+                    fontFamily: 'Nunito',
                   ),
                 ),
                 // Text(
@@ -152,7 +160,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 // ),
               ],
             ),
-            SizedBox(height: 30),
+            // SizedBox(height: 10),
             FutureBuilder(
               future: Provider.of<CategoryProvider>(context, listen: false)
                   .getData(),
@@ -206,6 +214,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                         fontSize: 16,
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold,
+                                        fontFamily: 'Nunito',
                                       ),
                                     ),
                                   ),
@@ -218,9 +227,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                     child: Text(
                                       data.Categories[index].description,
                                       style: TextStyle(
-                                        fontSize: 8,
+                                        fontSize: 6,
                                         color: Colors.black,
-                                        fontWeight: FontWeight.bold,
+                                        // fontWeight: FontWeight.bold,
+                                        fontFamily: 'Nunito',
                                       ),
                                     ),
                                   ),
@@ -229,66 +239,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             ),
                           ),
                         ),
-                        /* StaggeredGridView.countBuilder(
-                          padding: EdgeInsets.all(0),
-                          crossAxisCount: 2,
-                          itemCount: data.Categories.length,
-                          crossAxisSpacing: 20,
-                          mainAxisSpacing: 20,
-                          itemBuilder: (context, index) {
-                            return GestureDetector(
-                              onTap: () {
-                                Navigator.of(context)
-                                    .pushNamed('/details-screen', arguments: {
-                                  'categoryId': data.Categories[index].id,
-                                  'title': data.Categories[index].title
-                                }).then((value) {
-                                  didChangeDependencies();
-                                  //setState(() {});
-                                });
-                              },
-                              child: Container(
-                                padding: EdgeInsets.all(20),
-                                height: index.isEven ? 200 : 240,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(16),
-                                  /* image: DecorationImage(
-                                    image: AssetImage(
-                                        data.Categories[index].imagePath),
-                                    fit: BoxFit.fill,
-                                  ), */
-                                ),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Container(
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(16),
-                                          color: Colors.white.withOpacity(0.4)),
-                                      padding: EdgeInsets.all(6),
-                                      child: Text(
-                                        data.Categories[index].title,
-                                        style: TextStyle(
-                                          fontSize: 20,
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ),
-                                    /*  Text(
-                                  '${categories[index].numOfCourses} Courses',
-                                  style: TextStyle(
-                                    color: kTextColor.withOpacity(.5),
-                                  ),
-                                ) */
-                                  ],
-                                ),
-                              ),
-                            );
-                          },
-                          staggeredTileBuilder: (index) => StaggeredTile.fit(1),
-                        ), */
                       ),
                     ),
             ),
@@ -362,6 +312,7 @@ class CurrentLecture extends StatelessWidget {
                       title,
                       style: TextStyle(
                         fontSize: 10,
+                        fontFamily: 'Nunito',
                         //color: Color(0xFFA0A5BD),
                       ),
                     ),
@@ -374,7 +325,8 @@ class CurrentLecture extends StatelessWidget {
                     child: Text(
                       "Nhấp để tiếp tục",
                       style: TextStyle(
-                        fontSize: 10,
+                        fontSize: 6,
+                        fontFamily: 'Nunito',
                         //color: Color(0xFFA0A5BD),
                       ),
                     ),
