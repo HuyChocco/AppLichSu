@@ -218,16 +218,16 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                       ),
                                     ),
                                   ),
-                                  Spacer(),
+                                  //SizedBox(height: 1),
                                   Container(
                                     /*  decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(16),
                                         color: Colors.white.withOpacity(0.4)), */
-                                    padding: EdgeInsets.all(6),
+                                    //padding: EdgeInsets.all(2),
                                     child: Text(
                                       data.Categories[index].description,
                                       style: TextStyle(
-                                        fontSize: 6,
+                                        fontSize: 9,
                                         color: Colors.black,
                                         // fontWeight: FontWeight.bold,
                                         fontFamily: 'Nunito',
