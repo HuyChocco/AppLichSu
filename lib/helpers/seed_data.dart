@@ -200,28 +200,185 @@ class SeedData {
   static Future<void> insertContentAHDT() async {
     await DBHelper.insert('content', {
       'id': '100',
-      'title': 'Hùng Vương',
+      'title': 'Kinh Dương Vương',
       'id_category': '2',
-      'time': '2524 TCN-258 TCN',
-      'file_path': 'assets/contents/tran_danh/song_bach_dang.txt',
-      'image_path': 'assets/images/bach_dang.jpg',
-      'video_path': 'https://www.youtube.com/watch?v=SIO3T0Yli3g',
+      'time': '2919 TCN-2792 TCN',
+      'file_path': 'assets/contents/anh_hung/kinh_duong_vuong.txt',
+      'image_path': 'assets/images/kinh_duong_vuong.PNG',
+      'video_path': 'https://www.youtube.com/watch?v=ERydxDnGmB8&t=92s',
       'is_done': 0,
       'number': 1,
-      'key_word': 'Hùng Vương',
+      'key_word': 'Kinh Dương Vương, Lộc Tục',
     });
 
     await DBHelper.insert('content', {
       'id': '101',
-      'title': 'Lữ Gia',
+      'title': 'Lạc Long Quân',
       'id_category': '2',
-      'time': '2528 TCN',
-      'file_path': 'assets/contents/tran_danh/song_bach_dang.txt',
-      'image_path': 'assets/images/bach_dang.jpg',
-      'video_path': 'https://www.youtube.com/watch?v=SIO3T0Yli3g',
+      'time': 'Khoảng thế kỷ 8-7 TCN',
+      'file_path': 'assets/contents/anh_hung/lac_long_quan.txt',
+      'image_path': 'assets/images/lac_long_quan.PNG',
+      'video_path': 'https://www.youtube.com/watch?v=9ESDvo_cgQI&t=17s',
       'is_done': 0,
       'number': 2,
-      'key_word': 'Lữ Gia',
+      'key_word': 'Lạc Long Quân, Âu Cơ',
+    });
+
+    await DBHelper.insert('content', {
+      'id': '102',
+      'title': 'Triệu Đà',
+      'id_category': '2',
+      'time': '257 TCN - 137 TCN',
+      'file_path': 'assets/contents/anh_hung/trieu_da.txt',
+      'image_path': 'assets/images/trieu_da.PNG',
+      'video_path': 'https://www.youtube.com/watch?v=Ww11vTVYywc&t=59s',
+      'is_done': 0,
+      'number': 3,
+      'key_word': 'Triệu Đà',
+    });
+
+    await DBHelper.insert('content', {
+      'id': '103',
+      'title': 'Trưng Trắc, Trưng Nhị (Hai Bà Trưng)',
+      'id_category': '2',
+      'time': '14 - 43',
+      'file_path': 'assets/contents/anh_hung/trung_trac_trung_nhi.txt',
+      'image_path': 'assets/images/hai_ba_trung.PNG',
+      'video_path': 'https://www.youtube.com/watch?v=vqvXYvF4Yes',
+      'is_done': 0,
+      'number': 4,
+      'key_word': 'Trưng Trắc, Trưng Nhị, Hai Bà Trưng',
+    });
+
+    await DBHelper.insert('content', {
+      'id': '104',
+      'title': 'Ngô Quyền',
+      'id_category': '2',
+      'time': '897 - 944',
+      'file_path': 'assets/contents/anh_hung/ngo_quyen.txt',
+      'image_path': 'assets/images/ngo_quyen.PNG',
+      'video_path': 'https://www.youtube.com/watch?v=XBW6-EYoGn0',
+      'is_done': 0,
+      'number': 5,
+      'key_word': 'Ngô Quyền',
+    });
+
+    await DBHelper.insert('content', {
+      'id': '105',
+      'title': 'Đinh Bộ Lĩnh',
+      'id_category': '2',
+      'time': '22 tháng 3 năm 924 - tháng 10 năm 979',
+      'file_path': 'assets/contents/anh_hung/dinh_bo_linh.txt',
+      'image_path': 'assets/images/dinh_bo_linh.PNG',
+      'video_path': 'https://www.youtube.com/watch?v=5LsjpuLgWFM',
+      'is_done': 0,
+      'number': 6,
+      'key_word': 'Đinh Bộ Lĩnh',
+    });
+
+    await DBHelper.insert('content', {
+      'id': '106',
+      'title': 'Lý Thái Tổ',
+      'id_category': '2',
+      'time': '8 tháng 3 năm 974 – 31 tháng 3 năm 1028',
+      'file_path': 'assets/contents/anh_hung/ly_thai_to.txt',
+      'image_path': 'assets/images/ly_thai_to.PNG',
+      'video_path': 'https://www.youtube.com/watch?v=TEYubPciKI0',
+      'is_done': 0,
+      'number': 7,
+      'key_word': 'Lý Thái Tổ, Lý Công Uẩn',
+    });
+
+    await DBHelper.insert('content', {
+      'id': '107',
+      'title': 'Lý Thường Kiệt',
+      'id_category': '2',
+      'time': '1019 – 1105',
+      'file_path': 'assets/contents/anh_hung/ly_thuong_kiet.txt',
+      'image_path': 'assets/images/ly_thuong_kiet.PNG',
+      'video_path': 'https://www.youtube.com/watch?v=wkk3Y7kKAMY',
+      'is_done': 0,
+      'number': 8,
+      'key_word': 'Lý Thường Kiệt',
+    });
+
+    await DBHelper.insert('content', {
+      'id': '108',
+      'title': 'Trần Quốc Tuấn',
+      'id_category': '2',
+      'time': '? - 20 tháng 8, 1300',
+      'file_path': 'assets/contents/anh_hung/tran_quoc_tuan.txt',
+      'image_path': 'assets/images/tran_quoc_tuan.PNG',
+      'video_path': 'https://www.youtube.com/watch?v=6c294upVgNs',
+      'is_done': 0,
+      'number': 9,
+      'key_word': 'Trần Quốc Tuấn, Trần Hưng Đạo',
+    });
+
+    await DBHelper.insert('content', {
+      'id': '109',
+      'title': 'Lê Lợi',
+      'id_category': '2',
+      'time': '10 tháng 9, 13852 – 5 tháng 10, 1433',
+      'file_path': 'assets/contents/anh_hung/le_loi.txt',
+      'image_path': 'assets/images/le_loi.PNG',
+      'video_path': 'https://www.youtube.com/watch?v=kUqgQi51-h4',
+      'is_done': 0,
+      'number': 10,
+      'key_word': 'Lê Lợi',
+    });
+
+    await DBHelper.insert('content', {
+      'id': '110',
+      'title': 'Nguyễn Huệ',
+      'id_category': '2',
+      'time': '1753 – 1792',
+      'file_path': 'assets/contents/anh_hung/nguyen_hue.txt',
+      'image_path': 'assets/images/nguyen_hue.PNG',
+      'video_path': 'https://www.youtube.com/watch?v=j9g3N9li0O8',
+      'is_done': 0,
+      'number': 11,
+      'key_word': 'Nguyễn Huệ, Quang Trung',
+    });
+
+    await DBHelper.insert('content', {
+      'id': '111',
+      'title': 'Võ Nguyên Giáp',
+      'id_category': '2',
+      'time': '25 tháng 8 năm 1911 – 4 tháng 10 năm 2013',
+      'file_path': 'assets/contents/anh_hung/vo_nguyen_giap.txt',
+      'image_path': 'assets/images/vo_nguyen_giap.PNG',
+      'video_path': 'https://www.youtube.com/watch?v=8cC-7cuTfks',
+      'is_done': 0,
+      'number': 12,
+      'key_word': 'Võ Nguyên Giáp, Điện Biên Phủ',
+    });
+
+    await DBHelper.insert('content', {
+      'id': '112',
+      'title': 'Bảo Đại',
+      'id_category': '2',
+      'time': '22 tháng 10 năm 1913 – 31 tháng 7 năm 1997',
+      'file_path': 'assets/contents/anh_hung/bao_dai.txt',
+      'image_path': 'assets/images/bao_dai.PNG',
+      'video_path': 'https://www.youtube.com/watch?v=T37oYKHjLnQ',
+      'is_done': 0,
+      'number': 13,
+      'key_word': 'Bảo Đại',
+    });
+
+    await DBHelper.insert('content', {
+      'id': '115',
+      'title': 'Hồ Chí Minh',
+      'id_category': '2',
+      'time': '19/05/1890 - 02/09/1969',
+      'file_path': 'assets/contents/anh_hung/ho_chi_minh.txt',
+      'image_path': 'assets/images/ho_chi_minh.PNG',
+      'video_path': 'https://www.youtube.com/watch?v=WncgG_ZQOyE',
+      'is_done': 0,
+      'number': 16,
+      'key_word':
+          'Hồ Chí Minh, Nguyễn Sinh Cung, Nguyễn Tất Thành, 19/5/1890, 2/9/1969, 5/6/1911',
     });
   }
 
@@ -237,6 +394,124 @@ class SeedData {
       'is_done': 0,
       'number': 1,
       'key_word': 'Trận chiến trên sông Bạch Đằng, 938',
+    });
+
+    await DBHelper.insert('content', {
+      'id': '201',
+      'title': 'Trận Như Nguyệt',
+      'id_category': '3',
+      'time': '1077',
+      'file_path': 'assets/contents/tran_danh/tran_nhu_nguyet.txt',
+      'image_path': 'assets/images/tran_nhu_nguyet.PNG',
+      'video_path': 'https://www.youtube.com/watch?v=c1aKcDx2FI4',
+      'is_done': 0,
+      'number': 2,
+      'key_word': 'Trận Như Nguyệt, 1077',
+    });
+
+    await DBHelper.insert('content', {
+      'id': '202',
+      'title': 'Trận Đông Bộ Đầu',
+      'id_category': '3',
+      'time': '1258',
+      'file_path': 'assets/contents/tran_danh/tran_dong_bo_dau.txt',
+      'image_path': 'assets/images/tran_dong_bo_dau.PNG',
+      'video_path': 'https://www.youtube.com/watch?v=lWOIICoV2tE',
+      'is_done': 0,
+      'number': 3,
+      'key_word': 'Trận Đông Bộ Đầu, 1258',
+    });
+
+    await DBHelper.insert('content', {
+      'id': '203',
+      'title': 'Trận Bạch Đằng',
+      'id_category': '3',
+      'time': '1288',
+      'file_path': 'assets/contents/tran_danh/tran_bach_dang.txt',
+      'image_path': 'assets/images/tran_bach_dang.PNG',
+      'video_path': 'https://www.youtube.com/watch?v=8l-f-a2dQNY',
+      'is_done': 0,
+      'number': 4,
+      'key_word': 'Trận Bạch Đằng, 1288',
+    });
+
+    await DBHelper.insert('content', {
+      'id': '204',
+      'title': 'Trận Chi Lăng – Xương Giang',
+      'id_category': '3',
+      'time': '1427',
+      'file_path': 'assets/contents/tran_danh/tran_chi_lang_xuong_giang.txt',
+      'image_path': 'assets/images/tran_chi_lang_xuong_giang.PNG',
+      'video_path': 'https://www.youtube.com/watch?v=U1vduFi0Z1I',
+      'is_done': 0,
+      'number': 5,
+      'key_word': 'Trận Chi Lăng – Xương Giang, 1427',
+    });
+
+    await DBHelper.insert('content', {
+      'id': '205',
+      'title': 'Trận Rạch Gầm – Xoài Mút',
+      'id_category': '3',
+      'time': '1785',
+      'file_path': 'assets/contents/tran_danh/tran_rach_gam_xoai_mut.txt',
+      'image_path': 'assets/images/tran_rach_gam_xoai_mut.PNG',
+      'video_path': 'https://www.youtube.com/watch?v=8YNRXlxH_HI',
+      'is_done': 0,
+      'number': 6,
+      'key_word': 'Trận Rạch Gầm – Xoài Mút, 1785',
+    });
+
+    await DBHelper.insert('content', {
+      'id': '206',
+      'title': 'Trận Ngọc Hồi – Đống Đa',
+      'id_category': '3',
+      'time': '1789',
+      'file_path': 'assets/contents/tran_danh/tran_ngoc_hoi_dong_da.txt',
+      'image_path': 'assets/images/tran_ngoc_hoi_dong_da.PNG',
+      'video_path': 'https://www.youtube.com/watch?v=qFv6NKIjQj0',
+      'is_done': 0,
+      'number': 7,
+      'key_word': 'Trận Ngọc Hồi – Đống Đa, 1789',
+    });
+
+    await DBHelper.insert('content', {
+      'id': '207',
+      'title': 'Chiến dịch Điện Biên Phủ',
+      'id_category': '3',
+      'time': '1954',
+      'file_path': 'assets/contents/tran_danh/chien_dich_dien_bien_phu.txt',
+      'image_path': 'assets/images/chien_dich_dien_bien_phu.PNG',
+      'video_path': 'https://www.youtube.com/watch?v=P83Ik_E9Z78',
+      'is_done': 0,
+      'number': 8,
+      'key_word': 'Chiến dịch Điện Biên Phủ, 1954',
+    });
+
+    await DBHelper.insert('content', {
+      'id': '208',
+      'title': 'Trận Điện Biên Phủ trên không',
+      'id_category': '3',
+      'time': '1972',
+      'file_path':
+          'assets/contents/tran_danh/tran_dien_bien_phu_tren_khong.txt',
+      'image_path': 'assets/images/tran_dien_bien_phu_tren_khong.PNG',
+      'video_path': 'https://www.youtube.com/watch?v=5581I3GotxA',
+      'is_done': 0,
+      'number': 9,
+      'key_word': 'Trận Điện Biên Phủ trên không, 1972',
+    });
+
+    await DBHelper.insert('content', {
+      'id': '209',
+      'title': 'Chiến dịch Hồ Chí Minh',
+      'id_category': '3',
+      'time': '1975',
+      'file_path': 'assets/contents/tran_danh/chien_dich_ho_chi_minh.txt',
+      'image_path': 'assets/images/chien_dich_ho_chi_minh.PNG',
+      'video_path': 'https://www.youtube.com/watch?v=y9DTvCUL1Yg',
+      'is_done': 0,
+      'number': 10,
+      'key_word': 'Chiến dịch Hồ Chí Minh, 1975, 30 tháng 4',
     });
   }
 
