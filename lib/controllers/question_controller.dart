@@ -96,7 +96,7 @@ class QuestionController extends GetxController
     update();
     _idContent = _questions[0].idContent;
 
-    double _propotionOfRightAns = _numOfCorrectAns / questions.length;
+    double _propotionOfRightAns = _numOfCorrectAns / questions?.length;
 
     if (_propotionOfRightAns >= 0.8) {
       SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -112,7 +112,7 @@ class QuestionController extends GetxController
   }
 
   void nextQuestion() {
-    if (_questionNumber.value != _questions.length) {
+    if (_questionNumber.value != _questions?.length) {
       _isAnswered = false;
       _pageController.nextPage(
           duration: Duration(milliseconds: 250), curve: Curves.ease);
