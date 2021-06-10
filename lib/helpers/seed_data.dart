@@ -853,35 +853,35 @@ class SeedData {
     await DBHelper.insert('question', {
       'id': '100',
       'sentence':
-          'Chủ tịch Hồ Chí Minh đã đọc bản tuyên ngôn độc lập tại quãng trường Ba Đình, khai sinh ra nước Việt Nam Dân Chủ Cộng Hòa với thủ đô là Hà Nội vào thời gian nào?',
+          'Ai là người hình thành nhà nước sơ khai đầu tiên vào năm Nhâm Tuất (khoảng 2879TCN)?',
       'id_content': '100',
       'number': 100,
       'answer_index': 1,
     });
     await DBHelper.insert('answer', {
       'id': '100',
-      'sentence': '30/04/1975',
+      'sentence': 'Lạc Long Quân',
       'id_question': '100',
       'id_content': '100',
       'number': 0,
     });
     await DBHelper.insert('answer', {
       'id': '101',
-      'sentence': '02/09/1945',
+      'sentence': 'Kinh Dương Vương',
       'id_question': '100',
       'id_content': '100',
       'number': 1,
     });
     await DBHelper.insert('answer', {
       'id': '102',
-      'sentence': '20/07/1954',
+      'sentence': 'Âu Cơ',
       'id_question': '100',
       'id_content': '100',
       'number': 2,
     });
     await DBHelper.insert('answer', {
       'id': '103',
-      'sentence': '07/05/1954',
+      'sentence': 'Vua Thần Nông',
       'id_question': '100',
       'id_content': '100',
       'number': 3,
@@ -889,36 +889,35 @@ class SeedData {
     //Lạc Long Quân
     await DBHelper.insert('question', {
       'id': '110',
-      'sentence':
-          'Chủ tịch Hồ Chí Minh đã đọc bản tuyên ngôn độc lập tại quãng trường Ba Đình, khai sinh ra nước Việt Nam Dân Chủ Cộng Hòa với thủ đô là Hà Nội vào thời gian nào?',
+      'sentence': 'Lạc Long Quân được xem là vị vua của nhà nước sơ khai nào?',
       'id_content': '101',
       'number': 110,
       'answer_index': 0,
     });
     await DBHelper.insert('answer', {
       'id': '110',
-      'sentence': '30/04/1975',
+      'sentence': 'Xích Quỷ',
       'id_question': '110',
       'id_content': '101',
       'number': 0,
     });
     await DBHelper.insert('answer', {
       'id': '111',
-      'sentence': '02/09/1945',
+      'sentence': 'Văn Lang',
       'id_question': '110',
       'id_content': '101',
       'number': 1,
     });
     await DBHelper.insert('answer', {
       'id': '112',
-      'sentence': '20/07/1954',
+      'sentence': 'Âu Lạc',
       'id_question': '110',
       'id_content': '101',
       'number': 2,
     });
     await DBHelper.insert('answer', {
       'id': '113',
-      'sentence': '07/05/1954',
+      'sentence': 'Bách Việt',
       'id_question': '110',
       'id_content': '101',
       'number': 3,
@@ -926,36 +925,35 @@ class SeedData {
     //Triệu Đà
     await DBHelper.insert('question', {
       'id': '120',
-      'sentence':
-          'Chủ tịch Hồ Chí Minh đã đọc bản tuyên ngôn độc lập tại quãng trường Ba Đình, khai sinh ra nước Việt Nam Dân Chủ Cộng Hòa với thủ đô là Hà Nội vào thời gian nào?',
+      'sentence': 'Triệu Đà xuất thân là quan võ thời nào ở Trung Hoa cổ đại?',
       'id_content': '102',
       'number': 120,
       'answer_index': 0,
     });
     await DBHelper.insert('answer', {
       'id': '120',
-      'sentence': '30/04/1975',
+      'sentence': 'Nhà Tần',
       'id_question': '120',
       'id_content': '102',
       'number': 0,
     });
     await DBHelper.insert('answer', {
       'id': '121',
-      'sentence': '02/09/1945',
+      'sentence': 'Nhà Hán',
       'id_question': '120',
       'id_content': '102',
       'number': 1,
     });
     await DBHelper.insert('answer', {
       'id': '122',
-      'sentence': '20/07/1954',
+      'sentence': 'Nhà Minh',
       'id_question': '120',
       'id_content': '102',
       'number': 2,
     });
     await DBHelper.insert('answer', {
       'id': '123',
-      'sentence': '07/05/1954',
+      'sentence': 'Nhà Thanh',
       'id_question': '120',
       'id_content': '102',
       'number': 3,
@@ -963,36 +961,35 @@ class SeedData {
     //Hai bà Trưng
     await DBHelper.insert('question', {
       'id': '130',
-      'sentence':
-          'Chủ tịch Hồ Chí Minh đã đọc bản tuyên ngôn độc lập tại quãng trường Ba Đình, khai sinh ra nước Việt Nam Dân Chủ Cộng Hòa với thủ đô là Hà Nội vào thời gian nào?',
+      'sentence': 'Cuộc khởi nghĩa của hai bà Trưng chống lại quân nào?',
       'id_content': '103',
       'number': 130,
       'answer_index': 2,
     });
     await DBHelper.insert('answer', {
       'id': '130',
-      'sentence': '30/04/1975',
+      'sentence': 'Quân nhà Thanh',
       'id_question': '130',
       'id_content': '103',
       'number': 0,
     });
     await DBHelper.insert('answer', {
       'id': '131',
-      'sentence': '02/09/1945',
+      'sentence': 'Quân nhà Tần',
       'id_question': '130',
       'id_content': '103',
       'number': 1,
     });
     await DBHelper.insert('answer', {
       'id': '132',
-      'sentence': '20/07/1954',
+      'sentence': 'Quân nhà Hán',
       'id_question': '130',
       'id_content': '103',
       'number': 2,
     });
     await DBHelper.insert('answer', {
       'id': '133',
-      'sentence': '07/05/1954',
+      'sentence': 'Quân nhà Ngô',
       'id_question': '130',
       'id_content': '103',
       'number': 3,
@@ -1000,36 +997,35 @@ class SeedData {
     //Ngô Quyền
     await DBHelper.insert('question', {
       'id': '140',
-      'sentence':
-          'Chủ tịch Hồ Chí Minh đã đọc bản tuyên ngôn độc lập tại quãng trường Ba Đình, khai sinh ra nước Việt Nam Dân Chủ Cộng Hòa với thủ đô là Hà Nội vào thời gian nào?',
+      'sentence': 'Ngô Quyền là vị vua đầu tiên của nhà nào?',
       'id_content': '104',
       'number': 140,
       'answer_index': 3,
     });
     await DBHelper.insert('answer', {
       'id': '140',
-      'sentence': '30/04/1975',
+      'sentence': 'Nhà Trần',
       'id_question': '140',
       'id_content': '104',
       'number': 0,
     });
     await DBHelper.insert('answer', {
       'id': '141',
-      'sentence': '02/09/1945',
+      'sentence': 'Nhà Lý',
       'id_question': '140',
       'id_content': '104',
       'number': 1,
     });
     await DBHelper.insert('answer', {
       'id': '142',
-      'sentence': '20/07/1954',
+      'sentence': 'Nhà Hồ',
       'id_question': '140',
       'id_content': '104',
       'number': 2,
     });
     await DBHelper.insert('answer', {
       'id': '143',
-      'sentence': '07/05/1954',
+      'sentence': 'Nhà Ngô',
       'id_question': '140',
       'id_content': '104',
       'number': 3,
@@ -1038,35 +1034,35 @@ class SeedData {
     await DBHelper.insert('question', {
       'id': '150',
       'sentence':
-          'Chủ tịch Hồ Chí Minh đã đọc bản tuyên ngôn độc lập tại quãng trường Ba Đình, khai sinh ra nước Việt Nam Dân Chủ Cộng Hòa với thủ đô là Hà Nội vào thời gian nào?',
+          'Đinh Bộ Lĩnh là vị hoàng đế sáng lập nhà Đinh, đặt nên nước là gì?',
       'id_content': '105',
       'number': 150,
       'answer_index': 1,
     });
     await DBHelper.insert('answer', {
       'id': '150',
-      'sentence': '30/04/1975',
+      'sentence': 'Văn Lang',
       'id_question': '150',
       'id_content': '105',
       'number': 0,
     });
     await DBHelper.insert('answer', {
       'id': '151',
-      'sentence': '02/09/1945',
+      'sentence': 'Đại Cồ Việt',
       'id_question': '150',
       'id_content': '105',
       'number': 1,
     });
     await DBHelper.insert('answer', {
       'id': '152',
-      'sentence': '20/07/1954',
+      'sentence': 'Đại Việt',
       'id_question': '150',
       'id_content': '105',
       'number': 2,
     });
     await DBHelper.insert('answer', {
       'id': '153',
-      'sentence': '07/05/1954',
+      'sentence': 'Đại Ngu',
       'id_question': '150',
       'id_content': '105',
       'number': 3,
@@ -1074,36 +1070,35 @@ class SeedData {
     //Lý Thái Tổ
     await DBHelper.insert('question', {
       'id': '160',
-      'sentence':
-          'Chủ tịch Hồ Chí Minh đã đọc bản tuyên ngôn độc lập tại quãng trường Ba Đình, khai sinh ra nước Việt Nam Dân Chủ Cộng Hòa với thủ đô là Hà Nội vào thời gian nào?',
+      'sentence': 'Lý Thái Tổ có tên thật là gì?',
       'id_content': '106',
       'number': 160,
       'answer_index': 2,
     });
     await DBHelper.insert('answer', {
       'id': '160',
-      'sentence': '30/04/1975',
+      'sentence': 'Lý Thường Kiệt',
       'id_question': '160',
       'id_content': '106',
       'number': 0,
     });
     await DBHelper.insert('answer', {
       'id': '161',
-      'sentence': '02/09/1945',
+      'sentence': 'Lý Long Tường',
       'id_question': '160',
       'id_content': '106',
       'number': 1,
     });
     await DBHelper.insert('answer', {
       'id': '162',
-      'sentence': '20/07/1954',
+      'sentence': 'Lý Công Uẩn',
       'id_question': '160',
       'id_content': '106',
       'number': 2,
     });
     await DBHelper.insert('answer', {
       'id': '163',
-      'sentence': '07/05/1954',
+      'sentence': 'Lý Nhân Tông',
       'id_question': '160',
       'id_content': '106',
       'number': 3,
@@ -1112,35 +1107,35 @@ class SeedData {
     await DBHelper.insert('question', {
       'id': '170',
       'sentence':
-          'Chủ tịch Hồ Chí Minh đã đọc bản tuyên ngôn độc lập tại quãng trường Ba Đình, khai sinh ra nước Việt Nam Dân Chủ Cộng Hòa với thủ đô là Hà Nội vào thời gian nào?',
+          'Lý Thường Kiệt nổi tiếng việc chinh phạt trên đất nhà nào ở Trung Hoa?',
       'id_content': '107',
       'number': 170,
       'answer_index': 3,
     });
     await DBHelper.insert('answer', {
       'id': '170',
-      'sentence': '30/04/1975',
+      'sentence': 'Nhà Minh',
       'id_question': '170',
       'id_content': '107',
       'number': 0,
     });
     await DBHelper.insert('answer', {
       'id': '171',
-      'sentence': '02/09/1945',
+      'sentence': 'Nhà Hán',
       'id_question': '170',
       'id_content': '107',
       'number': 1,
     });
     await DBHelper.insert('answer', {
       'id': '172',
-      'sentence': '20/07/1954',
+      'sentence': 'Nhà Đường',
       'id_question': '170',
       'id_content': '107',
       'number': 2,
     });
     await DBHelper.insert('answer', {
       'id': '173',
-      'sentence': '07/05/1954',
+      'sentence': 'Nhà Tống',
       'id_question': '170',
       'id_content': '107',
       'number': 3,
@@ -1148,36 +1143,35 @@ class SeedData {
     //Trần Quốc Tuấn
     await DBHelper.insert('question', {
       'id': '180',
-      'sentence':
-          'Chủ tịch Hồ Chí Minh đã đọc bản tuyên ngôn độc lập tại quãng trường Ba Đình, khai sinh ra nước Việt Nam Dân Chủ Cộng Hòa với thủ đô là Hà Nội vào thời gian nào?',
+      'sentence': 'Trần Quốc Tuấn mất vào năm bao nhiêu?',
       'id_content': '108',
       'number': 180,
       'answer_index': 3,
     });
     await DBHelper.insert('answer', {
       'id': '180',
-      'sentence': '30/04/1975',
+      'sentence': '1227',
       'id_question': '180',
       'id_content': '108',
       'number': 0,
     });
     await DBHelper.insert('answer', {
       'id': '181',
-      'sentence': '02/09/1945',
+      'sentence': '1228',
       'id_question': '180',
       'id_content': '108',
       'number': 1,
     });
     await DBHelper.insert('answer', {
       'id': '182',
-      'sentence': '20/07/1954',
+      'sentence': '1229',
       'id_question': '180',
       'id_content': '108',
       'number': 2,
     });
     await DBHelper.insert('answer', {
       'id': '183',
-      'sentence': '07/05/1954',
+      'sentence': '1300',
       'id_question': '180',
       'id_content': '108',
       'number': 3,
@@ -1186,35 +1180,35 @@ class SeedData {
     await DBHelper.insert('question', {
       'id': '190',
       'sentence':
-          'Chủ tịch Hồ Chí Minh đã đọc bản tuyên ngôn độc lập tại quãng trường Ba Đình, khai sinh ra nước Việt Nam Dân Chủ Cộng Hòa với thủ đô là Hà Nội vào thời gian nào?',
+          'Lê Lợi lãnh đạo quân dân người Việt chống lại quân Minh trong khoảng thời gian nào?',
       'id_content': '109',
       'number': 190,
       'answer_index': 0,
     });
     await DBHelper.insert('answer', {
       'id': '190',
-      'sentence': '30/04/1975',
+      'sentence': '10 năm (1418-1428)',
       'id_question': '190',
       'id_content': '109',
       'number': 0,
     });
     await DBHelper.insert('answer', {
       'id': '191',
-      'sentence': '02/09/1945',
+      'sentence': '9 năm (1418-1427)',
       'id_question': '190',
       'id_content': '109',
       'number': 1,
     });
     await DBHelper.insert('answer', {
       'id': '192',
-      'sentence': '20/07/1954',
+      'sentence': '10 năm (1428-1438)',
       'id_question': '190',
       'id_content': '109',
       'number': 2,
     });
     await DBHelper.insert('answer', {
       'id': '193',
-      'sentence': '07/05/1954',
+      'sentence': '9 năm (1428-1437)',
       'id_question': '190',
       'id_content': '109',
       'number': 3,
@@ -1223,35 +1217,35 @@ class SeedData {
     await DBHelper.insert('question', {
       'id': '200',
       'sentence':
-          'Chủ tịch Hồ Chí Minh đã đọc bản tuyên ngôn độc lập tại quãng trường Ba Đình, khai sinh ra nước Việt Nam Dân Chủ Cộng Hòa với thủ đô là Hà Nội vào thời gian nào?',
+          'Quang Trung Hoàng đế là vị hoàng đế thứ mấy của nhà Tây Sơn?',
       'id_content': '110',
       'number': 200,
       'answer_index': 0,
     });
     await DBHelper.insert('answer', {
       'id': '200',
-      'sentence': '30/04/1975',
+      'sentence': '2',
       'id_question': '200',
       'id_content': '110',
       'number': 0,
     });
     await DBHelper.insert('answer', {
       'id': '201',
-      'sentence': '02/09/1945',
+      'sentence': '3',
       'id_question': '200',
       'id_content': '110',
       'number': 1,
     });
     await DBHelper.insert('answer', {
       'id': '202',
-      'sentence': '20/07/1954',
+      'sentence': '4',
       'id_question': '200',
       'id_content': '110',
       'number': 2,
     });
     await DBHelper.insert('answer', {
       'id': '203',
-      'sentence': '07/05/1954',
+      'sentence': '5',
       'id_question': '200',
       'id_content': '110',
       'number': 3,
@@ -1259,36 +1253,35 @@ class SeedData {
     //Võ Nguyên Giáp
     await DBHelper.insert('question', {
       'id': '210',
-      'sentence':
-          'Chủ tịch Hồ Chí Minh đã đọc bản tuyên ngôn độc lập tại quãng trường Ba Đình, khai sinh ra nước Việt Nam Dân Chủ Cộng Hòa với thủ đô là Hà Nội vào thời gian nào?',
+      'sentence': 'Đại tướng Võ Nguyên Giáp sinh ngày nào?',
       'id_content': '111',
       'number': 210,
       'answer_index': 1,
     });
     await DBHelper.insert('answer', {
       'id': '210',
-      'sentence': '30/04/1975',
+      'sentence': '25 tháng 7 năm 1911',
       'id_question': '210',
       'id_content': '111',
       'number': 0,
     });
     await DBHelper.insert('answer', {
       'id': '211',
-      'sentence': '02/09/1945',
+      'sentence': '25 tháng 8 năm 1911',
       'id_question': '210',
       'id_content': '111',
       'number': 1,
     });
     await DBHelper.insert('answer', {
       'id': '212',
-      'sentence': '20/07/1954',
+      'sentence': '25 tháng 8 năm 1912',
       'id_question': '210',
       'id_content': '111',
       'number': 2,
     });
     await DBHelper.insert('answer', {
       'id': '213',
-      'sentence': '07/05/1954',
+      'sentence': '4 tháng 10 năm 2013',
       'id_question': '210',
       'id_content': '111',
       'number': 3,
@@ -1296,36 +1289,35 @@ class SeedData {
     //Bảo Đại
     await DBHelper.insert('question', {
       'id': '220',
-      'sentence':
-          'Chủ tịch Hồ Chí Minh đã đọc bản tuyên ngôn độc lập tại quãng trường Ba Đình, khai sinh ra nước Việt Nam Dân Chủ Cộng Hòa với thủ đô là Hà Nội vào thời gian nào?',
+      'sentence': 'Bảo Đại là vị hoàng đế thứ mấy của triều đại nhà Nguyễn?',
       'id_content': '112',
       'number': 220,
       'answer_index': 1,
     });
     await DBHelper.insert('answer', {
       'id': '220',
-      'sentence': '30/04/1975',
+      'sentence': '12',
       'id_question': '220',
       'id_content': '112',
       'number': 0,
     });
     await DBHelper.insert('answer', {
       'id': '221',
-      'sentence': '02/09/1945',
+      'sentence': '13',
       'id_question': '220',
       'id_content': '112',
       'number': 1,
     });
     await DBHelper.insert('answer', {
       'id': '222',
-      'sentence': '20/07/1954',
+      'sentence': '14',
       'id_question': '220',
       'id_content': '112',
       'number': 2,
     });
     await DBHelper.insert('answer', {
       'id': '223',
-      'sentence': '07/05/1954',
+      'sentence': '15',
       'id_question': '220',
       'id_content': '112',
       'number': 3,
@@ -1334,35 +1326,35 @@ class SeedData {
     await DBHelper.insert('question', {
       'id': '230',
       'sentence':
-          'Chủ tịch Hồ Chí Minh đã đọc bản tuyên ngôn độc lập tại quãng trường Ba Đình, khai sinh ra nước Việt Nam Dân Chủ Cộng Hòa với thủ đô là Hà Nội vào thời gian nào?',
+          'Tác phẩm "Bản án chế độ thực dân Pháp" do Nguyễn Ái Quốc viết được xuất bản năm 1925 được viết bằng ngôn ngữ gì?',
       'id_content': '113',
       'number': 230,
       'answer_index': 1,
     });
     await DBHelper.insert('answer', {
       'id': '230',
-      'sentence': '30/04/1975',
+      'sentence': 'Tiếng Anh',
       'id_question': '230',
       'id_content': '113',
       'number': 0,
     });
     await DBHelper.insert('answer', {
       'id': '231',
-      'sentence': '02/09/1945',
+      'sentence': 'Tiếng Pháp',
       'id_question': '230',
       'id_content': '113',
       'number': 1,
     });
     await DBHelper.insert('answer', {
       'id': '232',
-      'sentence': '20/07/1954',
+      'sentence': 'Tiếng Đức',
       'id_question': '230',
       'id_content': '113',
       'number': 2,
     });
     await DBHelper.insert('answer', {
       'id': '233',
-      'sentence': '07/05/1954',
+      'sentence': 'Tiếng Việt',
       'id_question': '230',
       'id_content': '113',
       'number': 3,
@@ -1371,35 +1363,35 @@ class SeedData {
     await DBHelper.insert('question', {
       'id': '300',
       'sentence':
-          'Chủ tịch Hồ Chí Minh đã đọc bản tuyên ngôn độc lập tại quãng trường Ba Đình, khai sinh ra nước Việt Nam Dân Chủ Cộng Hòa với thủ đô là Hà Nội vào thời gian nào?',
+          'Trận Bạch Đằng năm 938 do Ngô Quyền lãnh đạo chống lại quân nhà nào?',
       'id_content': '200',
       'number': 300,
       'answer_index': 0,
     });
     await DBHelper.insert('answer', {
       'id': '300',
-      'sentence': '30/04/1975',
+      'sentence': 'Nam Hán',
       'id_question': '300',
       'id_content': '200',
       'number': 0,
     });
     await DBHelper.insert('answer', {
       'id': '301',
-      'sentence': '02/09/1945',
+      'sentence': 'Bắc Hán',
       'id_question': '300',
       'id_content': '200',
       'number': 1,
     });
     await DBHelper.insert('answer', {
       'id': '302',
-      'sentence': '20/07/1954',
+      'sentence': 'Đông Hán',
       'id_question': '300',
       'id_content': '200',
       'number': 2,
     });
     await DBHelper.insert('answer', {
       'id': '303',
-      'sentence': '07/05/1954',
+      'sentence': 'Nam Hán',
       'id_question': '300',
       'id_content': '200',
       'number': 3,
@@ -1408,35 +1400,35 @@ class SeedData {
     await DBHelper.insert('question', {
       'id': '310',
       'sentence':
-          'Chủ tịch Hồ Chí Minh đã đọc bản tuyên ngôn độc lập tại quãng trường Ba Đình, khai sinh ra nước Việt Nam Dân Chủ Cộng Hòa với thủ đô là Hà Nội vào thời gian nào?',
+          'Trận Như Nguyệt do ai lãnh đạo quân đội Đại Việt đánh đuổi nhà Tống?',
       'id_content': '201',
       'number': 310,
       'answer_index': 3,
     });
     await DBHelper.insert('answer', {
       'id': '310',
-      'sentence': '30/04/1975',
+      'sentence': 'Lý Nhân Tông',
       'id_question': '310',
       'id_content': '201',
       'number': 0,
     });
     await DBHelper.insert('answer', {
       'id': '311',
-      'sentence': '02/09/1945',
+      'sentence': 'Lý Thái Tông',
       'id_question': '310',
       'id_content': '210',
       'number': 1,
     });
     await DBHelper.insert('answer', {
       'id': '312',
-      'sentence': '20/07/1954',
+      'sentence': 'Lý Phục Man',
       'id_question': '310',
       'id_content': '201',
       'number': 2,
     });
     await DBHelper.insert('answer', {
       'id': '313',
-      'sentence': '07/05/1954',
+      'sentence': 'Lý Thường Kiệt',
       'id_question': '310',
       'id_content': '201',
       'number': 3,
@@ -1445,35 +1437,35 @@ class SeedData {
     await DBHelper.insert('question', {
       'id': '320',
       'sentence':
-          'Chủ tịch Hồ Chí Minh đã đọc bản tuyên ngôn độc lập tại quãng trường Ba Đình, khai sinh ra nước Việt Nam Dân Chủ Cộng Hòa với thủ đô là Hà Nội vào thời gian nào?',
+          'Trận Đông Bộ Đầu là trận phản công chiến lược của quân đội nhà Trần, do vua nào chỉ huy?',
       'id_content': '202',
       'number': 320,
       'answer_index': 3,
     });
     await DBHelper.insert('answer', {
       'id': '320',
-      'sentence': '30/04/1975',
+      'sentence': 'Trần Thánh Tông',
       'id_question': '320',
       'id_content': '202',
       'number': 0,
     });
     await DBHelper.insert('answer', {
       'id': '321',
-      'sentence': '02/09/1945',
+      'sentence': 'Trần Nhân Tông',
       'id_question': '320',
       'id_content': '202',
       'number': 1,
     });
     await DBHelper.insert('answer', {
       'id': '322',
-      'sentence': '20/07/1954',
+      'sentence': 'Trần Anh Tông',
       'id_question': '320',
       'id_content': '202',
       'number': 2,
     });
     await DBHelper.insert('answer', {
       'id': '323',
-      'sentence': '07/05/1954',
+      'sentence': 'Trần Thái Tông',
       'id_question': '320',
       'id_content': '202',
       'number': 3,
@@ -1482,35 +1474,35 @@ class SeedData {
     await DBHelper.insert('question', {
       'id': '330',
       'sentence':
-          'Chủ tịch Hồ Chí Minh đã đọc bản tuyên ngôn độc lập tại quãng trường Ba Đình, khai sinh ra nước Việt Nam Dân Chủ Cộng Hòa với thủ đô là Hà Nội vào thời gian nào?',
+          'Sau hai lần thất bại trước đó, Hốt Tất Liệt nhận ra rằng khó khăn lớn nhất của quân Nguyên là gì?',
       'id_content': '203',
       'number': 330,
       'answer_index': 2,
     });
     await DBHelper.insert('answer', {
       'id': '330',
-      'sentence': '30/04/1975',
+      'sentence': 'Vũ khí',
       'id_question': '330',
       'id_content': '203',
       'number': 0,
     });
     await DBHelper.insert('answer', {
       'id': '331',
-      'sentence': '02/09/1945',
+      'sentence': 'Quân số',
       'id_question': '330',
       'id_content': '203',
       'number': 1,
     });
     await DBHelper.insert('answer', {
       'id': '332',
-      'sentence': '20/07/1954',
+      'sentence': 'Lương thực',
       'id_question': '330',
       'id_content': '203',
       'number': 2,
     });
     await DBHelper.insert('answer', {
       'id': '333',
-      'sentence': '07/05/1954',
+      'sentence': 'Thuyền',
       'id_question': '330',
       'id_content': '203',
       'number': 3,
@@ -1519,35 +1511,35 @@ class SeedData {
     await DBHelper.insert('question', {
       'id': '340',
       'sentence':
-          'Chủ tịch Hồ Chí Minh đã đọc bản tuyên ngôn độc lập tại quãng trường Ba Đình, khai sinh ra nước Việt Nam Dân Chủ Cộng Hòa với thủ đô là Hà Nội vào thời gian nào?',
+          'Đầu năm 1427 nhà Minh đã quyết định phái bao nhiêu đạo quân tiến vào lãnh thổ nước ta?',
       'id_content': '204',
       'number': 340,
       'answer_index': 2,
     });
     await DBHelper.insert('answer', {
       'id': '340',
-      'sentence': '30/04/1975',
+      'sentence': '4',
       'id_question': '340',
       'id_content': '204',
       'number': 0,
     });
     await DBHelper.insert('answer', {
       'id': '341',
-      'sentence': '02/09/1945',
+      'sentence': '3',
       'id_question': '340',
       'id_content': '204',
       'number': 1,
     });
     await DBHelper.insert('answer', {
       'id': '342',
-      'sentence': '20/07/1954',
+      'sentence': '2',
       'id_question': '340',
       'id_content': '204',
       'number': 2,
     });
     await DBHelper.insert('answer', {
       'id': '343',
-      'sentence': '07/05/1954',
+      'sentence': '1',
       'id_question': '340',
       'id_content': '204',
       'number': 3,
@@ -1555,36 +1547,35 @@ class SeedData {
     //Rạch Gầm - Xoài Mút
     await DBHelper.insert('question', {
       'id': '350',
-      'sentence':
-          'Chủ tịch Hồ Chí Minh đã đọc bản tuyên ngôn độc lập tại quãng trường Ba Đình, khai sinh ra nước Việt Nam Dân Chủ Cộng Hòa với thủ đô là Hà Nội vào thời gian nào?',
+      'sentence': 'Quân Xiêm bắt đầu kéo vào nước ta thời gian nào?',
       'id_content': '205',
       'number': 350,
       'answer_index': 1,
     });
     await DBHelper.insert('answer', {
       'id': '350',
-      'sentence': '30/04/1975',
+      'sentence': 'Tháng 6, năm 1784',
       'id_question': '350',
       'id_content': '205',
       'number': 0,
     });
     await DBHelper.insert('answer', {
       'id': '351',
-      'sentence': '02/09/1945',
+      'sentence': 'Tháng 7, năm 1784',
       'id_question': '350',
       'id_content': '205',
       'number': 1,
     });
     await DBHelper.insert('answer', {
       'id': '352',
-      'sentence': '20/07/1954',
+      'sentence': 'Tháng 8, năm 1784',
       'id_question': '350',
       'id_content': '205',
       'number': 2,
     });
     await DBHelper.insert('answer', {
       'id': '353',
-      'sentence': '07/05/1954',
+      'sentence': 'Tháng 7, năm 1785',
       'id_question': '350',
       'id_content': '205',
       'number': 3,
@@ -1592,36 +1583,35 @@ class SeedData {
     //Ngọc Hồi - Đống Đa
     await DBHelper.insert('question', {
       'id': '360',
-      'sentence':
-          'Chủ tịch Hồ Chí Minh đã đọc bản tuyên ngôn độc lập tại quãng trường Ba Đình, khai sinh ra nước Việt Nam Dân Chủ Cộng Hòa với thủ đô là Hà Nội vào thời gian nào?',
+      'sentence': 'Trận Ngọc Hồi Đống Đa còn có tên gọi nào khác?',
       'id_content': '206',
       'number': 360,
       'answer_index': 1,
     });
     await DBHelper.insert('answer', {
       'id': '360',
-      'sentence': '30/04/1975',
+      'sentence': 'Chiến thắng Mậu Thân',
       'id_question': '360',
       'id_content': '206',
       'number': 0,
     });
     await DBHelper.insert('answer', {
       'id': '361',
-      'sentence': '02/09/1945',
+      'sentence': 'Chiến thắng Kỷ Dậu',
       'id_question': '360',
       'id_content': '206',
       'number': 1,
     });
     await DBHelper.insert('answer', {
       'id': '362',
-      'sentence': '20/07/1954',
+      'sentence': 'Chiến thắng Nhâm Tuất',
       'id_question': '360',
       'id_content': '206',
       'number': 2,
     });
     await DBHelper.insert('answer', {
       'id': '363',
-      'sentence': '07/05/1954',
+      'sentence': 'Chiến thắng Canh Thìn',
       'id_question': '360',
       'id_content': '206',
       'number': 3,
@@ -1629,36 +1619,35 @@ class SeedData {
     //Chiến dịch ĐBP
     await DBHelper.insert('question', {
       'id': '370',
-      'sentence':
-          'Chủ tịch Hồ Chí Minh đã đọc bản tuyên ngôn độc lập tại quãng trường Ba Đình, khai sinh ra nước Việt Nam Dân Chủ Cộng Hòa với thủ đô là Hà Nội vào thời gian nào?',
+      'sentence': 'Trận Điện Biên Phủ diễn ra ở đâu?',
       'id_content': '207',
       'number': 370,
       'answer_index': 3,
     });
     await DBHelper.insert('answer', {
       'id': '370',
-      'sentence': '30/04/1975',
+      'sentence': 'Hà Nội',
       'id_question': '370',
       'id_content': '207',
       'number': 0,
     });
     await DBHelper.insert('answer', {
       'id': '371',
-      'sentence': '02/09/1945',
+      'sentence': 'Gia Định',
       'id_question': '370',
       'id_content': '207',
       'number': 1,
     });
     await DBHelper.insert('answer', {
       'id': '372',
-      'sentence': '20/07/1954',
+      'sentence': 'Thanh Hóa',
       'id_question': '370',
       'id_content': '207',
       'number': 2,
     });
     await DBHelper.insert('answer', {
       'id': '373',
-      'sentence': '07/05/1954',
+      'sentence': 'Điện Biên',
       'id_question': '370',
       'id_content': '207',
       'number': 3,
@@ -1667,35 +1656,35 @@ class SeedData {
     await DBHelper.insert('question', {
       'id': '380',
       'sentence':
-          'Chủ tịch Hồ Chí Minh đã đọc bản tuyên ngôn độc lập tại quãng trường Ba Đình, khai sinh ra nước Việt Nam Dân Chủ Cộng Hòa với thủ đô là Hà Nội vào thời gian nào?',
+          'Ngày bao nhiêu Ních xơn buộc ra lệnh ngừng ném bom từ vĩ tuyến 20 trở ra và họp lại Hội nghị Paris về Việt Nam?',
       'id_content': '208',
       'number': 380,
       'answer_index': 2,
     });
     await DBHelper.insert('answer', {
       'id': '380',
-      'sentence': '30/04/1975',
+      'sentence': '5 giờ sáng ngày 30/12/1972',
       'id_question': '380',
       'id_content': '208',
       'number': 0,
     });
     await DBHelper.insert('answer', {
       'id': '381',
-      'sentence': '02/09/1945',
+      'sentence': '6 giờ sáng ngày 30/12/1972',
       'id_question': '380',
       'id_content': '208',
       'number': 1,
     });
     await DBHelper.insert('answer', {
       'id': '382',
-      'sentence': '20/07/1954',
+      'sentence': '7 giờ sáng ngày 30/12/1972',
       'id_question': '380',
       'id_content': '208',
       'number': 2,
     });
     await DBHelper.insert('answer', {
       'id': '383',
-      'sentence': '07/05/1954',
+      'sentence': '8 giờ sáng ngày 30/12/1972',
       'id_question': '380',
       'id_content': '208',
       'number': 3,
@@ -1704,35 +1693,35 @@ class SeedData {
     await DBHelper.insert('question', {
       'id': '390',
       'sentence':
-          'Chủ tịch Hồ Chí Minh đã đọc bản tuyên ngôn độc lập tại quãng trường Ba Đình, khai sinh ra nước Việt Nam Dân Chủ Cộng Hòa với thủ đô là Hà Nội vào thời gian nào?',
+          'Cuộc Tổng tiến công và nổi dậy mùa xuân năm 1975 có bao nhiêu đòn tiến công chiến lược?',
       'id_content': '209',
       'number': 390,
       'answer_index': 0,
     });
     await DBHelper.insert('answer', {
       'id': '390',
-      'sentence': '30/04/1975',
+      'sentence': '3',
       'id_question': '390',
       'id_content': '209',
       'number': 0,
     });
     await DBHelper.insert('answer', {
       'id': '391',
-      'sentence': '02/09/1945',
+      'sentence': '4',
       'id_question': '390',
       'id_content': '209',
       'number': 1,
     });
     await DBHelper.insert('answer', {
       'id': '392',
-      'sentence': '20/07/1954',
+      'sentence': '5',
       'id_question': '390',
       'id_content': '209',
       'number': 2,
     });
     await DBHelper.insert('answer', {
       'id': '393',
-      'sentence': '07/05/1954',
+      'sentence': '6',
       'id_question': '390',
       'id_content': '209',
       'number': 3,
@@ -1740,8 +1729,7 @@ class SeedData {
     //Họ Hồng Bàn
     await DBHelper.insert('question', {
       'id': '400',
-      'sentence':
-          'Chủ tịch Hồ Chí Minh đã đọc bản tuyên ngôn độc lập tại quãng trường Ba Đình, khai sinh ra nước Việt Nam Dân Chủ Cộng Hòa với thủ đô là Hà Nội vào thời gian nào?',
+      'sentence': '?',
       'id_content': '300',
       'number': 400,
       'answer_index': 1,
@@ -1777,8 +1765,7 @@ class SeedData {
     //Nhà Thục
     await DBHelper.insert('question', {
       'id': '410',
-      'sentence':
-          'Chủ tịch Hồ Chí Minh đã đọc bản tuyên ngôn độc lập tại quãng trường Ba Đình, khai sinh ra nước Việt Nam Dân Chủ Cộng Hòa với thủ đô là Hà Nội vào thời gian nào?',
+      'sentence': '?',
       'id_content': '301',
       'number': 410,
       'answer_index': 1,
@@ -1814,8 +1801,7 @@ class SeedData {
     //Nhà Triệu
     await DBHelper.insert('question', {
       'id': '420',
-      'sentence':
-          'Chủ tịch Hồ Chí Minh đã đọc bản tuyên ngôn độc lập tại quãng trường Ba Đình, khai sinh ra nước Việt Nam Dân Chủ Cộng Hòa với thủ đô là Hà Nội vào thời gian nào?',
+      'sentence': '?',
       'id_content': '302',
       'number': 420,
       'answer_index': 3,
@@ -1851,8 +1837,7 @@ class SeedData {
     //Trưng Nữ Vương
     await DBHelper.insert('question', {
       'id': '430',
-      'sentence':
-          'Chủ tịch Hồ Chí Minh đã đọc bản tuyên ngôn độc lập tại quãng trường Ba Đình, khai sinh ra nước Việt Nam Dân Chủ Cộng Hòa với thủ đô là Hà Nội vào thời gian nào?',
+      'sentence': '?',
       'id_content': '303',
       'number': 430,
       'answer_index': 2,
@@ -1888,8 +1873,7 @@ class SeedData {
     //Nhà tiền Lý và nhà Triệu
     await DBHelper.insert('question', {
       'id': '440',
-      'sentence':
-          'Chủ tịch Hồ Chí Minh đã đọc bản tuyên ngôn độc lập tại quãng trường Ba Đình, khai sinh ra nước Việt Nam Dân Chủ Cộng Hòa với thủ đô là Hà Nội vào thời gian nào?',
+      'sentence': '?',
       'id_content': '304',
       'number': 440,
       'answer_index': 0,
@@ -1925,8 +1909,7 @@ class SeedData {
     //Triều Ngô
     await DBHelper.insert('question', {
       'id': '450',
-      'sentence':
-          'Chủ tịch Hồ Chí Minh đã đọc bản tuyên ngôn độc lập tại quãng trường Ba Đình, khai sinh ra nước Việt Nam Dân Chủ Cộng Hòa với thủ đô là Hà Nội vào thời gian nào?',
+      'sentence': '?',
       'id_content': '305',
       'number': 450,
       'answer_index': 0,
@@ -1962,8 +1945,7 @@ class SeedData {
     //Nhà Đinh
     await DBHelper.insert('question', {
       'id': '460',
-      'sentence':
-          'Chủ tịch Hồ Chí Minh đã đọc bản tuyên ngôn độc lập tại quãng trường Ba Đình, khai sinh ra nước Việt Nam Dân Chủ Cộng Hòa với thủ đô là Hà Nội vào thời gian nào?',
+      'sentence': '?',
       'id_content': '306',
       'number': 460,
       'answer_index': 3,
@@ -1999,8 +1981,7 @@ class SeedData {
     //Nhà Tiền Lê
     await DBHelper.insert('question', {
       'id': '470',
-      'sentence':
-          'Chủ tịch Hồ Chí Minh đã đọc bản tuyên ngôn độc lập tại quãng trường Ba Đình, khai sinh ra nước Việt Nam Dân Chủ Cộng Hòa với thủ đô là Hà Nội vào thời gian nào?',
+      'sentence': '?',
       'id_content': '307',
       'number': 470,
       'answer_index': 2,
@@ -2036,8 +2017,7 @@ class SeedData {
     //Nhà Lý
     await DBHelper.insert('question', {
       'id': '480',
-      'sentence':
-          'Chủ tịch Hồ Chí Minh đã đọc bản tuyên ngôn độc lập tại quãng trường Ba Đình, khai sinh ra nước Việt Nam Dân Chủ Cộng Hòa với thủ đô là Hà Nội vào thời gian nào?',
+      'sentence': '?',
       'id_content': '308',
       'number': 480,
       'answer_index': 0,
@@ -2073,8 +2053,7 @@ class SeedData {
     //Nhà Trần
     await DBHelper.insert('question', {
       'id': '490',
-      'sentence':
-          'Chủ tịch Hồ Chí Minh đã đọc bản tuyên ngôn độc lập tại quãng trường Ba Đình, khai sinh ra nước Việt Nam Dân Chủ Cộng Hòa với thủ đô là Hà Nội vào thời gian nào?',
+      'sentence': '?',
       'id_content': '309',
       'number': 490,
       'answer_index': 1,
@@ -2110,8 +2089,7 @@ class SeedData {
     //Nhà Hồ
     await DBHelper.insert('question', {
       'id': '500',
-      'sentence':
-          'Chủ tịch Hồ Chí Minh đã đọc bản tuyên ngôn độc lập tại quãng trường Ba Đình, khai sinh ra nước Việt Nam Dân Chủ Cộng Hòa với thủ đô là Hà Nội vào thời gian nào?',
+      'sentence': '?',
       'id_content': '310',
       'number': 500,
       'answer_index': 1,
@@ -2147,8 +2125,7 @@ class SeedData {
     //Triều Lê Sơ
     await DBHelper.insert('question', {
       'id': '510',
-      'sentence':
-          'Chủ tịch Hồ Chí Minh đã đọc bản tuyên ngôn độc lập tại quãng trường Ba Đình, khai sinh ra nước Việt Nam Dân Chủ Cộng Hòa với thủ đô là Hà Nội vào thời gian nào?',
+      'sentence': '?',
       'id_content': '311',
       'number': 510,
       'answer_index': 0,
@@ -2184,8 +2161,7 @@ class SeedData {
     //Nhà Mạc
     await DBHelper.insert('question', {
       'id': '520',
-      'sentence':
-          'Chủ tịch Hồ Chí Minh đã đọc bản tuyên ngôn độc lập tại quãng trường Ba Đình, khai sinh ra nước Việt Nam Dân Chủ Cộng Hòa với thủ đô là Hà Nội vào thời gian nào?',
+      'sentence': '?',
       'id_content': '312',
       'number': 520,
       'answer_index': 0,
@@ -2221,8 +2197,7 @@ class SeedData {
     //Triều Hậu Lê
     await DBHelper.insert('question', {
       'id': '530',
-      'sentence':
-          'Chủ tịch Hồ Chí Minh đã đọc bản tuyên ngôn độc lập tại quãng trường Ba Đình, khai sinh ra nước Việt Nam Dân Chủ Cộng Hòa với thủ đô là Hà Nội vào thời gian nào?',
+      'sentence': '?',
       'id_content': '313',
       'number': 530,
       'answer_index': 3,
@@ -2258,8 +2233,7 @@ class SeedData {
     //Nhà Tây Sơn
     await DBHelper.insert('question', {
       'id': '540',
-      'sentence':
-          'Chủ tịch Hồ Chí Minh đã đọc bản tuyên ngôn độc lập tại quãng trường Ba Đình, khai sinh ra nước Việt Nam Dân Chủ Cộng Hòa với thủ đô là Hà Nội vào thời gian nào?',
+      'sentence': '?',
       'id_content': '314',
       'number': 540,
       'answer_index': 3,
@@ -2295,8 +2269,7 @@ class SeedData {
     //Nhà Nguyễn
     await DBHelper.insert('question', {
       'id': '550',
-      'sentence':
-          'Chủ tịch Hồ Chí Minh đã đọc bản tuyên ngôn độc lập tại quãng trường Ba Đình, khai sinh ra nước Việt Nam Dân Chủ Cộng Hòa với thủ đô là Hà Nội vào thời gian nào?',
+      'sentence': '?',
       'id_content': '315',
       'number': 550,
       'answer_index': 1,
@@ -2332,8 +2305,7 @@ class SeedData {
     //Nước VNDCCH
     await DBHelper.insert('question', {
       'id': '560',
-      'sentence':
-          'Chủ tịch Hồ Chí Minh đã đọc bản tuyên ngôn độc lập tại quãng trường Ba Đình, khai sinh ra nước Việt Nam Dân Chủ Cộng Hòa với thủ đô là Hà Nội vào thời gian nào?',
+      'sentence': '?',
       'id_content': '316',
       'number': 560,
       'answer_index': 2,
@@ -2369,8 +2341,7 @@ class SeedData {
     //Nước CHXHCNVN
     await DBHelper.insert('question', {
       'id': '570',
-      'sentence':
-          'Chủ tịch Hồ Chí Minh đã đọc bản tuyên ngôn độc lập tại quãng trường Ba Đình, khai sinh ra nước Việt Nam Dân Chủ Cộng Hòa với thủ đô là Hà Nội vào thời gian nào?',
+      'sentence': '?',
       'id_content': '317',
       'number': 570,
       'answer_index': 1,
