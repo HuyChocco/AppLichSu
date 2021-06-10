@@ -1416,7 +1416,7 @@ class SeedData {
       'id': '311',
       'sentence': 'Lý Thái Tông',
       'id_question': '310',
-      'id_content': '210',
+      'id_content': '201',
       'number': 1,
     });
     await DBHelper.insert('answer', {
