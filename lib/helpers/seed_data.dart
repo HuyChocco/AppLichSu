@@ -1807,7 +1807,7 @@ class SeedData {
           'Lịch sử tồn tại của hà Triệu bao nhiêu năm và trải qua mấy đời vua?',
       'id_content': '302',
       'number': 420,
-      'answer_index': 1,
+      'answer_index': 0,
     });
     await DBHelper.insert('answer', {
       'id': '420',
@@ -1878,7 +1878,7 @@ class SeedData {
     await DBHelper.insert('question', {
       'id': '440',
       'sentence':
-          'Người có công đánh bại là Lương sau khi Lý Nam Đế mất và thành lập nên nhà Triệu là ai?',
+          'Người có công đánh bại nhà Lương sau khi Lý Nam Đế mất và thành lập nên nhà Triệu là ai?',
       'id_content': '304',
       'number': 440,
       'answer_index': 3,
