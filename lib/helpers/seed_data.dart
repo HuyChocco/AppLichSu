@@ -1729,35 +1729,36 @@ class SeedData {
     //Họ Hồng Bàn
     await DBHelper.insert('question', {
       'id': '400',
-      'sentence': '?',
+      'sentence':
+          '1.	Sau khi Hùng Vương lên ngôi đặt quốc hiệu(tên nước) là gì?',
       'id_content': '300',
       'number': 400,
       'answer_index': 1,
     });
     await DBHelper.insert('answer', {
       'id': '400',
-      'sentence': '30/04/1975',
+      'sentence': 'Âu Lạc',
       'id_question': '400',
       'id_content': '300',
       'number': 0,
     });
     await DBHelper.insert('answer', {
       'id': '401',
-      'sentence': '02/09/1945',
+      'sentence': 'Văn Lang',
       'id_question': '400',
       'id_content': '300',
       'number': 1,
     });
     await DBHelper.insert('answer', {
       'id': '402',
-      'sentence': '20/07/1954',
+      'sentence': 'Lạc Việt',
       'id_question': '400',
       'id_content': '300',
       'number': 2,
     });
     await DBHelper.insert('answer', {
       'id': '403',
-      'sentence': '07/05/1954',
+      'sentence': 'Hùng Vương',
       'id_question': '400',
       'id_content': '300',
       'number': 3,
@@ -1765,35 +1766,36 @@ class SeedData {
     //Nhà Thục
     await DBHelper.insert('question', {
       'id': '410',
-      'sentence': '?',
+      'sentence':
+          '1.	Ai là người đã đánh bại Hùng Vương và cải quốc hiệu thành Âu Lạc?',
       'id_content': '301',
       'number': 410,
-      'answer_index': 1,
+      'answer_index': 0,
     });
     await DBHelper.insert('answer', {
       'id': '410',
-      'sentence': '30/04/1975',
+      'sentence': 'Thục Phán',
       'id_question': '410',
       'id_content': '301',
       'number': 0,
     });
     await DBHelper.insert('answer', {
       'id': '411',
-      'sentence': '02/09/1945',
+      'sentence': 'Đồ Thư',
       'id_question': '410',
       'id_content': '301',
       'number': 1,
     });
     await DBHelper.insert('answer', {
       'id': '412',
-      'sentence': '20/07/1954',
+      'sentence': 'Cao Lỗ',
       'id_question': '410',
       'id_content': '301',
       'number': 2,
     });
     await DBHelper.insert('answer', {
       'id': '413',
-      'sentence': '07/05/1954',
+      'sentence': 'Trọng Thủy',
       'id_question': '410',
       'id_content': '301',
       'number': 3,
@@ -1801,35 +1803,36 @@ class SeedData {
     //Nhà Triệu
     await DBHelper.insert('question', {
       'id': '420',
-      'sentence': '?',
+      'sentence':
+          'Lịch sử tồn tại của hà Triệu bao nhiêu năm và trải qua mấy đời vua?',
       'id_content': '302',
       'number': 420,
-      'answer_index': 3,
+      'answer_index': 1,
     });
     await DBHelper.insert('answer', {
       'id': '420',
-      'sentence': '30/04/1975',
+      'sentence': 'Tồn tại 97 năm (207-111 TCN) và trải qua 5 đời vua.',
       'id_question': '420',
       'id_content': '302',
       'number': 0,
     });
     await DBHelper.insert('answer', {
       'id': '421',
-      'sentence': '02/09/1945',
+      'sentence': 'Tồn tại 90 năm (207-118 TCN) và trải qua 5 đời vua.',
       'id_question': '420',
       'id_content': '302',
       'number': 1,
     });
     await DBHelper.insert('answer', {
       'id': '422',
-      'sentence': '20/07/1954',
+      'sentence': 'Tồn tại 66 năm (203-137 TCN) và trải qua 3 đời vua.',
       'id_question': '420',
       'id_content': '302',
       'number': 2,
     });
     await DBHelper.insert('answer', {
       'id': '423',
-      'sentence': '07/05/1954',
+      'sentence': 'Tồn tại 26 năm (137-111 TCN) và trải qua 3 đời vua.',
       'id_question': '420',
       'id_content': '302',
       'number': 3,
@@ -1837,35 +1840,36 @@ class SeedData {
     //Trưng Nữ Vương
     await DBHelper.insert('question', {
       'id': '430',
-      'sentence': '?',
+      'sentence':
+          'Ai là người thủ lĩnh khởi chống lại chinh quyền đô hộ của Đông Hán?',
       'id_content': '303',
       'number': 430,
-      'answer_index': 2,
+      'answer_index': 3,
     });
     await DBHelper.insert('answer', {
       'id': '430',
-      'sentence': '30/04/1975',
+      'sentence': 'Trưng Trắc',
       'id_question': '430',
       'id_content': '303',
       'number': 0,
     });
     await DBHelper.insert('answer', {
       'id': '431',
-      'sentence': '02/09/1945',
+      'sentence': 'Trưng Nhị',
       'id_question': '430',
       'id_content': '303',
       'number': 1,
     });
     await DBHelper.insert('answer', {
       'id': '432',
-      'sentence': '20/07/1954',
+      'sentence': 'Trưng Nữ Vương',
       'id_question': '430',
       'id_content': '303',
       'number': 2,
     });
     await DBHelper.insert('answer', {
       'id': '433',
-      'sentence': '07/05/1954',
+      'sentence': 'Trưng Trắc và Trưng Nhị',
       'id_question': '430',
       'id_content': '303',
       'number': 3,
@@ -1873,35 +1877,36 @@ class SeedData {
     //Nhà tiền Lý và nhà Triệu
     await DBHelper.insert('question', {
       'id': '440',
-      'sentence': '?',
+      'sentence':
+          'Người có công đánh bại là Lương sau khi Lý Nam Đế mất và thành lập nên nhà Triệu là ai?',
       'id_content': '304',
       'number': 440,
-      'answer_index': 0,
+      'answer_index': 3,
     });
     await DBHelper.insert('answer', {
       'id': '440',
-      'sentence': '30/04/1975',
+      'sentence': 'Lý Thiên Bảo',
       'id_question': '440',
       'id_content': '304',
       'number': 0,
     });
     await DBHelper.insert('answer', {
       'id': '441',
-      'sentence': '02/09/1945',
+      'sentence': 'Trần Bá Tiên',
       'id_question': '440',
       'id_content': '304',
       'number': 1,
     });
     await DBHelper.insert('answer', {
       'id': '442',
-      'sentence': '20/07/1954',
+      'sentence': 'Triệu Tử Long',
       'id_question': '440',
       'id_content': '304',
       'number': 2,
     });
     await DBHelper.insert('answer', {
       'id': '443',
-      'sentence': '07/05/1954',
+      'sentence': 'Triệu Quang Phục',
       'id_question': '440',
       'id_content': '304',
       'number': 3,
@@ -1909,35 +1914,38 @@ class SeedData {
     //Triều Ngô
     await DBHelper.insert('question', {
       'id': '450',
-      'sentence': '?',
+      'sentence':
+          'Trận đánh làm nên lịch sử của Triều Ngô là gì? Do ai đứng đầu?',
       'id_content': '305',
       'number': 450,
-      'answer_index': 0,
+      'answer_index': 1,
     });
     await DBHelper.insert('answer', {
       'id': '450',
-      'sentence': '30/04/1975',
+      'sentence': 'Chiến thắng quân Lương ở Cổ Loa , do Ngô Quyền đứng đầu.',
       'id_question': '450',
       'id_content': '305',
       'number': 0,
     });
     await DBHelper.insert('answer', {
       'id': '451',
-      'sentence': '02/09/1945',
+      'sentence':
+          'Đại phá quân Nam Hán trên Sông Bạch Đằng, do Ngô Quyền đứng đầu.',
       'id_question': '450',
       'id_content': '305',
       'number': 1,
     });
     await DBHelper.insert('answer', {
       'id': '452',
-      'sentence': '20/07/1954',
+      'sentence': 'Cuộc lật đổ Dương Nam Kha, do Ngô Xương Ngập lãnh đạo.',
       'id_question': '450',
       'id_content': '305',
       'number': 2,
     });
     await DBHelper.insert('answer', {
       'id': '453',
-      'sentence': '07/05/1954',
+      'sentence':
+          'Đánh bại quân của Kiều Công Tiền và quân đồng Minh là Nam Hán, do Ngô Xương Văn lanh đạo.',
       'id_question': '450',
       'id_content': '305',
       'number': 3,
@@ -1945,35 +1953,36 @@ class SeedData {
     //Nhà Đinh
     await DBHelper.insert('question', {
       'id': '460',
-      'sentence': '?',
+      'sentence': 'Sự kiện lịch sử Năm Mậu Thìn (986) là gì?',
       'id_content': '306',
       'number': 460,
-      'answer_index': 3,
+      'answer_index': 0,
     });
     await DBHelper.insert('answer', {
       'id': '460',
-      'sentence': '30/04/1975',
+      'sentence':
+          'Đinh Bộ Lĩnh dẹp loạn 12 sứ quân, thống nhất đất nước và lên ngôi hoàng đế.',
       'id_question': '460',
       'id_content': '306',
       'number': 0,
     });
     await DBHelper.insert('answer', {
       'id': '461',
-      'sentence': '02/09/1945',
+      'sentence': 'Đinh Phế Đế nhường ngôi cho Lê Hoàn.',
       'id_question': '460',
       'id_content': '306',
       'number': 1,
     });
     await DBHelper.insert('answer', {
       'id': '462',
-      'sentence': '20/07/1954',
+      'sentence': 'Đinh Phế Đế (con trai của Đinh Bộ Lĩnh) lên ngôi.',
       'id_question': '460',
       'id_content': '306',
       'number': 2,
     });
     await DBHelper.insert('answer', {
       'id': '463',
-      'sentence': '07/05/1954',
+      'sentence': 'Đinh Bộ Lĩnh ban hành và quy định bộ máy nhà nước',
       'id_question': '460',
       'id_content': '306',
       'number': 3,
@@ -1981,35 +1990,36 @@ class SeedData {
     //Nhà Tiền Lê
     await DBHelper.insert('question', {
       'id': '470',
-      'sentence': '?',
+      'sentence': 'Đâu là lý do Nhà Tống xâm lược nước ta?',
       'id_content': '307',
       'number': 470,
-      'answer_index': 2,
+      'answer_index': 3,
     });
     await DBHelper.insert('answer', {
       'id': '470',
-      'sentence': '30/04/1975',
+      'sentence': 'Bộ máy nhà nước yếu kém.',
       'id_question': '470',
       'id_content': '307',
       'number': 0,
     });
     await DBHelper.insert('answer', {
       'id': '471',
-      'sentence': '02/09/1945',
+      'sentence': 'Đinh Tiên Hoàng bị sát hại.',
       'id_question': '470',
       'id_content': '307',
       'number': 1,
     });
     await DBHelper.insert('answer', {
       'id': '472',
-      'sentence': '20/07/1954',
+      'sentence': 'Nội chiến trong cung đình.',
       'id_question': '470',
       'id_content': '307',
       'number': 2,
     });
     await DBHelper.insert('answer', {
       'id': '473',
-      'sentence': '07/05/1954',
+      'sentence':
+          'Đinh Tiên Hoàng bị sát hại và Đinh Toản lên ngôi vua khi mới 6 tuổi.',
       'id_question': '470',
       'id_content': '307',
       'number': 3,
@@ -2017,35 +2027,35 @@ class SeedData {
     //Nhà Lý
     await DBHelper.insert('question', {
       'id': '480',
-      'sentence': '?',
+      'sentence': 'Vị vua nào đã lập ra Vương triều nhà Lý?',
       'id_content': '308',
       'number': 480,
-      'answer_index': 0,
+      'answer_index': 1,
     });
     await DBHelper.insert('answer', {
       'id': '480',
-      'sentence': '30/04/1975',
+      'sentence': 'Lý Chiêu Hoàng',
       'id_question': '480',
       'id_content': '308',
       'number': 0,
     });
     await DBHelper.insert('answer', {
       'id': '481',
-      'sentence': '02/09/1945',
+      'sentence': 'Lý Thái Tổ',
       'id_question': '480',
       'id_content': '308',
       'number': 1,
     });
     await DBHelper.insert('answer', {
       'id': '482',
-      'sentence': '20/07/1954',
+      'sentence': 'Lý Nhân Tông',
       'id_question': '480',
       'id_content': '308',
       'number': 2,
     });
     await DBHelper.insert('answer', {
       'id': '483',
-      'sentence': '07/05/1954',
+      'sentence': 'Lý Thường Kiệt',
       'id_question': '480',
       'id_content': '308',
       'number': 3,
@@ -2053,35 +2063,37 @@ class SeedData {
     //Nhà Trần
     await DBHelper.insert('question', {
       'id': '490',
-      'sentence': '?',
+      'sentence': 'Lý do khởi nghiệp của Triều đại nhà Trần?',
       'id_content': '309',
       'number': 490,
-      'answer_index': 1,
+      'answer_index': 3,
     });
     await DBHelper.insert('answer', {
       'id': '490',
-      'sentence': '30/04/1975',
+      'sentence': 'Vua Lý Thái Tổ mất và nhường ngôi cho Trần Cảnh.',
       'id_question': '490',
       'id_content': '309',
       'number': 0,
     });
     await DBHelper.insert('answer', {
       'id': '491',
-      'sentence': '02/09/1945',
+      'sentence': 'Trần Cảnh đứng lên khởi nghĩa và đánh bại là Lý.',
       'id_question': '490',
       'id_content': '309',
       'number': 1,
     });
     await DBHelper.insert('answer', {
       'id': '492',
-      'sentence': '20/07/1954',
+      'sentence':
+          'Sau khi vị vua cuối cùng của nhà Lý mất và truyền cho tướng Trần Cảnh kế vị. ',
       'id_question': '490',
       'id_content': '309',
       'number': 2,
     });
     await DBHelper.insert('answer', {
       'id': '493',
-      'sentence': '07/05/1954',
+      'sentence':
+          'Lý Chiêu Hoàng nhường ngôi cho chồng là Trần Cảnh (Trần Thái Tông).',
       'id_question': '490',
       'id_content': '309',
       'number': 3,
@@ -2089,10 +2101,10 @@ class SeedData {
     //Nhà Hồ
     await DBHelper.insert('question', {
       'id': '500',
-      'sentence': '?',
+      'sentence': 'Tại sao nhà Hồ chỉ tồn tại 7 năm?',
       'id_content': '310',
       'number': 500,
-      'answer_index': 1,
+      'answer_index': 3,
     });
     await DBHelper.insert('answer', {
       'id': '500',
@@ -2125,35 +2137,36 @@ class SeedData {
     //Triều Lê Sơ
     await DBHelper.insert('question', {
       'id': '510',
-      'sentence': '?',
+      'sentence':
+          'Triều Lê Sơ tồn tại bao nhiêu năm và trải qua bao nhiêu đời vua?',
       'id_content': '311',
       'number': 510,
-      'answer_index': 0,
+      'answer_index': 3,
     });
     await DBHelper.insert('answer', {
       'id': '510',
-      'sentence': '30/04/1975',
+      'sentence': '100 năm và 10 đời vua.',
       'id_question': '510',
       'id_content': '311',
       'number': 0,
     });
     await DBHelper.insert('answer', {
       'id': '511',
-      'sentence': '02/09/1945',
+      'sentence': '60 năm và 8 đời vua.',
       'id_question': '510',
       'id_content': '311',
       'number': 1,
     });
     await DBHelper.insert('answer', {
       'id': '512',
-      'sentence': '20/07/1954',
+      'sentence': '175 năm và 12 đời vua.',
       'id_question': '510',
       'id_content': '311',
       'number': 2,
     });
     await DBHelper.insert('answer', {
       'id': '513',
-      'sentence': '07/05/1954',
+      'sentence': '99 năm và 10 đời vua.',
       'id_question': '510',
       'id_content': '311',
       'number': 3,
@@ -2161,35 +2174,35 @@ class SeedData {
     //Nhà Mạc
     await DBHelper.insert('question', {
       'id': '520',
-      'sentence': '?',
+      'sentence': 'Ai là người thành lập ra nhà Mạc?',
       'id_content': '312',
       'number': 520,
-      'answer_index': 0,
+      'answer_index': 1,
     });
     await DBHelper.insert('answer', {
       'id': '520',
-      'sentence': '30/04/1975',
+      'sentence': 'Mạc Đĩnh Chi',
       'id_question': '520',
       'id_content': '312',
       'number': 0,
     });
     await DBHelper.insert('answer', {
       'id': '521',
-      'sentence': '02/09/1945',
+      'sentence': 'Mạc Đăng Dung',
       'id_question': '520',
       'id_content': '312',
       'number': 1,
     });
     await DBHelper.insert('answer', {
       'id': '522',
-      'sentence': '20/07/1954',
+      'sentence': 'Mạc Mậu Hợp',
       'id_question': '520',
       'id_content': '312',
       'number': 2,
     });
     await DBHelper.insert('answer', {
       'id': '523',
-      'sentence': '07/05/1954',
+      'sentence': 'Mạc Kính Chỉ',
       'id_question': '520',
       'id_content': '312',
       'number': 3,
@@ -2197,35 +2210,35 @@ class SeedData {
     //Triều Hậu Lê
     await DBHelper.insert('question', {
       'id': '530',
-      'sentence': '?',
+      'sentence': 'Lê Trang Tông là ai?',
       'id_content': '313',
       'number': 530,
-      'answer_index': 3,
+      'answer_index': 0,
     });
     await DBHelper.insert('answer', {
       'id': '530',
-      'sentence': '30/04/1975',
+      'sentence': 'Con trai Vua Lê Chiêu Tông.',
       'id_question': '530',
       'id_content': '313',
       'number': 0,
     });
     await DBHelper.insert('answer', {
       'id': '531',
-      'sentence': '02/09/1945',
+      'sentence': 'Cháu đời thứ nhất của vua Lê Thánh Tông.',
       'id_question': '530',
       'id_content': '313',
       'number': 1,
     });
     await DBHelper.insert('answer', {
       'id': '532',
-      'sentence': '20/07/1954',
+      'sentence': 'Con trai Vua Lê Thái Tông.',
       'id_question': '530',
       'id_content': '313',
       'number': 2,
     });
     await DBHelper.insert('answer', {
       'id': '533',
-      'sentence': '07/05/1954',
+      'sentence': '	Người kế vị của họ Lê.',
       'id_question': '530',
       'id_content': '313',
       'number': 3,
@@ -2233,35 +2246,35 @@ class SeedData {
     //Nhà Tây Sơn
     await DBHelper.insert('question', {
       'id': '540',
-      'sentence': '?',
+      'sentence': 'Vua Quang Trung lên ngôi năm nào, ở đâu?',
       'id_content': '314',
       'number': 540,
-      'answer_index': 3,
+      'answer_index': 2,
     });
     await DBHelper.insert('answer', {
       'id': '540',
-      'sentence': '30/04/1975',
+      'sentence': '1792, Huế.',
       'id_question': '540',
       'id_content': '314',
       'number': 0,
     });
     await DBHelper.insert('answer', {
       'id': '541',
-      'sentence': '02/09/1945',
+      'sentence': '1789, Thăng Long',
       'id_question': '540',
       'id_content': '314',
       'number': 1,
     });
     await DBHelper.insert('answer', {
       'id': '542',
-      'sentence': '20/07/1954',
+      'sentence': '1788, Huế.',
       'id_question': '540',
       'id_content': '314',
       'number': 2,
     });
     await DBHelper.insert('answer', {
       'id': '543',
-      'sentence': '07/05/1954',
+      'sentence': '1788, Thăng Long',
       'id_question': '540',
       'id_content': '314',
       'number': 3,
@@ -2269,35 +2282,36 @@ class SeedData {
     //Nhà Nguyễn
     await DBHelper.insert('question', {
       'id': '550',
-      'sentence': '?',
+      'sentence':
+          'Ai là người đanh bại nhà Tây Sơn, thành lập nhà Nguyễn và tên nước sau khi thành lập?',
       'id_content': '315',
       'number': 550,
-      'answer_index': 1,
+      'answer_index': 2,
     });
     await DBHelper.insert('answer', {
       'id': '550',
-      'sentence': '30/04/1975',
+      'sentence': 'Minh Mạng, Đại Nam.',
       'id_question': '550',
       'id_content': '315',
       'number': 0,
     });
     await DBHelper.insert('answer', {
       'id': '551',
-      'sentence': '02/09/1945',
+      'sentence': 'Bảo Đại, Việt Nam.',
       'id_question': '550',
       'id_content': '315',
       'number': 1,
     });
     await DBHelper.insert('answer', {
       'id': '552',
-      'sentence': '20/07/1954',
+      'sentence': 'Nguyễn Phúc Ánh(Gia Long), Việt Nam.',
       'id_question': '550',
       'id_content': '315',
       'number': 2,
     });
     await DBHelper.insert('answer', {
       'id': '553',
-      'sentence': '07/05/1954',
+      'sentence': 'Tự Đức, Đại Nam.',
       'id_question': '550',
       'id_content': '315',
       'number': 3,
@@ -2305,14 +2319,14 @@ class SeedData {
     //Nước VNDCCH
     await DBHelper.insert('question', {
       'id': '560',
-      'sentence': '?',
+      'sentence': 'Đảng cộng sản Đông Dương ra đời năm nào?',
       'id_content': '316',
       'number': 560,
-      'answer_index': 2,
+      'answer_index': 0,
     });
     await DBHelper.insert('answer', {
       'id': '560',
-      'sentence': '30/04/1975',
+      'sentence': '03/02/1930',
       'id_question': '560',
       'id_content': '316',
       'number': 0,
@@ -2326,14 +2340,14 @@ class SeedData {
     });
     await DBHelper.insert('answer', {
       'id': '562',
-      'sentence': '20/07/1954',
+      'sentence': '30/04/1930',
       'id_question': '560',
       'id_content': '316',
       'number': 2,
     });
     await DBHelper.insert('answer', {
       'id': '563',
-      'sentence': '07/05/1954',
+      'sentence': '19/05/1954',
       'id_question': '560',
       'id_content': '316',
       'number': 3,
@@ -2341,35 +2355,38 @@ class SeedData {
     //Nước CHXHCNVN
     await DBHelper.insert('question', {
       'id': '570',
-      'sentence': '?',
+      'sentence':
+          'Kì họp thứ nhất của Quốc hội khoa VI diễn ra ngày nào, nội dung chính?',
       'id_content': '317',
       'number': 570,
-      'answer_index': 1,
+      'answer_index': 0,
     });
     await DBHelper.insert('answer', {
       'id': '570',
-      'sentence': '30/04/1975',
+      'sentence':
+          '2-7-1976, Quyết định đặt tên nước là CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM.',
       'id_question': '570',
       'id_content': '317',
       'number': 0,
     });
     await DBHelper.insert('answer', {
       'id': '571',
-      'sentence': '02/09/1945',
+      'sentence': '2-7-1975, Nhất trí lấy HÀ NỘI là THỦ ĐÔ của cả nước.',
       'id_question': '570',
       'id_content': '317',
       'number': 1,
     });
     await DBHelper.insert('answer', {
       'id': '572',
-      'sentence': '20/07/1954',
+      'sentence':
+          '2-5-1976, Quyết định đặt tên nước là CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM.',
       'id_question': '570',
       'id_content': '317',
       'number': 2,
     });
     await DBHelper.insert('answer', {
       'id': '573',
-      'sentence': '07/05/1954',
+      'sentence': 'Cả 3 đáp án đều sai.',
       'id_question': '570',
       'id_content': '317',
       'number': 3,
