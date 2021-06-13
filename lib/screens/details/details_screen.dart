@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:hisapp/providers/ContentProvider.dart';
 import 'package:timeline_list/timeline.dart';
 import 'package:timeline_list/timeline_model.dart';
+import 'package:timeline_tile/timeline_tile.dart';
 
 class DetailsScreen extends StatefulWidget {
   @override
@@ -32,6 +33,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    int isDone = 0;
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -86,42 +88,135 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                 )
                               : Consumer<ContentProvider>(
                                   builder: (ctx, data, ch) {
-                                  List<TimelineModel> items = [];
-                                  data.Contents.forEach((element) {
-                                    TimelineModel item = TimelineModel(
-                                        InkWell(
-                                          onTap: () {
-                                            Navigator.of(context).pushNamed(
-                                                '/main-content-screen',
-                                                arguments: {
-                                                  'id': element.id,
-                                                  'imagePath':
-                                                      element.imagePath,
-                                                  'videoPath':
-                                                      element.videoPath,
-                                                  'filePath': element.filePath,
-                                                  'idCate': element.idCate,
-                                                  'title': element.title,
-                                                });
-                                          },
-                                          child: CourseContent(
-                                            title: element.title,
-                                            imagePath: element.imagePath,
-                                            time: element.time,
-                                          ),
-                                        ),
-                                        //position: TimelineItemPosition.random,
-                                        iconBackground: Colors.white,
-                                        icon: Icon(Icons.circle,
-                                            color: Colors.green.withOpacity(
-                                                element.isDone == 1 ? 1 : .2)));
-                                    items.add(item);
-                                  });
-
                                   return Expanded(
-                                      child: Timeline(
-                                          children: items,
-                                          position: TimelinePosition.Left));
+                                    child: ListView.builder(
+                                      itemBuilder: (ctx, index) {
+                                        if (index % 2 == 0)
+                                          return SizedBox(
+                                            width: 100,
+                                            height: 200,
+                                            child: TimelineTile(
+                                              isFirst:
+                                                  index == 0 ? true : false,
+                                              alignment: TimelineAlign.center,
+                                              indicatorStyle: IndicatorStyle(
+                                                width: 20,
+                                                color: data.Contents[index]
+                                                            .isDone >
+                                                        0
+                                                    ? Colors.lightGreen
+                                                    : Colors.green[100],
+                                                padding: EdgeInsets.all(8),
+                                                indicatorY: 0.1,
+                                              ),
+                                              leftChild: InkWell(
+                                                onTap: () {
+                                                  Navigator.of(context)
+                                                      .pushNamed(
+                                                          '/main-content-screen',
+                                                          arguments: {
+                                                        'id': data
+                                                            .Contents[index].id,
+                                                        'imagePath': data
+                                                            .Contents[index]
+                                                            .imagePath,
+                                                        'videoPath': data
+                                                            .Contents[index]
+                                                            .videoPath,
+                                                        'filePath': data
+                                                            .Contents[index]
+                                                            .filePath,
+                                                        'idCate': data
+                                                            .Contents[index]
+                                                            .idCate,
+                                                        'title': data
+                                                            .Contents[index]
+                                                            .title,
+                                                      });
+                                                },
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.end,
+                                                  children: [
+                                                    CourseContent(
+                                                      title: data
+                                                          .Contents[index]
+                                                          .title,
+                                                      imagePath: data
+                                                          .Contents[index]
+                                                          .imagePath,
+                                                      time: data
+                                                          .Contents[index].time,
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          );
+                                        else
+                                          return SizedBox(
+                                            width: 100,
+                                            height: 150,
+                                            child: TimelineTile(
+                                              alignment: TimelineAlign.center,
+                                              indicatorStyle: IndicatorStyle(
+                                                width: 20,
+                                                color: data.Contents[index]
+                                                            .isDone >
+                                                        0
+                                                    ? Colors.lightGreen
+                                                    : Colors.green[100],
+                                                padding: EdgeInsets.all(8),
+                                                indicatorY: 0.1,
+                                              ),
+                                              rightChild: InkWell(
+                                                onTap: () {
+                                                  Navigator.of(context)
+                                                      .pushNamed(
+                                                          '/main-content-screen',
+                                                          arguments: {
+                                                        'id': data
+                                                            .Contents[index].id,
+                                                        'imagePath': data
+                                                            .Contents[index]
+                                                            .imagePath,
+                                                        'videoPath': data
+                                                            .Contents[index]
+                                                            .videoPath,
+                                                        'filePath': data
+                                                            .Contents[index]
+                                                            .filePath,
+                                                        'idCate': data
+                                                            .Contents[index]
+                                                            .idCate,
+                                                        'title': data
+                                                            .Contents[index]
+                                                            .title,
+                                                      });
+                                                },
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.start,
+                                                  children: [
+                                                    CourseContent(
+                                                      title: data
+                                                          .Contents[index]
+                                                          .title,
+                                                      imagePath: data
+                                                          .Contents[index]
+                                                          .imagePath,
+                                                      time: data
+                                                          .Contents[index].time,
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          );
+                                      },
+                                      itemCount: data.Contents.length,
+                                    ),
+                                  );
                                 }),
                         ),
                         SizedBox(
@@ -210,46 +305,44 @@ class CourseContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 10),
+    return Container(
+      padding: EdgeInsets.all(6),
       child: Column(
-        children: <Widget>[
-          if (imagePath.length > 0)
-            Container(
-              alignment: Alignment.center,
-              child:
-                  Image(image: AssetImage(imagePath), width: 160, height: 160),
-            )
-          else
-            Container(),
-          if (time != '')
-            Text(
-              time,
-              style: TextStyle(
+        mainAxisSize: MainAxisSize.min,
+        //crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            time,
+            style: TextStyle(
+              fontSize: 10,
+              fontFamily: 'Nunito',
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Container(
+            constraints: BoxConstraints(maxWidth: 150),
+            child: Text(
+              title,
+              textAlign: TextAlign.center,
+              style: kSubtitleTextStyle.copyWith(
+                fontWeight: FontWeight.w600,
                 fontSize: 12,
+                height: 1.5,
                 fontFamily: 'Nunito',
               ),
             ),
-          Container(
-            alignment: Alignment.center,
-            constraints: BoxConstraints(maxWidth: 150),
-            child: RichText(
-              textAlign: TextAlign.center,
-              text: TextSpan(
-                children: [
-                  TextSpan(
-                    text: title,
-                    style: kSubtitleTextStyle.copyWith(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 16,
-                      height: 1.5,
-                      fontFamily: 'Nunito',
-                    ),
-                  ),
-                ],
-              ),
-            ),
           ),
+          if (imagePath.length > 0)
+            Container(
+              width: 60,
+              height: 60,
+              decoration: BoxDecoration(
+                  image: DecorationImage(image: AssetImage(imagePath))),
+            )
+          else
+            Container(),
         ],
       ),
     );
