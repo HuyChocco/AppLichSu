@@ -94,7 +94,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                         if (index % 2 == 0)
                                           return SizedBox(
                                             width: 100,
-                                            height: 200,
+                                            height: 165,
                                             child: TimelineTile(
                                               isFirst:
                                                   index == 0 ? true : false,
@@ -156,7 +156,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                         else
                                           return SizedBox(
                                             width: 100,
-                                            height: 150,
+                                            height: 165,
                                             child: TimelineTile(
                                               alignment: TimelineAlign.center,
                                               indicatorStyle: IndicatorStyle(

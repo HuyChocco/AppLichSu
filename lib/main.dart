@@ -2,6 +2,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:hisapp/providers/CategoryProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:hisapp/providers/QuestionProvider.dart';
+import 'package:hisapp/screens/calendar/calendar_screen.dart';
 import 'package:hisapp/screens/contents/main_content_screen.dart';
 import 'package:hisapp/screens/discussion/post_detail.dart';
 import 'package:hisapp/screens/search/search_screen.dart';
@@ -76,6 +77,7 @@ class _MyAppState extends State<MyApp> {
           debugShowCheckedModeBanner: false,
           title: 'Em yêu lịch sử',
           theme: ThemeData(
+              //scaffoldBackgroundColor: Color(0xFFc8c9cb),
               /* brightness: Brightness.light,
             scaffoldBackgroundColor: Colors.white,
             textTheme:
@@ -110,6 +112,7 @@ class _MyAppState extends State<MyApp> {
             '/main-content-screen': (ctx) => MainContentScreen(),
             '/post-detail': (ctx) => PostDetail(),
             '/search-screen': (ctx) => SearchScreen(),
+            '/calendar-screen': (ctx) => CalendarScreen(),
           }),
     );
   }

@@ -188,55 +188,93 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                 updateStateReading();
                               });
                             },
-                            child: Container(
-                              padding: EdgeInsets.all(20),
-                              height: 100,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(16),
-                                color: Colors.blue,
-                                /* image: DecorationImage(
-                                  image: AssetImage(
-                                      data.Categories[index].imagePath),
-                                  fit: BoxFit.fill,
+                            child: Stack(fit: StackFit.expand, children: [
+                              Container(
+                                padding: EdgeInsets.all(20),
+                                height: 100,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(16),
+                                  color: Colors.blue,
+                                  image: DecorationImage(
+                                    image: AssetImage(
+                                        data.Categories[index].imagePath),
+                                    fit: BoxFit.fill,
+                                  ),
+                                ),
+                                /* child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Container(
+                                      /* decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(16),
+                                          color: Colors.white.withOpacity(0.4)), */
+                                      padding: EdgeInsets.all(6),
+                                      child: Text(
+                                        data.Categories[index].title,
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold,
+                                          fontFamily: 'Nunito',
+                                        ),
+                                      ),
+                                    ),
+                                    //SizedBox(height: 1),
+                                    Container(
+                                      /*  decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(16),
+                                          color: Colors.white.withOpacity(0.4)), */
+                                      //padding: EdgeInsets.all(2),
+                                      child: Text(
+                                        data.Categories[index].description,
+                                        style: TextStyle(
+                                          fontSize: 9,
+                                          color: Colors.black,
+                                          // fontWeight: FontWeight.bold,
+                                          fontFamily: 'Nunito',
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ), */
                               ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Container(
-                                    /* decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(16),
-                                        color: Colors.white.withOpacity(0.4)), */
-                                    padding: EdgeInsets.all(6),
-                                    child: Text(
-                                      data.Categories[index].title,
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold,
-                                        fontFamily: 'Nunito',
+                              Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(16),
+                                  color: Colors.black.withOpacity(0.6),
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      padding: EdgeInsets.all(16),
+                                      child: Text(
+                                        data.Categories[index].title,
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontFamily: 'Nunito',
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  //SizedBox(height: 1),
-                                  Container(
-                                    /*  decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(16),
-                                        color: Colors.white.withOpacity(0.4)), */
-                                    //padding: EdgeInsets.all(2),
-                                    child: Text(
-                                      data.Categories[index].description,
-                                      style: TextStyle(
-                                        fontSize: 9,
-                                        color: Colors.black,
-                                        // fontWeight: FontWeight.bold,
-                                        fontFamily: 'Nunito',
+                                    SizedBox(height: 16),
+                                    Container(
+                                      padding: EdgeInsets.all(16),
+                                      child: Text(
+                                        data.Categories[index].description,
+                                        style: TextStyle(
+                                          fontSize: 9,
+                                          color: Colors.white,
+                                          // fontWeight: FontWeight.bold,
+                                          fontFamily: 'Nunito',
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
-                            ),
+                            ]),
                           ),
                         ),
                       ),
@@ -247,23 +285,26 @@ class _DashboardScreenState extends State<DashboardScreen> {
       ),
       if (has_lecture)
         CurrentLecture(
-            title: _title,
-            id: _id,
-            idCate: _id_cate,
-            imagePath: _image_path,
-            videoPath: _video_path,
-            filePath: _file_path)
+          title: _title,
+          id: _id,
+          idCate: _id_cate,
+          imagePath: _image_path,
+          videoPath: _video_path,
+          filePath: _file_path,
+          isVisble: true,
+        )
     ]);
   }
 }
 
-class CurrentLecture extends StatelessWidget {
+class CurrentLecture extends StatefulWidget {
   String imagePath;
   String videoPath;
   String filePath;
   String id;
   String idCate;
   String title;
+  bool isVisble;
   CurrentLecture({
     this.title,
     this.id,
@@ -271,77 +312,100 @@ class CurrentLecture extends StatelessWidget {
     this.imagePath,
     this.videoPath,
     this.filePath,
+    this.isVisble,
     Key key,
   }) : super(key: key);
 
   @override
+  _CurrentLectureState createState() => _CurrentLectureState();
+}
+
+class _CurrentLectureState extends State<CurrentLecture> {
+  @override
   Widget build(BuildContext context) {
-    return Positioned(
-      //child: Card(
-      child: GestureDetector(
-        onTap: () {
-          Navigator.of(context).pushNamed('/main-content-screen', arguments: {
-            'id': id,
-            'imagePath': imagePath,
-            'videoPath': videoPath,
-            'filePath': filePath,
-            'idCate': idCate,
-            'title': title,
-          });
-        },
-        child: Container(
-          //margin: EdgeInsets.symmetric(vertical: 30),
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-          height: 60,
-          width: double.infinity,
-          decoration: BoxDecoration(
-            //gradient: kPrimaryGradient,
-            color: Colors.lightBlue,
-            borderRadius: BorderRadius.circular(40),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Image.asset(imagePath),
-              SizedBox(width: 16),
-              Column(
-                children: [
-                  FittedBox(
-                    //fit: BoxFit.fill,
-                    child: Text(
-                      title,
-                      style: TextStyle(
-                        fontSize: 10,
-                        fontFamily: 'Nunito',
-                        //color: Color(0xFFA0A5BD),
+    if (widget.isVisble == true)
+      return Positioned(
+        //child: Card(
+        child: GestureDetector(
+          onTap: () {
+            Navigator.of(context).pushNamed('/main-content-screen', arguments: {
+              'id': widget.id,
+              'imagePath': widget.imagePath,
+              'videoPath': widget.videoPath,
+              'filePath': widget.filePath,
+              'idCate': widget.idCate,
+              'title': widget.title,
+            });
+          },
+          child: Stack(clipBehavior: Clip.none, children: [
+            Container(
+              //margin: EdgeInsets.symmetric(vertical: 30),
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+              height: 60,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                //gradient: kPrimaryGradient,
+                color: Colors.lightBlue,
+                borderRadius: BorderRadius.circular(40),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Image.asset(widget.imagePath),
+                  SizedBox(width: 16),
+                  Column(
+                    children: [
+                      FittedBox(
+                        //fit: BoxFit.fill,
+                        child: Text(
+                          widget.title,
+                          style: TextStyle(
+                            fontSize: 10,
+                            fontFamily: 'Nunito',
+                            //color: Color(0xFFA0A5BD),
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 1,
-                  ),
-                  FittedBox(
-                    fit: BoxFit.cover,
-                    child: Text(
-                      "Nhấp để tiếp tục",
-                      style: TextStyle(
-                        fontSize: 6,
-                        fontFamily: 'Nunito',
-                        //color: Color(0xFFA0A5BD),
+                      SizedBox(
+                        height: 1,
                       ),
-                    ),
+                      FittedBox(
+                        fit: BoxFit.cover,
+                        child: Text(
+                          "Nhấp để tiếp tục",
+                          style: TextStyle(
+                            fontSize: 6,
+                            fontFamily: 'Nunito',
+                            //color: Color(0xFFA0A5BD),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
+                  Icon(Icons.play_arrow)
                 ],
               ),
-              Icon(Icons.play_arrow)
-            ],
-          ),
-          // ),
+              // ),
+            ),
+            Positioned(
+                right: 0,
+                bottom: 35,
+                child: IconButton(
+                  icon: Icon(Icons.cancel),
+                  onPressed: () {
+                    setState(() {
+                      widget.isVisble = false;
+                    });
+                    //isVisible = true;
+                  },
+                ))
+          ]),
         ),
-      ),
-      bottom: 0,
-      left: 0,
-      right: 0,
-    );
+        bottom: 0,
+        left: 0,
+        right: 0,
+      );
+    else
+      return Container();
   }
 }
