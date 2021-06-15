@@ -345,7 +345,7 @@ class _CurrentLectureState extends State<CurrentLecture> {
               width: double.infinity,
               decoration: BoxDecoration(
                 //gradient: kPrimaryGradient,
-                color: Colors.lightBlue,
+                color: Colors.lightBlue[200],
                 borderRadius: BorderRadius.circular(40),
               ),
               child: Row(
@@ -392,11 +392,14 @@ class _CurrentLectureState extends State<CurrentLecture> {
                 bottom: 35,
                 child: IconButton(
                   icon: Icon(Icons.cancel),
-                  onPressed: () {
+                  onPressed: () async {
                     setState(() {
                       widget.isVisble = false;
                     });
-                    //isVisible = true;
+                    SharedPreferences prefs =
+                        await SharedPreferences.getInstance();
+                    if (prefs.containsKey('is_loaded'))
+                      prefs.remove('is_loaded');
                   },
                 ))
           ]),

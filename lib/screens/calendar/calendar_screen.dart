@@ -20,18 +20,20 @@ class _CalendarScreenState extends State<CalendarScreen> {
         const Locale('vi'),
       ],
       locale: const Locale('vi'),
-      home: SfCalendar(
-        scheduleViewSettings: ScheduleViewSettings(
-            hideEmptyScheduleWeek: true,
-            appointmentItemHeight: 70,
-            appointmentTextStyle: TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.w500,
-                color: Colors.white,
-                fontFamily: 'Nunito')),
-        view: CalendarView.schedule,
-        firstDayOfWeek: 1,
-        dataSource: MeetingDataSource(getAppointments()),
+      home: SafeArea(
+        child: SfCalendar(
+          scheduleViewSettings: ScheduleViewSettings(
+              hideEmptyScheduleWeek: true,
+              appointmentItemHeight: 70,
+              appointmentTextStyle: TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.white,
+                  fontFamily: 'Nunito')),
+          view: CalendarView.schedule,
+          firstDayOfWeek: 1,
+          dataSource: MeetingDataSource(getAppointments()),
+        ),
       ),
     );
   }

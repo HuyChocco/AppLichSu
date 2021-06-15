@@ -1,6 +1,47 @@
 import 'package:hisapp/helpers/db_helper.dart';
 
 class SeedData {
+  static Future<void> insertAnniversary() async {
+    await DBHelper.insert('anniversary', {
+      'id': '1',
+      'day': 3,
+      'month': 2,
+      'year': 1930,
+      'content':
+          'Kỷ niệm 91 năm Ngày thành lập Đảng Cộng sản Việt Nam (3/2/1930)',
+    });
+    await DBHelper.insert('anniversary', {
+      'id': '2',
+      'day': 30,
+      'month': 4,
+      'year': 1975,
+      'content':
+          'Kỷ niệm Ngày giải phóng miền Nam, thống nhất đất nước (30/4/1975)',
+    });
+    await DBHelper.insert('anniversary', {
+      'id': '3',
+      'day': 7,
+      'month': 5,
+      'year': 1954,
+      'content': 'Kỷ niệm Ngày Chiến thắng Điện Biên Phủ (7/5/1954)',
+    });
+    await DBHelper.insert('anniversary', {
+      'id': '4',
+      'day': 19,
+      'month': 8,
+      'year': 1945,
+      'content': 'Kỷ niệm Ngày Cách mạng tháng Tám thành công (19/8/1945)',
+    });
+    await DBHelper.insert('anniversary', {
+      'id': '5',
+      'day': 2,
+      'month': 9,
+      'year': 1945,
+      'content':
+          'Ngày Quốc khánh nước Cộng hoà xã hội chủ nghĩa Việt Nam (2/9/1945)',
+    });
+  }
+
   static Future<void> insertContentCategory() async {
     await DBHelper.insert('content_category', {
       'id': '1',

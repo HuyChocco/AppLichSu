@@ -24,6 +24,8 @@ class DBHelper {
           'CREATE TABLE answer(id TEXT PRIMARY KEY, id_question TEXT,id_content TEXT,sentence TEXT,number INTEGER)');
       await db.execute(
           'CREATE TABLE content(id TEXT PRIMARY KEY,id_category TEXT, title TEXT,time TEXT,file_path TEXT,image_path TEXT, video_path TEXT, number INTEGER,is_done BIT, key_word TEXT)');
+      await db.execute(
+          'CREATE TABLE anniversary(id TEXT PRIMARY KEY,day INTEGER, month INTEGER,year INTEGER,content TEXT)');
     }, version: 1);
   }
 
