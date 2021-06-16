@@ -40,6 +40,43 @@ class SeedData {
       'content':
           'Ngày Quốc khánh nước Cộng hoà xã hội chủ nghĩa Việt Nam (2/9/1945)',
     });
+
+    await DBHelper.insert('anniversary', {
+      'id': '6',
+      'day': 25,
+      'month': 8,
+      'year': 1911,
+      'content': 'Kỷ niệm Ngày sinh Đại tướng Võ Nguyên Giáp (25/8/1911)',
+    });
+    await DBHelper.insert('anniversary', {
+      'id': '7',
+      'day': 10,
+      'month': 10,
+      'year': 1911,
+      'content': 'Kỷ niệm Ngày sinh đồng chí Lê Đức Thọ (10/10/1911)',
+    });
+    await DBHelper.insert('anniversary', {
+      'id': '8',
+      'day': 28,
+      'month': 1,
+      'year': 1941,
+      'content':
+          'Kỷ niệm Ngày Bác Hồ về nước trực tiếp lãnh đạo cách mạng Việt Nam (28/01/1941)',
+    });
+    await DBHelper.insert('anniversary', {
+      'id': '9',
+      'day': 5,
+      'month': 6,
+      'year': 1911,
+      'content': 'Kỷ niệm Ngày Bác Hồ ra đi tìm đường cứu nước (05/6/1911)',
+    });
+    await DBHelper.insert('anniversary', {
+      'id': '10',
+      'day': 23,
+      'month': 10,
+      'year': 1961,
+      'content': 'Kỷ niệm Ngày mở đường Hồ Chí Minh trên biển (23/10/1961)',
+    });
   }
 
   static Future<void> insertContentCategory() async {

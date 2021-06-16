@@ -355,15 +355,21 @@ class _CurrentLectureState extends State<CurrentLecture> {
                   SizedBox(width: 16),
                   Column(
                     children: [
-                      FittedBox(
-                        //fit: BoxFit.fill,
+                      //FittedBox(
+                      //fit: BoxFit.fill,
+                      //child:
+                      Container(
+                        constraints: BoxConstraints(maxWidth: 180),
                         child: Text(
                           widget.title,
+                          textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontSize: 10,
+                            fontSize: 6,
+                            height: 1.5,
                             fontFamily: 'Nunito',
                             //color: Color(0xFFA0A5BD),
                           ),
+                          //  ),
                         ),
                       ),
                       SizedBox(

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hisapp/models/Anniversary.dart';
+import 'package:hisapp/providers/AnniversaryProvider.dart';
+import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:syncfusion_localizations/syncfusion_localizations.dart';
 
@@ -11,6 +14,39 @@ class CalendarScreen extends StatefulWidget {
 
 class _CalendarScreenState extends State<CalendarScreen> {
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+  }
+
+  List<Appointment> _getAppointments(List<Anniversary> list) {
+    Appointment appointment;
+    List<Appointment> meetings = <Appointment>[];
+    final DateTime today = DateTime.now();
+    if (list.length > 0) {
+      //print(list[0].content);
+      list.forEach((element) {
+        appointment = Appointment(
+          startTime: DateTime(
+            today.year,
+            element.month,
+            element.day,
+          ),
+          endTime: DateTime(
+            today.year,
+            element.month,
+            element.day,
+          ),
+          subject: element.content,
+          isAllDay: true,
+          color: Colors.blue,
+        );
+        meetings.add(appointment);
+      });
+    }
+    return meetings;
+  }
+
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -21,47 +57,34 @@ class _CalendarScreenState extends State<CalendarScreen> {
       ],
       locale: const Locale('vi'),
       home: SafeArea(
-        child: SfCalendar(
-          scheduleViewSettings: ScheduleViewSettings(
-              hideEmptyScheduleWeek: true,
-              appointmentItemHeight: 70,
-              appointmentTextStyle: TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.white,
-                  fontFamily: 'Nunito')),
-          view: CalendarView.schedule,
-          firstDayOfWeek: 1,
-          dataSource: MeetingDataSource(getAppointments()),
+        child: FutureBuilder(
+          future: Provider.of<AnniversaryProvider>(context, listen: false)
+              .getAllData(),
+          builder: (ctx, snap) {
+            if (snap.connectionState == ConnectionState.waiting)
+              return Center(child: CircularProgressIndicator());
+            else
+              return Consumer<AnniversaryProvider>(builder: (ctx, data, child) {
+                return SfCalendar(
+                  scheduleViewSettings: ScheduleViewSettings(
+                      hideEmptyScheduleWeek: true,
+                      appointmentItemHeight: 70,
+                      appointmentTextStyle: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white,
+                          fontFamily: 'Nunito')),
+                  view: CalendarView.schedule,
+                  firstDayOfWeek: 1,
+                  dataSource:
+                      MeetingDataSource(_getAppointments(data.anniversaryList)),
+                );
+              });
+          },
         ),
       ),
     );
   }
-}
-
-List<Appointment> getAppointments() {
-  List<Appointment> meetings = <Appointment>[];
-  final DateTime today = DateTime.now();
-  final DateTime startTime =
-      DateTime(today.year, today.month, today.day, 9, 0, 0);
-  final DateTime endTime = startTime.add(const Duration(hours: 2));
-
-  meetings.add(Appointment(
-      startTime: startTime,
-      endTime: endTime,
-      subject: 'Ngày lịch sử',
-      color: Colors.blue,
-      //recurrenceRule: 'FREQ=DAILY;COUNT=1',
-      isAllDay: true));
-
-  meetings.add(Appointment(
-      startTime: DateTime(today.year, today.month, 20, 9, 0, 0),
-      endTime: DateTime(today.year, today.month, 20, 9, 0, 0),
-      subject: 'Ngày lịch sử 2',
-      color: Colors.blue,
-      isAllDay: true));
-
-  return meetings;
 }
 
 class MeetingDataSource extends CalendarDataSource {

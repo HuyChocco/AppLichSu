@@ -1,4 +1,5 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:hisapp/providers/AnniversaryProvider.dart';
 import 'package:hisapp/providers/CategoryProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:hisapp/providers/QuestionProvider.dart';
@@ -9,7 +10,7 @@ import 'package:hisapp/screens/search/search_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import './screens/home/home_screen.dart';
-import './screens/events/events_screen.dart';
+
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 import 'screens/quiz/quiz_screen.dart';
@@ -71,6 +72,9 @@ class _MyAppState extends State<MyApp> {
         ),
         ChangeNotifierProvider(
           create: (ctx) => QuestionProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (ctx) => AnniversaryProvider(),
         ),
       ],
       child: GetMaterialApp(

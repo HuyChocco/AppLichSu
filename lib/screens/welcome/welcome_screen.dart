@@ -97,6 +97,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       await SeedData.insertContentQH();
                       await SeedData.insertQuestion();
                       await SeedData.insertAnswer();
+                      await SeedData.insertAnniversary();
                       Navigator.of(context)
                           .pushReplacementNamed('/home-screen');
                     },
