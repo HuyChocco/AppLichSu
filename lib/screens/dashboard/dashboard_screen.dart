@@ -364,8 +364,8 @@ class _CurrentLectureState extends State<CurrentLecture> {
                           widget.title,
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontSize: 6,
-                            height: 1.5,
+                            fontSize: 8,
+                            height: 1,
                             fontFamily: 'Nunito',
                             //color: Color(0xFFA0A5BD),
                           ),
