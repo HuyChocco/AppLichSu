@@ -3,8 +3,8 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.VIBRATE" />
    <application
-        android:label="hisapp"
-        android:icon="@mipmap/ic_launcher"
+        android:label="Em yêu lịch sử"
+        android:icon="@mipmap/ic_laucher_foreground"
         android:usesCleartextTraffic="true">
         <activity
             android:name=".MainActivity"
