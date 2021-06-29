@@ -31,6 +31,24 @@ class _DiscussionScreenState extends State<DiscussionScreen> {
     _userVideoFile = video;
   }
 
+  void _showInfoDialog(String message) {
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: Text('Thông báo'),
+        content: Text(message),
+        actions: <Widget>[
+          FlatButton(
+            child: Text('Thoát'),
+            onPressed: () {
+              Navigator.of(ctx).pop();
+            },
+          )
+        ],
+      ),
+    );
+  }
+
   void _logOut() async {
     final _auth = FirebaseAuth.instance;
     await _auth.signOut();
@@ -41,51 +59,57 @@ class _DiscussionScreenState extends State<DiscussionScreen> {
 
   void _sendMessage() async {
     FocusScope.of(context).unfocus();
+    try {
+      final user = FirebaseAuth.instance.currentUser;
+      String imageUrl = '';
+      String videoUrl = '';
+      final DateTime now = DateTime.now();
+      final int millSeconds = now.millisecondsSinceEpoch;
+      final userData = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(user.uid)
+          .get();
+      Navigator.of(context).pop();
+      if (_userVideoFile != null) {
+        final ref = FirebaseStorage.instance
+            .ref()
+            .child('user_data')
+            .child(user.uid + now.toString() + '.mp4');
+        // Create your custom metadata.
+        SettableMetadata metadata = SettableMetadata(
+          contentType: 'video/mp4',
+        );
+        await ref.putFile(_userVideoFile, metadata);
+        videoUrl = await ref.getDownloadURL();
+      }
+      if (_userImageFile != null) {
+        final ref = FirebaseStorage.instance
+            .ref()
+            .child('user_data')
+            .child(user.uid + now.toString() + '.jpg');
 
-    final user = FirebaseAuth.instance.currentUser;
-    String imageUrl = '';
-    String videoUrl = '';
-    final DateTime now = DateTime.now();
-    final int millSeconds = now.millisecondsSinceEpoch;
-    final userData = await FirebaseFirestore.instance
-        .collection('users')
-        .doc(user.uid)
-        .get();
-    if (_userVideoFile != null) {
-      final ref = FirebaseStorage.instance
-          .ref()
-          .child('user_data')
-          .child(user.uid + now.toString() + '.mp4');
-      // Create your custom metadata.
-      SettableMetadata metadata = SettableMetadata(
-        contentType: 'video/mp4',
-      );
-      await ref.putFile(_userVideoFile, metadata);
-      videoUrl = await ref.getDownloadURL();
+        await ref.putFile(_userImageFile);
+        imageUrl = await ref.getDownloadURL();
+      }
+      FirebaseFirestore.instance.collection('discussion').add({
+        'text': _controller.text,
+        'createdAt': Timestamp.now(),
+        'userId': user.uid,
+        'username': userData.data()['username'],
+        'userImage': userData.data()['image_url'],
+        'likes': 0,
+        'imageUpload': imageUrl,
+        'videoUpload': videoUrl,
+      });
+      _userImageFile = null;
+      _userVideoFile = null;
+      _controller.clear();
+      const errorMessage = 'Tải lên thành công.';
+      _showInfoDialog(errorMessage);
+    } catch (err) {
+      const errorMessage = 'Không thể tải bài lên. Vui lòng thử lại sau.';
+      _showInfoDialog(errorMessage);
     }
-    if (_userImageFile != null) {
-      final ref = FirebaseStorage.instance
-          .ref()
-          .child('user_data')
-          .child(user.uid + now.toString() + '.jpg');
-
-      await ref.putFile(_userImageFile);
-      imageUrl = await ref.getDownloadURL();
-    }
-    FirebaseFirestore.instance.collection('discussion').add({
-      'text': _controller.text,
-      'createdAt': Timestamp.now(),
-      'userId': user.uid,
-      'username': userData.data()['username'],
-      'userImage': userData.data()['image_url'],
-      'likes': 0,
-      'imageUpload': imageUrl,
-      'videoUpload': videoUrl,
-    });
-    _userImageFile = null;
-    _userVideoFile = null;
-    _controller.clear();
-    Navigator.of(context).pop();
   }
 
   int likes = 0;
