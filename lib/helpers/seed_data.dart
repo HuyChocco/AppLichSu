@@ -77,6 +77,34 @@ class SeedData {
       'year': 1961,
       'content': 'Kỷ niệm Ngày mở đường Hồ Chí Minh trên biển (23/10/1961)',
     });
+    await DBHelper.insert('anniversary', {
+      'id': '11',
+      'day': 15,
+      'month': 7,
+      'year': 1950,
+      'content': 'Ngày truyền thống Thanh niên xung phong (15/07/1950)',
+    });
+    await DBHelper.insert('anniversary', {
+      'id': '12',
+      'day': 27,
+      'month': 7,
+      'year': 1947,
+      'content': 'Ngày Thương binh Liệt sĩ Việt Nam (27/7/1947)',
+    });
+    await DBHelper.insert('anniversary', {
+      'id': '13',
+      'day': 28,
+      'month': 7,
+      'year': 1929,
+      'content': 'Ngày thành lập Công Đoàn Việt Nam (28/7/1929)',
+    });
+    await DBHelper.insert('anniversary', {
+      'id': '14',
+      'day': 28,
+      'month': 7,
+      'year': 1995,
+      'content': 'Ngày Việt Nam gia nhập Asean (28/07/1995)',
+    });
   }
 
   static Future<void> insertContentCategory() async {
