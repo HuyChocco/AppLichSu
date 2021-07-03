@@ -112,7 +112,7 @@ class SeedData {
       'id': '1',
       'title': 'Thời kỳ lịch sử',
       'number': 1,
-      'image_path': 'assets/images/trongdong.png',
+      'image_path': 'assets/images/timeline.png',
       'description':
           'Tóm tắt các sự kiện chính qua các thời kỳ lịch sử nước ta',
     });
@@ -120,7 +120,7 @@ class SeedData {
       'id': '2',
       'title': 'Anh hùng dân tộc',
       'number': 2,
-      'image_path': 'assets/images/trongdong_real.jpg',
+      'image_path': 'assets/images/nhanvat.png',
       'description':
           'Những nhân vật có ảnh hưởng lớn đến sự hình thành và phát triển của Việt Nam',
     });
@@ -128,7 +128,7 @@ class SeedData {
       'id': '3',
       'title': 'Các trận đánh hay',
       'number': 3,
-      'image_path': 'assets/images/home_bg.png',
+      'image_path': 'assets/images/battle.jpg',
       'description': 'Tóm tắt các trận đánh hay trong lịch sử Việt Nam',
     });
     await DBHelper.insert('content_category', {
